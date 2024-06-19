@@ -1,3 +1,7 @@
+<?php
+    require_once('partials/__dbconnect.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,5 +11,7 @@
 </head>
 <body>
 <h1>This will be the signup page</h1>
+<button onclick="window.alert('')">Click to change content</button>
+
 </body>
 </html>
