@@ -1,20 +1,26 @@
-<?php
-    include_once('partials/__dbconnect.php');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="output.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="src/output.css">
 </head>
 <body>
-<main
-    class="flex items-center justify-center px-8 py-6 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6"
+    <main
+    class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6"
   >
     <div class="max-w-xl lg:max-w-3xl">
+      <div class="relative -mt-16 block lg:hidden">
+        <a
+          class="inline-flex size-16 items-center justify-center rounded-full bg-white text-blue-600 sm:size-20"
+          href="#"
+        >
+
+        </a>
+
+      </div>
+
       <form action="#" class="mt-8 grid grid-cols-6 gap-6">
         <div class="col-span-6 sm:col-span-3">
           <label for="FirstName" class="block text-sm font-medium text-gray-700">
@@ -134,7 +140,7 @@
             
         </div>
     </form>
-    <p class="py-4 mt-4 text-sm text-gray-500 sm:mt-0">
+    <p class="p-5 mt-4 text-sm text-gray-500 sm:mt-0">
         Already have an account?
         <a href="#" class="text-gray-700 underline">Log in</a>.
       </p>
