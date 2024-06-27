@@ -5,49 +5,29 @@ $email = $password = $confirm_password = "";
 $email_err = $password_err = $confirm_password_err = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  
-    // Check if email is empty
-    if (empty(trim($_POST["email"]))) {
-        $email_err = "Email cannot be empty";
-    } else {
-        // Check if email is already taken
-        $sql = "SELECT * FROM `user` WHERE email = ?";
-        $stmt = mysqli_prepare($conn, $sql);
-        if ($stmt) {
-            mysqli_stmt_bind_param($stmt, "s", $param_email);
-            $param_email = trim($_POST['email']);
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+    $confirm_password = trim($_POST['confirm_password']);
 
-            // Try executing the statement
-            if (mysqli_stmt_execute($stmt)) {
-                mysqli_stmt_store_result($stmt);
-                if (mysqli_stmt_num_rows($stmt) == 1) {
-                    $email_err = "This email is already taken"; 
-                } else {
-                    $email = trim($_POST['email']);
-                }
-            } else {
-                echo "Something went wrong while checking email.";
+    // Check if email is already taken
+    $sql = "SELECT * FROM `user` WHERE email = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "s", $param_email);
+        $param_email = $email;
+
+        // Try executing the statement
+        if (mysqli_stmt_execute($stmt)) {
+            mysqli_stmt_store_result($stmt);
+            if (mysqli_stmt_num_rows($stmt) == 1) {
+                $email_err = "This email is already taken"; 
             }
-            mysqli_stmt_close($stmt);
         } else {
-            echo "Failed to prepare the statement.";
+            echo "Something went wrong while checking email.";
         }
-    }
-
-    // Check for password
-    if (empty(trim($_POST['password']))) {
-        $password_err = "Password cannot be blank";
-    } elseif (strlen(trim($_POST['password'])) < 4) {
-        $password_err = "Password cannot be less than 4 characters";
+        mysqli_stmt_close($stmt);
     } else {
-        $password = trim($_POST['password']);
-    }
-
-    // Check confirm password
-    if (empty(trim($_POST['confirm_password']))) {
-        $confirm_password_err = "Please confirm your password.";
-    } elseif (trim($_POST['password']) != trim($_POST['confirm_password'])) {
-        $confirm_password_err = "Passwords should match";
+        echo "Failed to prepare the statement.";
     }
 
     // If there were no errors, go ahead and insert into the database
@@ -74,7 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     mysqli_close($conn);
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -185,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
             value="<?php echo htmlspecialchars($confirm_password); ?>"
           />
-          <span id="confirm_password_err" class="text-red-500 text-sm"><?php echo $confirm_password_err; ?></span>
+          <span id="confirm_password_err" class="text-red-600 text-sm"><?php echo $confirm_password_err; ?></span>
         </div>
 
         <div class="col-span-6">
@@ -238,13 +217,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </div>
       </form>
-
-
-      <p class="py-4 mt-4 text-sm text-gray-500 sm:mt-0">
-        Already have an account?
-        <a href="login.php" class="text-gray-700 underline">Log in</a>.
-      </p>
     </div>
+    <h1 class="bg-teal-500">jfkldasjfldksj</h1>
   </main>
+  <p class="bg-gray-950">fafasdf</p>
+  <p class="bg-green-400">fkjas</p>
 </body>
 </html>
