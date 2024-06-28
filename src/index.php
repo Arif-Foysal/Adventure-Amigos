@@ -1,13 +1,10 @@
 <?php
-
 session_start();
 
-if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true)
-{
-    header("location: login.php");
-}
-
-
+// if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true)
+// {
+//     header("location: login.php");
+// }
 ?>
 
 
@@ -26,8 +23,17 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true)
 <?php
 include_once "partials/__nav.php"
 ?>
+<div  class="bg-green-400 font-medium flex justify-center space-x-8">
 
 
-<a href="logout.php">log out</a>
+<h1>BappaRaj</h1>
+<h1>Khonju Raaj</h1>
+
+</div>
+
+<footer>
+
+</footer>
+
 </body>
 </html>

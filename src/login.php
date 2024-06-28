@@ -83,6 +83,10 @@ if(empty($err))
     <link rel="stylesheet" href="output.css">
 </head>
 <body>
+<?php
+// include_once "partials/__nav.php"
+// that's a weird login page. Fix the bugs asap
+?>
 
 <?php
 if (!$passwordMatch) {
