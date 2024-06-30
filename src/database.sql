@@ -1,3 +1,6 @@
+CREATE DATABASE tourism;
+USE tourism;
+
 CREATE TABLE `user` (
   `user_id` int PRIMARY KEY AUTO_INCREMENT,
   `user_type` varchar(255),
