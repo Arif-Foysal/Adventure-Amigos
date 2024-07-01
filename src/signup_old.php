@@ -1,41 +1,79 @@
 <?php
 require_once "partials/__dbconnect.php"; //db connect
 
-$showAlert = false;
-$showError = false;
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-    $confirm_password = $_POST["confirm_password"];
-    // $exists=false;
+$email = $password = $confirm_password = "";
+$email_err = $password_err = $confirm_password_err = "";
 
-    // Check whether this email exists
-    $existSql = "SELECT * FROM `user` WHERE email = '$email'";
-    $result = mysqli_query($conn, $existSql);
-    $numExistRows = mysqli_num_rows($result);
-    if($numExistRows > 0){
-        // $exists = true;
-        $showError = "Username Already Exists";
-    }
-    else{
-        // $exists = false; 
-        if(($password == $confirm_password)){
-            $hash = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO `user` ( `email`, `password`) VALUES ('$email', '$hash')";
-            $result = mysqli_query($conn, $sql);
-            if ($result){
-                $showAlert = true;
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  
+    // Check if email is empty
+    if (empty(trim($_POST["email"]))) {
+        $email_err = "Email cannot be empty";
+    } else {
+        // Check if email is already taken
+        $sql = "SELECT * FROM `user` WHERE email = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        if ($stmt) {
+            mysqli_stmt_bind_param($stmt, "s", $param_email);
+            $param_email = trim($_POST['email']);
+
+            // Try executing the statement
+            if (mysqli_stmt_execute($stmt)) {
+                mysqli_stmt_store_result($stmt);
+                if (mysqli_stmt_num_rows($stmt) == 1) {
+                    $email_err = "This email is already taken"; 
+                } else {
+                    $email = trim($_POST['email']);
+                }
+            } else {
+                echo "Something went wrong while checking email.";
             }
-        }
-        else{
-            $showError = "Passwords do not match";
+            mysqli_stmt_close($stmt);
+        } else {
+            echo "Failed to prepare the statement.";
         }
     }
+
+    // Check for password
+    if (empty(trim($_POST['password']))) {
+        $password_err = "Password cannot be blank";
+    } elseif (strlen(trim($_POST['password'])) < 4) {
+        $password_err = "Password cannot be less than 4 characters";
+    } else {
+        $password = trim($_POST['password']);
+    }
+
+    // Check confirm password
+    if (empty(trim($_POST['confirm_password']))) {
+        $confirm_password_err = "Please confirm your password.";
+    } elseif (trim($_POST['password']) != trim($_POST['confirm_password'])) {
+        $confirm_password_err = "Passwords should match";
+    }
+
+    // If there were no errors, go ahead and insert into the database
+    if (empty($email_err) && empty($password_err) && empty($confirm_password_err)) {
+        $sql = "INSERT INTO `user` (email, password) VALUES (?, ?)";
+        $stmt = mysqli_prepare($conn, $sql);
+        if ($stmt) {
+            mysqli_stmt_bind_param($stmt, "ss", $param_email, $param_password);
+            // Set parameters
+            $param_email = $email;
+            $param_password = password_hash($password, PASSWORD_DEFAULT); // Hash the password
+
+            // Try to execute the query
+            if (mysqli_stmt_execute($stmt)) {
+                header("location: login.php");
+            } else {
+                echo "Something went wrong... cannot redirect!";
+            }
+            mysqli_stmt_close($stmt);
+        } else {
+            echo "Failed to prepare the statement.";
+        }
+    }
+    mysqli_close($conn);
 }
-    
 ?>
-
-
 
 
 <!DOCTYPE html>
@@ -45,7 +83,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <link rel="stylesheet" href="output.css">
-    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         function validateForm() {
             let isValid = true;
@@ -86,9 +123,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
 
-<?php
-include_once "partials/__nav.php"
-?>
 
 
 <main class="flex items-center justify-center px-8 py-6 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
@@ -103,7 +137,7 @@ include_once "partials/__nav.php"
             id="first_name"
             name="first_name"
             class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-            value=""
+            value="<?php echo htmlspecialchars($email); ?>"
           />
         </div>
 
@@ -126,9 +160,9 @@ include_once "partials/__nav.php"
             id="email"
             name="email"
             class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-            value=""
+            value="<?php echo htmlspecialchars($email); ?>"
           />
-          <span id="email_err" class="text-red-500 text-sm"></span>
+          <span id="email_err" class="text-red-500 text-sm"><?php echo $email_err; ?></span>
         </div>
 
         <div class="col-span-6 sm:col-span-3">
@@ -138,10 +172,9 @@ include_once "partials/__nav.php"
             id="password"
             name="password"
             class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-            value=""
+            value="<?php echo htmlspecialchars($password); ?>"
           />
-          <span id="password_err" class="text-red-500 text-sm"></span>
-          
+          <span id="password_err" class="text-red-500 text-sm"><?php echo $password_err; ?></span>
         </div>
 
         <div class="col-span-6 sm:col-span-3">
@@ -153,9 +186,9 @@ include_once "partials/__nav.php"
             id="confirm_password"
             name="confirm_password"
             class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-            value=""
+            value="<?php echo htmlspecialchars($confirm_password); ?>"
           />
-          <span id="confirm_password_err" class="text-red-500 text-sm"></span>
+          <span id="confirm_password_err" class="text-red-500 text-sm"><?php echo $confirm_password_err; ?></span>
         </div>
 
         <div class="col-span-6">
