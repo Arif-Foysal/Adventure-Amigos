@@ -1,4 +1,6 @@
 <?php
+// To-Do
+// - [ ] auto redirection to welcome.php if register
 require_once "partials/__dbconnect.php"; //db connect
 
 $showAlert = false;
@@ -7,24 +9,69 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = $_POST["email"];
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
-    // $exists=false;
+    $fname = $_POST["first_name"];
+    $lname = $_POST["last_name"];
+    $marketing = isset($_POST['marketing_accept']); 
 
+    $usertype = "tourist"; //Default user type when they sign in
     // Check whether this email exists
     $existSql = "SELECT * FROM `user` WHERE email = '$email'";
     $result = mysqli_query($conn, $existSql);
     $numExistRows = mysqli_num_rows($result);
     if($numExistRows > 0){
         // $exists = true;
-        $showError = "Username Already Exists";
+        $showError = "Email Already Exists";
     }
     else{
         // $exists = false; 
         if(($password == $confirm_password)){
             $hash = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO `user` ( `email`, `password`) VALUES ('$email', '$hash')";
+            $sql = "INSERT INTO `user` ( `email`, `password`,`fname`,`lname`,`rcvEmails`, `user_type`) VALUES ('$email', '$hash', '$fname', '$lname','$marketing', '$usertype')";
             $result = mysqli_query($conn, $sql);
             if ($result){
                 $showAlert = true;
+                // echo "success";
+                {
+                  $sql = "SELECT user_id, email, password FROM user WHERE email = ?";
+                  $stmt = mysqli_prepare($conn, $sql);
+                  mysqli_stmt_bind_param($stmt, "s", $param_username);
+                  $param_username = $email;
+                  
+                  
+                  // Try to execute this statement
+                  if(mysqli_stmt_execute($stmt)){
+                      mysqli_stmt_store_result($stmt);
+                      if(mysqli_stmt_num_rows($stmt) == 1)
+                              {
+                                  mysqli_stmt_bind_result($stmt, $id, $email, $hashed_password);
+                                  if(mysqli_stmt_fetch($stmt))
+                                  {
+                                      if(password_verify($password, $hashed_password))
+                                      {
+                                          // this means the password is corrct. Allow user to login
+                                          session_start();
+                                          $_SESSION["email"] = $email;
+                                          $_SESSION["id"] = $id;
+                                          $_SESSION["loggedin"] = true;
+              
+                                          //Redirect user to welcome page
+                                          header("location: welcome.php");
+                                          
+                                      }
+                                      else {
+                                        # code...
+                                        $passwordMatch = false;
+                                      }
+                                  }
+              
+                              }
+                              else {
+                                $passwordMatch = false;
+                              }
+              
+                  }
+              } 
+                
             }
         }
         else{
@@ -32,7 +79,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 }
-    
 ?>
 
 
@@ -83,6 +129,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             return isValid;
         }
     </script>
+
 </head>
 <body>
 
@@ -90,9 +137,44 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 include_once "partials/__nav.php"
 ?>
 
+<?php
+if ($showError) {
+echo '
+<div class="w-full text-white bg-red-500" id="alertDiv">
+<div class="container flex items-center justify-between px-6 py-4 mx-auto">
+        <div class="flex">
+        <svg viewBox="0 0 40 40" class="w-6 h-6 fill-current">
+                <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z">
+                </path>
+            </svg>
 
-<main class="flex items-center justify-center px-8 py-6 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
-    <div class="max-w-xl lg:max-w-3xl">
+            <p class="mx-3">'.$showError.'</p>
+        </div>
+
+        <button class="p-1 transition-colors duration-300 transform rounded-md hover:bg-opacity-25 hover:bg-gray-600 focus:outline-none" id="closeButton">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+    </div>
+</div>
+';
+// echo "incorrent pass";
+# code...
+}
+
+?>
+<main class="flex  justify-center px-8  sm:px-12 lg:col-span-7  xl:col-span-6">
+  <div class="max-w-xl lg:max-w-3xl">
+  <h1 class="text-gray-800 text-3xl pt-4 font-bold flex items-center gap-2">
+  <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z"/>
+  <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+</svg>
+    Sign In to Adventure Amigos
+
+  </h1>
+
       <form name="signupForm" action="" method="post" class="mt-8 grid grid-cols-6 gap-6" onsubmit="return validateForm()">
         <div class="col-span-6 sm:col-span-3">
           <label for="first_name" class="block text-sm font-medium text-gray-700">
@@ -163,7 +245,7 @@ include_once "partials/__nav.php"
             <input
               type="checkbox"
               id="marketing_accept"
-              name="marketing_accept"
+              name="marketing_accept[]"
               class="size-5 rounded-md border-gray-200 bg-white shadow-sm"
             />
             <span class="text-sm text-gray-700">
@@ -216,5 +298,7 @@ include_once "partials/__nav.php"
       </p>
     </div>
   </main>
+
+  <script src="close_alert.js"></script>
 </body>
 </html>
