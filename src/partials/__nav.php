@@ -4,18 +4,24 @@ ToDo
 - [ ] Make tab like navigation for better user experience //learn more js first
 - [ ] Toggle the hamburger menus
 -->
+
 <script src="https://cdn.tailwindcss.com"></script>
 <nav class="bg-white border-b border-gray-300">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
         <!-- Mobile menu button-->
+
         <button type="button"
+
+          onclick="toggleHam()"
           class="relative inline-flex items-center justify-center rounded-md p-2  hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
           aria-controls="mobile-menu" aria-expanded="false">
           <span class="absolute -inset-0.5"></span>
 
           <span class="sr-only">Open main menu</span>
+
+
           <!--
             Icon when menu is closed. fill="currentColor" class="h-6 w-6" viewBox="0 0 16 16"
             Menu open: "hidden", Menu closed: "block"
@@ -70,7 +76,7 @@ ToDo
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
         <!--Region and Currency -->
         <a href="#"
-          class="px-3 py-2 text-sm font-medium text-gray-950 border-black hover:border-b-2 focus:border-b-2">BDT</a>
+          class="px-2  text-sm font-medium text-gray-950 border-black hover:border-b-2 focus:border-b-2">BDT</a>
         <button type="button"
           class="relative flex rounded-full  text-sm focus:outline-none hover:ring-2 hover:ring-green-400 focus:ring-4 focus:ring-green-400 "
           id="user-menu-button" aria-expanded="false" aria-haspopup="true">
@@ -88,7 +94,7 @@ ToDo
         </button> -->
 
         <!-- Profile dropdown -->
-        <script src="partials/menuToggler.js" async></script>
+
 
         <div class="relative ml-3 ">
           <div>
@@ -143,19 +149,22 @@ ToDo
   </div>
 
   <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="sm:hidden" id="mobile-menu">
+  <div class="hidden sm:hidden bg-green-300 absolute w-72" id="mobile-menu">
     <div class="space-y-1 px-2 pb-3 pt-2">
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-      <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-black" aria-current="page">Discover</a>
+      <a href="#" 
+        class="block rounded-md px-3 py-2 text-base font-medium text-black  hover:bg-gray-700 hover:text-white" aria-current="page">Discover</a>
       <a href="#"
         class="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">
         Hotels</a>
       <a href="#"
         class="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">Things to
         do</a>
-      <a href="#"
-        class="block rounded-md px-3 py-2 text-base font-medium text-gray-950 hover:bg-green-400 focus:bg-green-400">Holiday
+      <a href="#" 
+        class="block rounded-md px-3 py-2 text-base font-medium text-gray-950 hover:bg-gray-700 hover:text-white">Holiday
         Home</a>
     </div>
   </div>
+  <script src="partials/menuToggler.js" async></script>
+  <script src="partials/hamToggler.js"></script>
 </nav>
