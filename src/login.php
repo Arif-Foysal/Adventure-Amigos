@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
 if(empty($err))
 {
-    $sql = "SELECT user_id, email, password FROM user WHERE email = ?";
+    $sql = "SELECT user_id, email, password FROM `Users` WHERE email = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "s", $param_username);
     $param_username = $email;
@@ -84,9 +84,10 @@ if(empty($err))
 </head>
 <body>
 <?php
-// include_once "partials/__nav.php"
+include_once "partials/__nav.php";
 // that's a weird login page. Fix the bugs asap
 ?>
+
 
 <?php
 if (!$passwordMatch) {
@@ -123,13 +124,22 @@ echo '
     });
 </script>
 
-            
 
         
+            
+<h1 class="text-gray-800 text-3xl pt-4 font-bold flex justify-center items-center gap-2">
+  <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z"/>
+  <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+</svg>
+    Log In to Adventure Amigos
 
+  </h1>
 
 <main class="flex items-center justify-center px-8 py-4 sm:px-12 lg:col-span-7 lg:px-16 lg:py-8 xl:col-span-6">
-    <div class="max-w-xl lg:max-w-3xl">
+    
+<div class="max-w-xl lg:max-w-3xl">
+      
       <form name="signupForm" action="" method="post" class="mt-8 grid grid-cols-6 gap-6">
 
 

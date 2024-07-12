@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $usertype = "tourist"; //Default user type when they sign in
     // Check whether this email exists
-    $existSql = "SELECT * FROM `user` WHERE email = '$email'";
+    $existSql = "SELECT * FROM `Users` WHERE email = '$email'";
     $result = mysqli_query($conn, $existSql);
     $numExistRows = mysqli_num_rows($result);
     if($numExistRows > 0){
@@ -26,13 +26,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // $exists = false; 
         if(($password == $confirm_password)){
             $hash = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO `user` ( `email`, `password`,`fname`,`lname`,`rcvEmails`, `user_type`) VALUES ('$email', '$hash', '$fname', '$lname','$marketing', '$usertype')";
+            $sql = "INSERT INTO `Users` ( `email`, `password`,`fname`,`lname`,`rcvEmails`, `user_type`) VALUES ('$email', '$hash', '$fname', '$lname','$marketing', '$usertype')";
             $result = mysqli_query($conn, $sql);
             if ($result){
                 $showAlert = true;
                 // echo "success";
                 {
-                  $sql = "SELECT user_id, email, password FROM user WHERE email = ?";
+                  $sql = "SELECT user_id, email, password FROM `Users` WHERE email = ?";
                   $stmt = mysqli_prepare($conn, $sql);
                   mysqli_stmt_bind_param($stmt, "s", $param_username);
                   $param_username = $email;
