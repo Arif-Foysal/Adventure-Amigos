@@ -6,8 +6,8 @@ ToDo
 -->
 
 <script src="https://cdn.tailwindcss.com"></script>
-<nav class="bg-white border-b border-gray-300">
-  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+<nav class="bg-white border-b border-gray-300 pb-2 sm:pb-0 sticky top-0 w-full">
+  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
         <!-- Mobile menu button-->
@@ -165,6 +165,17 @@ ToDo
         Home</a>
     </div>
   </div>
+
+<!-- Mobile search bar -->
+            <div class=" sm:hidden flex justify-center">
+              <input type="text" class="py-auto border border-gray-300 rounded-l-md w-56  focus:border-gray-300 focus:ring-0"
+                placeholder="Find Anything" aria-label="search">
+              <button
+                class="  bg-green-400 hover:bg-green-300 border text-black font-medium py-2 px-4 rounded-r-md "
+                type="button" id="search-btn">Search</button>
+            </div>
+
+
   <script src="partials/menuToggler.js" async></script>
   <script src="partials/hamToggler.js"></script>
 </nav>
