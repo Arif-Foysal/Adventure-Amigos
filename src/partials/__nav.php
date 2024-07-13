@@ -45,8 +45,6 @@ ToDo
           <img class="h-10 w-auto" src="../images/logo.png" alt="Your Company">
         </div>
 
-
-
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
             <!-- Search Bar -->
@@ -73,18 +71,24 @@ ToDo
           </div>
         </div>
       </div>
-      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+      <div class=" absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
         <!--Region and Currency -->
-        <a href="#"
-          class="px-2  text-sm font-medium text-gray-950 border-black hover:border-b-2 focus:border-b-2">BDT</a>
-        <button type="button"
-          class="relative flex rounded-full  text-sm focus:outline-none hover:ring-2 hover:ring-green-400 focus:ring-4 focus:ring-green-400 "
-          id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-6 w-6" viewBox="0 0 16 16">
-            <path
-              d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z" />
-          </svg>
-        </button>
+        <div class="container flex p-1 bg-gray-100 border rounded-md ">
+       <button class="mr-1 text-sm font-medium text-gray-950 border-black hover:border-b-2 focus:border-b-2">
+        BDT
+       </button>
+            <div class="w-0.5 h-6 mr-1 bg-gray-400"></div>
+          <button type="button"
+            class="relative flex rounded-full  text-sm focus:outline-none hover:ring-1 hover:ring-green-400 focus:ring-2 focus:ring-green-400 "
+            id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-6 w-6" viewBox="0 0 16 16">
+              <path
+                d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z" />
+            </svg>
+          </button>
+
+        </div>
+        
         <!-- <button type="button" class="relative rounded-full bg-gray-800 p-1 text-black hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
           <span class="absolute -inset-1.5"></span>
           <span class="sr-only">View notifications</span>
@@ -149,7 +153,7 @@ ToDo
   </div>
 
   <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="hidden sm:hidden bg-green-300 absolute w-72" id="mobile-menu">
+  <div class="hidden sm:hidden bg-white absolute h-svh w-72 shadow-2xl shadow-gray-600  " id="mobile-menu">
     <div class="space-y-1 px-2 pb-3 pt-2">
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
       <a href="#" 
@@ -175,7 +179,5 @@ ToDo
                 type="button" id="search-btn">Search</button>
             </div>
 
-
   <script src="partials/menuToggler.js" async></script>
-  <script src="partials/hamToggler.js"></script>
 </nav>

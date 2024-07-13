@@ -164,16 +164,17 @@ echo '
 }
 
 ?>
-<main class="flex  justify-center px-8  sm:px-12 lg:col-span-7  xl:col-span-6">
+<main class="flex  justify-center px-8  sm:px-12 lg:col-span-7 pb-16  xl:col-span-6">
   <div class="max-w-xl lg:max-w-3xl">
-  <h1 class="text-gray-800 text-3xl pt-4 font-bold flex items-center gap-2">
-  <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
+
+  <h1 class="text-gray-800 text-3xl pt-4 font-bold flex items-start gap-2">
+    
+  <!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z"/>
   <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
-</svg>
-    Sign In to Adventure Amigos
+</svg> -->
 
-  </h1>
+    Get Started Now! 🌍</h1>
 
       <form name="signupForm" action="" method="post" class="mt-8 grid grid-cols-6 gap-6" onsubmit="return validateForm()">
         <div class="col-span-6 sm:col-span-3">
@@ -298,6 +299,10 @@ echo '
       </p>
     </div>
   </main>
+
+  <?php
+  include_once 'partials/__footer.php';
+  ?>
 
   <script src="close_alert.js"></script>
 </body>
