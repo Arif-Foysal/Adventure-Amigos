@@ -189,7 +189,7 @@ require_once "partials/__nav.php";
         </div>
 
         <div class="col-span-6">
-          <p class="text-sm text-gray-500">
+          <p class="text-sm text-gray-600">
             Don't have an account? Click to
             <a href="signup.php" class="text-gray-700 underline"> Create a new account </a>
                 
