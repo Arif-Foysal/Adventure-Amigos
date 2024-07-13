@@ -217,7 +217,7 @@ require_once "partials/__nav.php";
                         </clipPath>
                         </defs>
                     </svg>
-                    <span>Sign in with Google</span>
+                    <span>Continue with Google</span>
                 </button>
             </div>
         </div>
