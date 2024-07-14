@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
 if(empty($err))
 {
-    $sql = "SELECT user_id, email, password FROM user WHERE email = ?";
+    $sql = "SELECT user_id, email, password FROM `Users` WHERE email = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "s", $param_username);
     $param_username = $email;
