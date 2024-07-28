@@ -5,6 +5,7 @@ ToDo
 - [ ] Toggle the hamburger menus
 -->
 <?php 
+  session_start();
   $currentPage = basename($_SERVER['PHP_SELF']); 
 ?>
 
