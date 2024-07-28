@@ -5,7 +5,7 @@ ToDo
 - [ ] Toggle the hamburger menus
 -->
 <?php 
-  session_start();
+  include_once 'partials/__session.php';
   $currentPage = basename($_SERVER['PHP_SELF']); 
 ?>
 
@@ -263,7 +263,7 @@ ToDo
               &nbsp;&nbsp;
               <p>Settings</p>
             </a>
-              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-950 hover:bg-green-400 focus:bg-green-300"
+              <a href="create_listing.php" class="flex items-center px-3 py-2 text-sm font-medium text-gray-950 hover:bg-green-400 focus:bg-green-300"
               role="menuitem" tabindex="-1" id="user-menu-item-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-add" viewBox="0 0 16 16">
                 <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h4a.5.5 0 1 0 0-1h-4a.5.5 0 0 1-.5-.5V7.207l5-5 6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>

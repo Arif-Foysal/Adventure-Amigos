@@ -1,5 +1,5 @@
 <?php
-session_start();
+include_once 'partials/__session.php';
 
 // if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true)
 // {

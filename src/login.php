@@ -2,7 +2,7 @@
 //This script will handle login
 $passwordMatch=true;
 
-session_start(); //start the session
+include_once 'partials/__session.php'; //start the session
 
 // check if the user is already logged in
 if(isset($_SESSION['email']))
@@ -46,7 +46,7 @@ if(empty($err))
                         if(password_verify($password, $hashed_password))
                         {
                             // this means the password is corrct. Allow user to login
-                            session_start();
+                            include_once 'partials/__session.php';
                             $_SESSION["email"] = $email;
                             $_SESSION["id"] = $id;
                             $_SESSION["loggedin"] = true;
