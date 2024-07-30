@@ -263,6 +263,16 @@ ToDo
               &nbsp;&nbsp;
               <p>Settings</p>
             </a>
+
+            <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-950 hover:bg-green-400 focus:bg-green-300"
+              role="menuitem" tabindex="-1" id="user-menu-item-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+              <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
+            </svg>
+              &nbsp;&nbsp;
+              <p>Notifications</p>
+            </a>
+
               <a href="create_listing.php" class="flex items-center px-3 py-2 text-sm font-medium text-gray-950 hover:bg-green-400 focus:bg-green-300"
               role="menuitem" tabindex="-1" id="user-menu-item-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-add" viewBox="0 0 16 16">
@@ -271,7 +281,15 @@ ToDo
               </svg>
               &nbsp;&nbsp;
             <p>Become a Host</p>  
-            
+            </a>
+
+            <a href="create_listing.php" class="flex items-center px-3 py-2 text-sm font-medium text-gray-950 hover:bg-green-400 focus:bg-green-300"
+              role="menuitem" tabindex="-1" id="user-menu-item-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-toggle-off" viewBox="0 0 16 16">
+                <path d="M11 4a4 4 0 0 1 0 8H8a5 5 0 0 0 2-4 5 5 0 0 0-2-4zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8M0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5"/>
+              </svg>
+              &nbsp;&nbsp;
+            <p>Switch to Hosting</p>  
             </a>
 
             <?php

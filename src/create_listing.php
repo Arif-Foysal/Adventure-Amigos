@@ -42,7 +42,7 @@ include_once "partials/__nav.php"
             <h2 class="mt-20 mb-6 text-3xl font-medium text-gray-800 dark:text-white">Start new listing</h2>
 
             <div class="">
-                    <a href="" class="flex items-center justify-between my-6">
+                    <a href="create-listing-1-1.php" class="flex items-center justify-between my-6">
                         <div class="flex">
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-add" viewBox="0 0 16 16">
