@@ -31,7 +31,7 @@ include_once 'partials/__save-exit-btn.php';
             <!-- SVG -->
             <img src="../images/vectors/house.jpg" alt="A vector image of a house">
         </div>
-    </div>
+</div>
 <?php
 include_once 'partials/__prev-next-btn.php';
 ?>
