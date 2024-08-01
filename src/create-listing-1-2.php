@@ -6,8 +6,8 @@
     <title>Create new Listing | Amigos</title>
     <link rel="stylesheet" href="output.css">
     <script src="https://cdn.tailwindcss.com"></script>
-
 </head>
+
 <body>
 <?php
 ob_start();

@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Radio Button Form</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
     .tab-content {
       display: none;
@@ -13,11 +7,8 @@
       display: block;
     }
   </style>
-</head>
-<body class="flex items-center justify-center min-h-screen bg-gray-100">
-
   <!-- Button to open the modal -->
-  <button id="openModalBtn" class="px-4 py-2 bg-blue-500 text-white rounded">Open Modal</button>
+  <!-- <button id="openModalBtn" class="px-4 py-2 bg-blue-500 text-white rounded">Open Modal</button> -->
 
   <!-- Modal -->
   <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
@@ -96,5 +87,3 @@
       });
     });
   </script>
-</body>
-</html>

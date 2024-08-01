@@ -11,6 +11,7 @@
 <body>
 
 <?php
+ob_start();
 include_once "partials/__nav.php";
 
 include_once 'partials/__save-exit-btn.php';
@@ -32,8 +33,17 @@ include_once 'partials/__save-exit-btn.php';
             <img src="../images/vectors/house.jpg" alt="A vector image of a house">
         </div>
 </div>
+<form method="post" action="#">
 <?php
 include_once 'partials/__prev-next-btn.php';
+?>
+</form>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    # code...
+    header("Location:$nextPage");
+}
+ob_end_flush();
 ?>
 </section>
 

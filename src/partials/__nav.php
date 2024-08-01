@@ -6,6 +6,7 @@ ToDo
 -->
 <?php 
   include_once 'partials/__session.php';
+  // include_once 'partials/__currency.php';
   $currentPage = basename($_SERVER['PHP_SELF']); 
 ?>
 
@@ -183,13 +184,13 @@ ToDo
       <div class=" absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
         <!--Region and Currency -->
         <div class="container flex p-1 bg-gray-100 border rounded-md ">
-       <button class="mr-1 text-sm font-medium text-gray-950 border-black hover:border-b-2 focus:border-b-2">
+       <button id="openModalBtn" class="mr-1 text-sm font-medium text-gray-950 border-black hover:border-b-2 focus:border-b-2">
         BDT
        </button>
             <div class="w-0.5 h-6 mr-1 bg-gray-400"></div>
           <button type="button"
             class="relative flex rounded-full  text-sm focus:outline-none hover:ring-1 hover:ring-green-400 focus:ring-2 focus:ring-green-400 "
-            id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+            id="" aria-expanded="false" aria-haspopup="true">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-6 w-6" viewBox="0 0 16 16">
               <path
                 d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z" />
@@ -362,3 +363,125 @@ ToDo
 
   <script src="partials/menuToggler.js" async></script>
 </nav>
+
+
+
+
+<!-- currency modal -->
+
+
+<style>
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+  <!-- Button to open the modal -->
+  <!-- <button id="openModalBtn" class="px-4 py-2 bg-blue-500 text-white rounded">Open Modal</button> -->
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white p-6 rounded shadow-lg w-2/3">
+      <!-- This is the Main window -->
+      <section class= "flex justify-between items-center">
+        <!-- Header -->
+        <h1 class = "pb-4 text-xl font-semibold">Choose language and currency</h1>
+        <button id="closeModalBtn">
+          <svg class = "rounded-sm hover:text-red-600 hover:bg-gray-50" xmlns="http://www.w3.org/2000/svg" width="30" height="30"      fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+          </svg>
+        </button>
+        </section>
+
+      <!-- Tabs -->
+      <div class="mb-4 flex">
+        <button class="tab-link flex justify-start items-center border-b-2 border-black text-black font-semibold pb-1" data-tab="language-tab">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16">
+        <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
+      </svg>
+      &nbsp;
+        <p>Language and Region</p> 
+        </button>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <button class="tab-link flex justify-start items-center border-b-2  text-gray-700 font-semibold pb-1 hover:border-gray-600" data-tab="currency-tab">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+          <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
+        </svg>
+      
+        <p>Currency</p> 
+        </button>
+        <!-- <button class="tab-link px-4 py-2 bg-gray-200 text-gray-700 rounded-tl rounded-tr focus:outline-none" data-tab="currency-tab">Currency</button> -->
+      </div>
+
+      <!-- Tab Contents -->
+      <div id="language-tab" class="tab-content active">
+        <p class="mb-2">Select Language:</p>
+        <select class="w-full p-2 border border-gray-300 rounded">
+          <option value="en">English</option>
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
+          <option value="de">German</option>
+        </select>
+      </div>
+
+      <div id="currency-tab" class="tab-content">
+        <p class="mb-2">Select Currency:</p>
+        <select class="w-full p-2 border border-gray-300 rounded">
+          <option value="usd">USD</option>
+          <option value="eur">EUR</option>
+          <option value="gbp">GBP</option>
+          <option value="jpy">JPY</option>
+        </select>
+      </div>
+
+      <div class="mt-4 flex justify-end">
+        <button id="" class="px-4 py-2 border-2 border-gray-800 hover:bg-gray-700 hover:text-white rounded font-semibold">Save and Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Get the modal, open button, close button, and tab elements
+    const modal = document.getElementById('modal');
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    // Function to open the modal
+    openModalBtn.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+    });
+
+    // Function to close the modal
+    closeModalBtn.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });
+
+    // Function to switch tabs
+    tabLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        const tab = link.getAttribute('data-tab');
+
+        tabLinks.forEach(btn => {
+          // if not selected
+          btn.classList.remove('text-white', 'border-black');
+          btn.classList.add('text-gray-700','hover:border-gray-600');
+        });
+        // if selected
+        link.classList.remove('bg-gray-200', 'text-gray-700', 'border-transparent','hover:border-gray-600');
+        link.classList.add('text-black', 'border-black', 'font-semibold');
+
+        tabContents.forEach(content => {
+          content.classList.remove('active');
+        });
+
+        document.getElementById(tab).classList.add('active');
+      });
+    });
+  </script>
