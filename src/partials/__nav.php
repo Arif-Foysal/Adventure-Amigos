@@ -12,7 +12,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
 <script src="https://cdn.tailwindcss.com"></script>
 <nav class="bg-white border-b border-gray-300 pb-2 sm:pb-0 sticky top-0 w-full">
-  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
+  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
         <!-- Mobile menu button-->
@@ -232,7 +232,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
               To: "transform opacity-0 scale-95"
           -->
           <div id="profile-menu"
-            class=" absolute hidden right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-gray-50 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            class=" absolute hidden right-0 mt-2 w-48 origin-top-right rounded-md bg-gray-50 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
             <!-- Active: "bg-gray-100", Not Active: "" -->
 
