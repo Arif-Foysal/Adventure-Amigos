@@ -9,9 +9,13 @@ include_once 'partials/__session.php';
 // include_once 'partials/__currency.php';
 $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
-
+<style>
+  .navbar-transition {
+            transition: transform 0.6s ease-in-out; /* Custom transition duration */
+        }
+</style>
 <script src="https://cdn.tailwindcss.com"></script>
-<nav class="bg-white border-b border-gray-300 pb-2 sm:pb-0 sticky top-0 w-full">
+<nav id="navbar" class="bg-white border-b border-gray-300 pb-2 sm:pb-0 sticky top-0 w-full navbar-transition">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -470,9 +474,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
       <p>Choose another language:</p>
       <br>
       <form id="lang-form" action="" class="">
-        <div class="flex justify-start justify-items-start gap-2 flex-wrap">
+        <div class="flex justify-start justify-items-start gap-2 flex-wrap pr-3">
 
-          <section class="w-36">
+          <section class="w-36 grow">
             <input type="radio" name="language" value="english-usa" id="option-english-usa" class="hidden peer">
             <label for="option-english-usa"
               class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
@@ -485,7 +489,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </label>
           </section>
 
-          <section class="w-36">
+          <section class="w-36 grow">
             <input type="radio" name="language" value="bengali-bangladesh" id="option-bengali-bangladesh"
               class="hidden peer">
             <label for="option-bengali-bangladesh"
@@ -499,7 +503,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </label>
           </section>
 
-          <section class="w-36">
+          <section class="w-36 grow">
             <input type="radio" name="language" value="mandarin-china" id="option-mandarin-china" class="hidden peer">
             <label for="option-mandarin-china"
               class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
@@ -512,7 +516,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </label>
           </section>
 
-          <section class="w-36">
+          <section class="w-36 grow">
             <input type="radio" name="language" value="hindi-india" id="option-hindi-india" class="hidden peer">
             <label for="option-hindi-india"
               class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
@@ -525,7 +529,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </label>
           </section>
 
-          <section class="w-36">
+          <section class="w-36 grow">
             <input type="radio" name="language" value="spanish-spain" id="option-spanish-spain" class="hidden peer">
             <label for="option-spanish-spain"
               class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
@@ -538,7 +542,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </label>
           </section>
 
-          <section class="w-36">
+          <section class="w-36 grow">
             <input type="radio" name="language" value="french-france" id="option-french-france" class="hidden peer">
             <label for="option-french-france"
               class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
@@ -551,7 +555,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </label>
           </section>
 
-          <section class="w-36">
+          <section class="w-36 grow">
             <input type="radio" name="language" value="arabic-egypt" id="option-arabic-egypt" class="hidden peer">
             <label for="option-arabic-egypt"
               class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
@@ -771,56 +775,9 @@ One way to handle this is to use AJAX to submit the forms asynchronously, which 
   });
 </script>
         -->
-      <script>
-        document.getElementById('lang-curr-submit').addEventListener('click', function () {
-          // document.getElementById('lang-form').submit();
-          document.getElementById('currency-form').submit();
-          // modal.classList.add('hidden');    //no need for production, as post request will reload the page, and initially the modal is hidden
-        });
-      </script>
     </div>
-
   </div>
 </div>
 
-<script>
-  // Get the modal, open button, close button, and tab elements
-  const modal = document.getElementById('modal');
-  const openModalBtn = document.getElementById('openModalBtn');
-  const closeModalBtn = document.getElementById('closeModalBtn');
-  const tabLinks = document.querySelectorAll('.tab-link');
-  const tabContents = document.querySelectorAll('.tab-content');
-
-  // Function to open the modal
-  openModalBtn.addEventListener('click', () => {
-    modal.classList.remove('hidden');
-    document.body.classList.add('overflow-hidden');//prevents scrolling body 
-  });
-
-  // Function to close the modal
-  closeModalBtn.addEventListener('click', () => {
-    modal.classList.add('hidden');
-    document.body.classList.remove('overflow-hidden');//restores scrolling body
-  });
-
-  // Function to switch tabs
-  tabLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      const tab = link.getAttribute('data-tab');
-
-      tabLinks.forEach(btn => {
-        // if not selected
-        btn.classList.remove('text-white', 'border-black');
-        btn.classList.add('text-gray-700', 'hover:border-gray-600');
-      });
-      // if selected
-      link.classList.remove('bg-gray-200', 'text-gray-700', 'border-transparent', 'hover:border-gray-600');
-      link.classList.add('text-black', 'border-black', 'font-semibold');
-
-      tabContents.forEach(content => {
-        content.classList.remove('active');
-      });
-      document.getElementById(tab).classList.add('active');
-    });
-  });
-</script>
+<script src="js/lang-curr-modal.js" async></script>
+<script src="js/scroll-nav.js" defer></script>
