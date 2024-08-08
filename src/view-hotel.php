@@ -35,6 +35,7 @@ require_once 'partials/__dbconnect.php';
             height: 100%;
             object-fit: cover;
         }
+
     </style>
 </head>
 
@@ -164,9 +165,11 @@ require_once 'partials/__dbconnect.php';
      style="  -ms-overflow-style: none;
         scrollbar-width: none;"            
 -->
+
             <section id="reviews"
-            class="flex gap-2 overflow-x-auto">
-                <article class="p-8 flex-none w-4/5 sm:bg-slate-400 shadow-lg rounded-xl">
+            class="flex gap-2 overflow-x-auto md:flex-col md:justify-center lg:flex-row lg:flex-wrap">
+
+                <article class="p-8 flex-none w-4/5 rounded-xl md:w-full lg:w-[48%] bg-neutral-100">
                     <div class="flex items-center mb-4">
                         <img class="w-10 h-10 me-4 rounded-full" src="../images/dp/dp.jpg" alt="">
                         <div class="font-medium dark:text-white">
@@ -223,8 +226,7 @@ require_once 'partials/__dbconnect.php';
                         </div>
                     </aside>
                 </article>
-
-                <article class="p-8 flex-none w-4/5 sm:bg-slate-400 shadow-lg rounded-xl">
+                <article class="p-8 flex-none w-4/5 rounded-xl md:w-full lg:w-[48%] bg-neutral-100">
                     <div class="flex items-center mb-4">
                         <img class="w-10 h-10 me-4 rounded-full" src="../images/dp/dp.jpg" alt="">
                         <div class="font-medium dark:text-white">
@@ -281,10 +283,9 @@ require_once 'partials/__dbconnect.php';
                         </div>
                     </aside>
                 </article>
-
-                <article class="p-8 flex-none w-4/5 sm:bg-slate-400 shadow-lg rounded-xl">
+                <article class="p-8 flex-none w-4/5 rounded-xl md:w-full lg:w-[48%] bg-neutral-100">
                     <div class="flex items-center mb-4">
-                        <img class="w-10 h-10 me-4 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="">
+                        <img class="w-10 h-10 me-4 rounded-full" src="../images/dp/dp.jpg" alt="">
                         <div class="font-medium dark:text-white">
                             <p>Jese Leos <time datetime="2014-08-16 19:00"
                                     class="block text-sm text-gray-500 dark:text-gray-400">Joined on August 2014</time>
@@ -339,10 +340,9 @@ require_once 'partials/__dbconnect.php';
                         </div>
                     </aside>
                 </article>
-
-                <article class="p-8 flex-none w-4/5 sm:bg-slate-400 shadow-lg rounded-xl">
+                <article class="p-8 flex-none w-4/5 rounded-xl md:w-full lg:w-[48%] bg-neutral-100">
                     <div class="flex items-center mb-4">
-                        <img class="w-10 h-10 me-4 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="">
+                        <img class="w-10 h-10 me-4 rounded-full" src="../images/dp/dp.jpg" alt="">
                         <div class="font-medium dark:text-white">
                             <p>Jese Leos <time datetime="2014-08-16 19:00"
                                     class="block text-sm text-gray-500 dark:text-gray-400">Joined on August 2014</time>
@@ -397,20 +397,15 @@ require_once 'partials/__dbconnect.php';
                         </div>
                     </aside>
                 </article>
-
                 
-
-
-
-                
-
-                
-
-                
-
- 
 
             </section>
+            <br>
+            <div class="flex justify-center">
+                <a href="" class=" p-4 rounded-md border-2 border-neutral-500 text-lg font-normal hover:bg-slate-200">
+                    Show all 887 reviews
+                </a>
+            </div>
         </div>
 
     </section>

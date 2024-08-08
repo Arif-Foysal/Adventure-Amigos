@@ -12,7 +12,6 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="js/dp-modal.js" defer></script>
 </head>
 
 <body>
@@ -35,6 +34,9 @@ session_start();
             <div class="relative w-full h-48">
                 <div id="cover">
                     <img id="coverp" src="../images/cover.jpg" alt="Cover Photo" class="w-full h-48 object-cover">
+                    <button id="coverBtn" class="hidden absolute -bottom-0 right-8 text-black font-semibold mb-3 p-2 bg-cyan-400 rounded-md hover:bg-cyan-300">
+                    Change Cover
+                </button>
                 </div>
                 <div id="dp" class="absolute -bottom-16 left-4 cursor-pointer">
                     <div class="relative w-32 h-32">
@@ -47,12 +49,8 @@ session_start();
                     </div>
                 </div>
                 <!-- Change cover btn -->
-                <button id="coverBtn" class="hidden absolute -bottom-0 right-8 text-black font-semibold mb-3 p-2 bg-cyan-400 rounded-md hover:bg-cyan-300">
-                    Change Cover
-                </button>
             </div>
         </div>
-
 
         <!-- User Info and Statistics -->
         <div class="px-6 h-56  md:h-40  py-4 md:flex md:items-end md:justify-between bg-slate-100">
@@ -418,7 +416,7 @@ session_start();
     include_once "partials/__footer.php";
     ?>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
-
+    <script src="js/dp-modal.js"></script>
 </body>
 
 </html>

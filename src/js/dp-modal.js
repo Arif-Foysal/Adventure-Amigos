@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     const parent = document.getElementById('dp');
-    const cover = document.getElementById('coverp');
-    const coverBtn = document.getElementById('coverBtn');
     const overlay = document.getElementById('overlay');
+    const cover = document.getElementById('cover');
+    const coverBtn = document.getElementById('coverBtn');
     const dpModal = document.getElementById('dpModal');
     const closedpModalButton = document.getElementById('closedpModal');
     const uploadForm = document.getElementById('uploadForm');
@@ -32,7 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Show change cover button on cover photo hover
     cover.addEventListener('mouseover', function () {
         coverBtn.classList.remove('hidden');
-    });
+        coverBtn.classList.add("flex");
+        });
 
     cover.addEventListener('mouseout', function () {
         coverBtn.classList.add('hidden');
