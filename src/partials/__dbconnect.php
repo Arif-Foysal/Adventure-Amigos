@@ -2,7 +2,7 @@
 // pharmacytest
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "asdf1234";
     $dbname = "tourism";
 
     // Create a connection
@@ -14,6 +14,7 @@
     }
     else{
         //  echo "Connected successfully.....\n";
-   }
+        //  phpinfo();
+    }
 ?>
 
