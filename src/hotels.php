@@ -2,7 +2,6 @@
     require_once 'partials/__dbconnect.php';
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +21,7 @@ include_once "partials/__nav.php"
     <main class="mt-4 mx-8 mb-8">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             
-            <a href="" class="flex flex-col p-2 hover:bg-neutral-100 rounded-lg">
+            <a href="view-hotel.php" class="flex flex-col p-2 hover:bg-neutral-100 rounded-lg">
                 <img src="../images/hotel/0.jpg" alt="hotel" class="w-full h-80 object-cover rounded-lg">
                 <div class="flex justify-between mt-2">
                     <p class="text-md font-semibold">Grand Palace</p>

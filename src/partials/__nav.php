@@ -260,7 +260,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <p>Your Profile</p>
                 </a>
               ';
-
             }
             ?>
             <a href="#"
@@ -380,8 +379,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <button class="  bg-green-400 hover:bg-green-300 border text-black font-medium py-2 px-4 rounded-r-md "
       type="button" id="search-btn">Search</button>
   </div>
-
-  <script src="partials/menuToggler.js" async></script>
 </nav>
 
 
@@ -786,6 +783,7 @@ One way to handle this is to use AJAX to submit the forms asynchronously, which 
     </div>
   </div>
 </div>
-
+<!-- JS -->
+<script src="partials/menuToggler.js" async></script>
 <script src="js/lang-curr-modal.js" async></script>
 <script src="js/scroll-nav.js" defer></script>

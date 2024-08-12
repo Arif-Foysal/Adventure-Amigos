@@ -40,7 +40,7 @@ session_start();
                 </div>
                 <div id="dp" class="absolute -bottom-16 left-4 cursor-pointer">
                     <div class="relative w-32 h-32">
-                        <img src="profile-photo.jpg" alt="Profile Photo"
+                        <img src="profile-photo.JPG" alt="Profile Photo"
                             class="w-32 h-32 rounded-full border-4 border-white object-cover">
                         <div id="overlay"
                             class="absolute hidden justify-center items-center text-white inset-0 bg-black bg-opacity-50 rounded-full">
@@ -53,14 +53,14 @@ session_start();
         </div>
 
         <!-- User Info and Statistics -->
-        <div class="px-6 h-56  md:h-40  py-4 md:flex md:items-end md:justify-between bg-slate-100">
+        <div class="pl-6 pr-3 md:px-6 h-56  md:h-40  py-4 md:flex md:items-end md:justify-between bg-slate-100">
             <div class=" md:mt-0 ml-1 md:ml-1 flex justify-between ">
                 <section class="pt-14 md:pt-12">
                     <h1 class="text-xl font-bold">Arif Foysal</h1>
                     <p class="text-gray-600">Dhaka, Bangladesh</p>
                 </section>
-                <section class="flex gap-3 md:hidden">
-                    <a href="discover.php"
+                <section class=" flex justify-end space-x-2 md:hidden">
+                    <a href="profile-edit.php"
                         class="flex items-center border-b-2 border-transparent hover:border-black hover:border-b-2 h-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-pen" viewBox="0 0 16 16">
@@ -71,8 +71,8 @@ session_start();
                         <p class="text-md font-semibold text-black">Edit profile</p>
                     </a>
 
-                    <a href="discover.php"
-                        class="flex items-center border-b-2 border-transparent hover:border-black hover:border-b-2 h-6">
+                    <a href="account-settings.php"
+                        class="flex items-center  border-b-2 border-transparent hover:border-black hover:border-b-2 h-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-gear" viewBox="0 0 16 16">
                             <path
@@ -81,7 +81,7 @@ session_start();
                                 d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z" />
                         </svg>
                         &nbsp;
-                        <p class="text-md font-semibold text-black">Account Settings</p>
+                        <p class="text-md font-semibold text-black">Settings</p>
                     </a>
                 </section>
             </div>
@@ -103,7 +103,7 @@ session_start();
                     </div>
                 </section>
                 <section class="hidden md:flex md:gap-3 pl-2">
-                    <a href="discover.php"
+                    <a href="profile-edit.php"
                         class="flex items-center border-b-2 border-black hover:border-transparent h-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-pen" viewBox="0 0 16 16">
@@ -115,7 +115,7 @@ session_start();
                             Edit profile</p>
                     </a>
 
-                    <a href="discover.php"
+                    <a href="account-settings.php"
                         class="flex items-center border-b-2 border-black hover:border-transparent h-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-gear" viewBox="0 0 16 16">

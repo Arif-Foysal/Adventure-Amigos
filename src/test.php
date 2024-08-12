@@ -1,100 +1,705 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Profile</title>
+    <title>Find Accomodation | Amigos</title>
+    <link rel="icon" type="image/x-icon" href="../images/fav.png">
     <link rel="stylesheet" href="output.css">
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="js/dp-modal.js" defer></script>
 </head>
 
 <body>
-    <?php include_once "partials/__nav.php"; ?>
+<!-- Calendar -->
+<div class="sm:flex">
+  <!-- Calendar -->
+  <div class="p-3 space-y-0.5">
+    <!-- Months -->
+    <div class="grid grid-cols-5 items-center gap-x-3 mx-1.5 pb-3">
+      <!-- Prev Button -->
+      <div class="col-span-1">
+        <button type="button" class="size-8 flex justify-center items-center text-gray-800 hover:bg-gray-100 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" aria-label="Previous">
+          <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+      </div>
+      <!-- End Prev Button -->
 
-    <div class="overflow-hidden">
-        <!-- Cover Photo -->
-        <div class="bg-slate-100 flex justify-center items-end w-full h-48">
-            <div class="relative w-full h-48">
-                <div id="cover">
-                    <img src="../images/cover.jpg" alt="Cover Photo" class="w-full h-48 object-cover">
-                </div>
-                <div id="dp" class="absolute -bottom-16 left-4 cursor-pointer">
-                    <div class="relative w-32 h-32">
-                        <img src="profile-photo.jpg" alt="Profile Photo" class="w-32 h-32 rounded-full border-4 border-white object-cover">
-                        <div id="overlay" class="absolute hidden justify-center items-center text-white inset-0 bg-black bg-opacity-50 rounded-full">
-                            <p>Upload new</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Change cover button -->
-                <button id="coverBtn" class="hidden absolute -bottom-0 right-8 text-black font-semibold mb-3 p-2 bg-cyan-400 rounded-md hover:bg-cyan-300">
-                    Change Cover
-                </button>
-            </div>
+      <!-- Month / Year -->
+      <div class="col-span-3 flex justify-center items-center gap-x-1">
+        <div class="relative">
+          <select data-hs-select='{
+              "placeholder": "Select month",
+              "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
+              "toggleClasses": "hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 relative flex text-nowrap w-full cursor-pointer text-start font-medium text-gray-800 hover:text-blue-600 focus:outline-none focus:text-blue-600 before:absolute before:inset-0 before:z-[1]",
+              "dropdownClasses": "mt-2 z-50 w-32 max-h-72 p-1 space-y-0.5 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300",
+              "optionClasses": "p-2 w-full text-sm text-gray-800 cursor-pointer hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100",
+              "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"hidden hs-selected:block\"><svg class=\"shrink-0 size-3.5 text-gray-800" xmlns=\"http:.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg></span></div>"
+            }' class="hidden">
+            <option value="0">January</option>
+            <option value="1">February</option>
+            <option value="2">March</option>
+            <option value="3">April</option>
+            <option value="4">May</option>
+            <option value="5">June</option>
+            <option value="6" selected>July</option>
+            <option value="7">August</option>
+            <option value="8">September</option>
+            <option value="9">October</option>
+            <option value="10">November</option>
+            <option value="11">December</option>
+          </select>
         </div>
 
-        <!-- User Info and Statistics -->
-        <div class="px-6 h-56 md:h-40 py-4 md:flex md:items-end md:justify-between bg-slate-100">
-            <div class="md:mt-0 ml-1 md:ml-1 flex justify-between">
-                <section class="pt-14 md:pt-12">
-                    <h1 class="text-xl font-bold">Arif Foysal</h1>
-                    <p class="text-gray-600">Dhaka, Bangladesh</p>
-                </section>
-                <section class="flex gap-3 md:hidden">
-                    <a href="discover.php" class="flex items-center border-b-2 border-transparent hover:border-black hover:border-b-2 h-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
-                            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"/>
-                        </svg>&nbsp;
-                        <p class="text-md font-semibold text-black">Edit profile</p>
-                    </a>
-                    <a href="discover.php" class="flex items-center border-b-2 border-transparent hover:border-black hover:border-b-2 h-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
-                            <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
-                            <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.115 2.692l.319.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.292-.159a1.873 1.873 0 0 0-2.692 1.115l-.094.319c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.693-1.115l-.291.16c-.764.415-1.6-.42-1.184-1.185l.159-.292a1.873 1.873 0 0 0-1.115-2.692l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094a1.873 1.873 0 0 0 1.115-2.693l-.16-.291c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
-                        </svg>&nbsp;
-                        <p class="text-md font-semibold text-black">Settings</p>
-                    </a>
-                </section>
-            </div>
-            <div class="flex gap-3 md:mr-5 md:mt-10 md:items-center">
-                <section class="flex flex-col text-center">
-                    <h1 class="text-2xl font-extrabold text-black">21</h1>
-                    <a href="discover.php" class="text-md font-semibold text-black">Contributions</a>
-                </section>
-                <section class="flex flex-col text-center">
-                    <h1 class="text-2xl font-extrabold text-black">53</h1>
-                    <a href="discover.php" class="text-md font-semibold text-black">Followers</a>
-                </section>
-                <section class="flex flex-col text-center">
-                    <h1 class="text-2xl font-extrabold text-black">35</h1>
-                    <a href="discover.php" class="text-md font-semibold text-black">Following</a>
-                </section>
-            </div>
-        </div>
+        <span class="text-gray-800">/</span>
 
-        <!-- Modal for uploading new profile picture -->
-        <div id="dpModal" class="hidden fixed inset-0 z-50 flex items-center justify-center">
-            <div class="fixed inset-0 bg-black bg-opacity-50"></div>
-            <div class="bg-white p-4 rounded-lg shadow-lg z-10">
-                <h2 class="text-xl font-bold mb-4">Upload New Profile Picture</h2>
-                <form id="uploadForm" method="POST" enctype="multipart/form-data">
-                    <input type="file" name="profilePicture" accept="image/*" required class="mb-4">
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">Upload</button>
-                </form>
-                <button id="closedpModal" class="absolute top-2 right-2 text-black">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                </button>
-            </div>
+        <div class="relative">
+          <select data-hs-select='{
+              "placeholder": "Select year",
+              "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
+              "toggleClasses": "hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 relative flex text-nowrap w-full cursor-pointer text-start font-medium text-gray-800 hover:text-blue-600 focus:outline-none focus:text-blue-600 before:absolute before:inset-0 before:z-[1]",
+              "dropdownClasses": "mt-2 z-50 w-20 max-h-72 p-1 space-y-0.5 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300",
+              "optionClasses": "p-2 w-full text-sm text-gray-800 cursor-pointer hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100",
+              "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"hidden hs-selected:block\"><svg class=\"shrink-0 size-3.5 text-gray-800" xmlns=\"http:.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg></span></div>"
+            }' class="hidden">
+            <option selected>2023</option>
+            <option>2024</option>
+            <option>2025</option>
+            <option>2026</option>
+            <option>2027</option>
+          </select>
         </div>
+      </div>
+      <!-- End Month / Year -->
+
+      <!-- Next Button -->
+      <div class="col-span-1 flex justify-end">
+        <button type="button" class="opacity-0 pointer-events-none size-8 flex justify-center items-center text-gray-800 hover:bg-gray-100 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" aria-label="Next">
+          <svg class="shrink-0 size-4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+      <!-- End Next Button -->
     </div>
-    <?php include_once "partials/__footer.php"; ?>
+    <!-- Months -->
+
+    <!-- Weeks -->
+    <div class="flex pb-1.5">
+      <span class="m-px w-10 block text-center text-sm text-gray-500">
+        Mo
+      </span>
+      <span class="m-px w-10 block text-center text-sm text-gray-500">
+        Tu
+      </span>
+      <span class="m-px w-10 block text-center text-sm text-gray-500">
+        We
+      </span>
+      <span class="m-px w-10 block text-center text-sm text-gray-500">
+        Th
+      </span>
+      <span class="m-px w-10 block text-center text-sm text-gray-500">
+        Fr
+      </span>
+      <span class="m-px w-10 block text-center text-sm text-gray-500">
+        Sa
+      </span>
+      <span class="m-px w-10 block text-center text-sm text-gray-500">
+        Su
+      </span>
+    </div>
+    <!-- Weeks -->
+
+    <!-- Days -->
+    <div class="flex">
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600" disabled>
+          26
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600" disabled>
+          27
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600" disabled>
+          28
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600" disabled>
+          29
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600" disabled>
+          30
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          1
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          2
+        </button>
+      </div>
+    </div>
+    <!-- Days -->
+
+    <!-- Days -->
+    <div class="flex">
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          3
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          4
+        </button>
+      </div>
+      <div >
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          5
+        </button>
+      </div>
+      <div >
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          6
+        </button>
+      </div>
+      <div >
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          7
+        </button>
+      </div>
+      <div >
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          8
+        </button>
+      </div>
+      <div >
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          9
+        </button>
+      </div>
+    </div>
+    <!-- Days -->
+
+    <!-- Days -->
+    <div class="flex">
+      <div >
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          10
+        </button>
+      </div>
+      <div >
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          11
+        </button>
+      </div>
+      <div >
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          12
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          13
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          14
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          15
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          16
+        </button>
+      </div>
+    </div>
+    <!-- Days -->
+
+    <!-- Days -->
+    <div class="flex">
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          17
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          18
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          19
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          20
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          21
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          22
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          23
+        </button>
+      </div>
+    </div>
+    <!-- Days -->
+
+    <!-- Days -->
+    <div class="flex">
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          24
+        </button>
+      </div>
+      <div class="bg-gray-100 rounded-s-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center bg-blue-600 border border-transparent text-sm font-medium text-white hover:border-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100">
+          25
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          26
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          27
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          28
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          29
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          30
+        </button>
+      </div>
+    </div>
+    <!-- Days -->
+
+    <!-- Days -->
+    <div class="flex">
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          31
+        </button>
+      </div>
+      <div class="bg-gradient-to-r from-gray-100">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" disabled>
+          1
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" disabled>
+          2
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" disabled>
+          3
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" disabled>
+          4
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" disabled>
+          5
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" disabled>
+          6
+        </button>
+      </div>
+    </div>
+    <!-- Days -->
+  </div>
+
+  <!-- Calendar -->
+  <div class="p-3 space-y-0.5">
+    <!-- Months -->
+    <div class="grid grid-cols-5 items-center gap-x-3 mx-1.5 pb-3">
+      <!-- Prev Button -->
+      <div class="col-span-1">
+        <button type="button" class="opacity-0 pointer-events-none size-8 flex justify-center items-center text-gray-800 hover:bg-gray-100 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" aria-label="Previous">
+          <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+      </div>
+      <!-- End Prev Button -->
+
+      <!-- Month / Year -->
+      <div class="col-span-3 flex justify-center items-center gap-x-1">
+        <div class="relative">
+          <select data-hs-select='{
+              "placeholder": "Select month",
+              "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
+              "toggleClasses": "hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 relative flex text-nowrap w-full cursor-pointer text-start font-medium text-gray-800 hover:text-blue-600 focus:outline-none focus:text-blue-600 before:absolute before:inset-0 before:z-[1]",
+              "dropdownClasses": "mt-2 z-50 w-32 max-h-72 p-1 space-y-0.5 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300",
+              "optionClasses": "p-2 w-full text-sm text-gray-800 cursor-pointer hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100",
+              "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"hidden hs-selected:block\"><svg class=\"shrink-0 size-3.5 text-gray-800" xmlns=\"http:.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg></span></div>"
+            }' class="hidden">
+            <option value="0">January</option>
+            <option value="1">February</option>
+            <option value="2">March</option>
+            <option value="3">April</option>
+            <option value="4">May</option>
+            <option value="5">June</option>
+            <option value="6" selected>July</option>
+            <option value="7">August</option>
+            <option value="8">September</option>
+            <option value="9">October</option>
+            <option value="10">November</option>
+            <option value="11">December</option>
+          </select>
+        </div>
+
+        <span class="text-gray-800">/</span>
+
+        <div class="relative">
+          <select data-hs-select='{
+              "placeholder": "Select year",
+              "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
+              "toggleClasses": "hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 relative flex text-nowrap w-full cursor-pointer text-start font-medium text-gray-800 hover:text-blue-600 focus:outline-none focus:text-blue-600 before:absolute before:inset-0 before:z-[1]",
+              "dropdownClasses": "mt-2 z-50 w-20 max-h-72 p-1 space-y-0.5 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300",
+              "optionClasses": "p-2 w-full text-sm text-gray-800 cursor-pointer hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100",
+              "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"hidden hs-selected:block\"><svg class=\"shrink-0 size-3.5 text-gray-800" xmlns=\"http:.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg></span></div>"
+            }' class="hidden">
+            <option selected>2023</option>
+            <option>2024</option>
+            <option>2025</option>
+            <option>2026</option>
+            <option>2027</option>
+          </select>
+        </div>
+      </div>
+      <!-- End Month / Year -->
+
+      <!-- Next Button -->
+      <div class="col-span-1 flex justify-end">
+        <button type="button" class="size-8 flex justify-center items-center text-gray-800 hover:bg-gray-100 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" aria-label="Next">
+          <svg class="shrink-0 size-4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+      <!-- End Next Button -->
+    </div>
+    <!-- Months -->
+
+    <!-- Weeks -->
+    <div class="flex pb-1.5">
+      <span class="m-px w-10 block text-center text-sm text-gray-500">
+        Mo
+      </span>
+      <span class="m-px w-10 block text-center text-sm text-gray-500">
+        Tu
+      </span>
+      <span class="m-px w-10 block text-center text-sm text-gray-500">
+        We
+      </span>
+      <span class="m-px w-10 block text-center text-sm text-gray-500">
+        Th
+      </span>
+      <span class="m-px w-10 block text-center text-sm text-gray-500">
+        Fr
+      </span>
+      <span class="m-px w-10 block text-center text-sm text-gray-500">
+        Sa
+      </span>
+      <span class="m-px w-10 block text-center text-sm text-gray-500">
+        Su
+      </span>
+    </div>
+    <!-- Weeks -->
+
+    <!-- Days -->
+    <div class="flex">
+      <div class="bg-gradient-to-l from-gray-100">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" disabled>
+          31
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100">
+          1
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100">
+          2
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100">
+          3
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100">
+          4
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          5
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          6
+        </button>
+      </div>
+    </div>
+    <!-- Days -->
+
+    <!-- Days -->
+    <div class="flex">
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          7
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          8
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          9
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          10
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          11
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          12
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          13
+        </button>
+      </div>
+    </div>
+    <!-- Days -->
+
+    <!-- Days -->
+    <div class="flex">
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          14
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          15
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          16
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          17
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          18
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          19
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          20
+        </button>
+      </div>
+    </div>
+    <!-- Days -->
+
+    <!-- Days -->
+    <div class="flex">
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          21
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          22
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          23
+        </button>
+      </div>
+      <div class="bg-gray-100 first:rounded-s-full last:rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          24
+        </button>
+      </div>
+      <div class="bg-gray-100 rounded-e-full">
+        <button type="button" class="m-px size-10 flex justify-center items-center bg-blue-600 border border-transparent text-sm font-medium text-white hover:border-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100">
+          25
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          26
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          27
+        </button>
+      </div>
+    </div>
+    <!-- Days -->
+
+    <!-- Days -->
+    <div class="flex">
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          28
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          29
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          30
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 rounded-full hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:border-blue-600 focus:text-blue-600">
+          31
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" disabled>
+          1
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" disabled>
+          2
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" disabled>
+          3
+        </button>
+      </div>
+    </div>
+    <!-- Days -->
+
+    <!-- Days -->
+    <div class="flex">
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" disabled>
+          4
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" disabled>
+          5
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" disabled>
+          6
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" disabled>
+          7
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" disabled>
+          8
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" disabled>
+          9
+        </button>
+      </div>
+      <div>
+        <button type="button" class="m-px size-10 flex justify-center items-center border border-transparent text-sm text-gray-800 hover:border-blue-600 hover:text-blue-600 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100" disabled>
+          10
+        </button>
+      </div>
+    </div>
+    <!-- Days -->
+  </div>
+</div>
+<!-- End Calendar -->
+
+  <!-- Button Group -->
+  <div class="flex items-center py-3 px-4 justify-end border-t border-gray-200 gap-x-2">
+
+    <span class="md:me-3 text-xs text-gray-500">
+      20.07.2023 - 10.08.2023
+    </span>
+    <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-xs font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50">
+      Cancel
+    </button>
+    <button type="button" class="py-2 px-3  inline-flex justify-center items-center gap-x-2 text-xs font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500">
+      Apply
+    </button>
+  </div>
+  <!-- End Button Group -->    
 </body>
 </html>
