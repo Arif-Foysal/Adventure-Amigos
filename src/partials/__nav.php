@@ -21,6 +21,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   *{
     font-family:"Nunito";
   }
+  nav{
+    z-index: 100;
+  }
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
 <nav id="navbar" class="bg-white border-b border-gray-300 pb-2 sm:pb-0 sticky top-0 w-full navbar-transition">
@@ -394,6 +397,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
   .tab-content.active {
     display: block;
+  }
+  #modal{
+    z-index: 100;
   }
 </style>
 <!-- Button to open the modal -->

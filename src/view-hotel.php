@@ -60,7 +60,7 @@ require_once 'partials/__dbconnect.php';
                 </div>
                 <div class="square relative">
                     <img src="../images/hotel/5.jpg" alt="Image 5" class="gallery-img rounded-br-xl">
-                    <a href="profile.php" id="overlay"
+                    <a href="hotel-gallery.php" id="overlay"
                         class="absolute md:hidden flex justify-center items-center text-white inset-0 bg-black bg-opacity-50 rounded-br-xl">
                         <p class="text-lg">Show all</p>
                     </a>

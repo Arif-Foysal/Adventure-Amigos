@@ -401,13 +401,10 @@ session_start();
     <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">5</p>
 </div>
 
-
 <h1 class="text-xl font-semibold">Good place for vacation</h1>
 <p class="text-lg">
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus explicabo, voluptates hic veniam beatae inventore vitae eaque velit deleniti perspiciatis in nulla reprehenderit esse aliquam cupiditate qui alias error nihil?
 </p>
-
-
             </div>
         </div>
     </section>
