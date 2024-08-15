@@ -25,6 +25,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     z-index: 100;
   }
 </style>
+
 <script src="https://cdn.tailwindcss.com"></script>
 <nav id="navbar" class="bg-white border-b border-gray-300 pb-2 sm:pb-0 sticky top-0 w-full navbar-transition">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -70,7 +71,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
               <input type="text" class="  pr-24 py-auto border border-gray-300 rounded-md w-64"
                 placeholder="Find Anything" aria-label="search">
               <button
-                class="absolute right-0 top-0 bg-green-400 hover:bg-green-300 border text-black font-medium py-2 px-4 rounded-r-md "
+                class="absolute right-0 top-0 bg-green-600 hover:bg-green-500 border text-white font-semibold py-2 px-4 rounded-r-md "
                 type="button" id="search-btn">Search</button>
             </div>
             <!-- experimental -->
@@ -219,7 +220,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <!-- Profile dropdown -->
 
 
-        <div class="relative ml-3 ">
+        <div class="relative ml-3">
           <div>
             <button id="profile-toggle" type="button"
               class="relative flex rounded-full  text-sm focus:outline-none hover:ring-2  hover:ring-green-400 focus:ring-2 focus:ring-green-400 "
@@ -247,28 +248,31 @@ $currentPage = basename($_SERVER['PHP_SELF']);
               To: "transform opacity-0 scale-95"
           -->
           <div id="profile-menu"
-            class=" absolute hidden right-0 mt-2 w-48 origin-top-right rounded-md bg-gray-50 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            class="absolute hidden right-0 mt-2 w-52 origin-top-right rounded-md bg-gray-50 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
             <!-- Active: "bg-gray-100", Not Active: "" -->
 
             <?php
             if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
               echo '
-              <a href="profile.php" class="flex items-center px-3 py-2 text-sm font-medium text-gray-950 hover:bg-green-400 focus:bg-green-300"
+              <a href="profile.php" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
+              focus:text-white"
                 role="menuitem" tabindex="-1" id="user-menu-item-0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                      <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
                 </svg>
                 &nbsp;&nbsp;
-                <p>Your Profile</p>
+                <p>Profile</p>
                 </a>
               ';
             }
             ?>
             <a href="#"
-              class="flex items-center px-3 py-2 text-sm font-medium text-gray-950 hover:bg-green-400 focus:bg-green-300"
+              class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
+              focus:text-white
+              "
               role="menuitem" tabindex="-1" id="user-menu-item-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders"
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-sliders"
                 viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                   d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z" />
@@ -278,9 +282,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </a>
 
             <a href="#"
-              class="flex items-center px-3 py-2 text-sm font-medium text-gray-950 hover:bg-green-400 focus:bg-green-300"
+              class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
+              focus:text-white"
               role="menuitem" tabindex="-1" id="user-menu-item-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell"
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell"
                 viewBox="0 0 16 16">
                 <path
                   d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
@@ -290,9 +295,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </a>
 
             <a href="create_listing.php"
-              class="flex items-center px-3 py-2 text-sm font-medium text-gray-950 hover:bg-green-400 focus:bg-green-300"
+              class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
+              focus:text-white"
               role="menuitem" tabindex="-1" id="user-menu-item-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-add"
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-add"
                 viewBox="0 0 16 16">
                 <path
                   d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h4a.5.5 0 1 0 0-1h-4a.5.5 0 0 1-.5-.5V7.207l5-5 6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
@@ -304,9 +310,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </a>
 
             <a href="create_listing.php"
-              class="flex items-center px-3 py-2 text-sm font-medium text-gray-950 hover:bg-green-400 focus:bg-green-300"
+              class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
+              focus:text-white"
               role="menuitem" tabindex="-1" id="user-menu-item-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                 class="bi bi-toggle-off" viewBox="0 0 16 16">
                 <path
                   d="M11 4a4 4 0 0 1 0 8H8a5 5 0 0 0 2-4 5 5 0 0 0-2-4zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8M0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5" />
@@ -318,8 +325,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <?php
             if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
               echo '
-                  <a href="signup.php" class="flex items-center px-3 py-2 text-sm font-medium text-gray-950 hover:bg-green-400 focus:bg-green-300" role="menuitem" tabindex="-1" id="user-menu-item-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                  <a href="signup.php" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
+                  focus:text-white" role="menuitem" tabindex="-1" id="user-menu-item-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
                           <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
                           <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
                         </svg>
@@ -327,8 +335,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                         <p>Sign Up</p>
                 </a>
 
-                  <a href="logout.php" class="flex items-center px-3 py-2 text-sm font-medium text-gray-950 hover:bg-green-400 focus:bg-green-300" role="menuitem" tabindex="-1" id="user-menu-item-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                  <a href="logout.php" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
+                  focus:text-white" role="menuitem" tabindex="-1" id="user-menu-item-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
                         <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
                       </svg>
@@ -338,8 +347,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 ';
             } else {
               echo '
-                <a href="logout.php" class="flex items-center px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-500 hover:text-white focus:bg-red-400" role="menuitem" tabindex="-1" id="user-menu-item-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
+                <a href="logout.php" class="flex items-center px-3 py-2 text-lg font-medium text-red-600 hover:bg-red-500 hover:text-white focus:bg-red-400" role="menuitem" tabindex="-1" id="user-menu-item-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
                   <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1"/>
                   <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117M11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5M4 1.934V15h6V1.077z"/>
                 </svg>
@@ -377,9 +386,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
   <!-- Mobile search bar -->
   <div class=" sm:hidden flex justify-center">
-    <input type="text" class="py-auto border border-gray-300 rounded-l-md w-56  focus:border-gray-300 focus:ring-0"
+    <input type="text" class="py-auto border border-gray-300 rounded-l-md w-56  focus:border-gray-300 focus:ring-0
+    "
       placeholder="Find Anything" aria-label="search">
-    <button class="  bg-green-400 hover:bg-green-300 border text-black font-medium py-2 px-4 rounded-r-md "
+    <button class="  bg-green-600 hover:bg-green-500 border text-white font-semibold py-2 px-4 rounded-r-md "
       type="button" id="search-btn">Search</button>
   </div>
 </nav>

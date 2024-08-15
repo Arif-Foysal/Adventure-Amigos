@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </head>
 
-<body>
+<body class="bg-amber-50">
 
   <?php
   include_once "partials/__nav.php"
@@ -164,10 +164,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   ?>
-  <main class="flex  justify-center px-8  sm:px-12 lg:col-span-7 pb-16  xl:col-span-6">
+  <main class=" flex  justify-center px-8  sm:px-12 lg:col-span-7 pb-16  xl:col-span-6">
     <div class="max-w-xl lg:max-w-3xl">
 
-      <h1 class="text-gray-800 text-3xl pt-4 font-bold flex items-start gap-2">
+      <h1 class="text-gray-800 text-3xl pt-8 font-black flex items-start gap-2">
 
         <!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z"/>
@@ -184,7 +184,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             First Name
           </label>
           <input type="text" id="first_name" name="first_name"
-            class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" value="" />
+            class="mt-1 w-full rounded-lg border-gray-400 bg-gray-50 text-sm text-gray-700 shadow-sm focus:border-transparent" value="" />
         </div>
 
         <div class="col-span-6 sm:col-span-3">
@@ -192,20 +192,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             Last Name
           </label>
           <input type="text" id="last_name" name="last_name"
-            class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+            class="mt-1 w-full rounded-lg border-gray-400 bg-gray-50 text-sm text-gray-700 shadow-sm focus:border-transparent" />
         </div>
 
         <div class="col-span-6">
           <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
           <input type="email" id="email" name="email"
-            class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" value="" />
+            class="mt-1 w-full rounded-lg border-gray-400 bg-gray-50 text-sm text-gray-700 shadow-sm focus:border-transparent" value="" />
           <span id="email_err" class="text-red-500 text-sm"></span>
         </div>
 
         <div class="col-span-6 sm:col-span-3">
           <label for="password" class="block text-sm font-medium text-gray-700"> Password </label>
           <input type="password" id="password" name="password"
-            class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" value="" />
+            class="mt-1 w-full rounded-lg border-gray-400 bg-gray-50 text-sm text-gray-700 shadow-sm focus:border-transparent" value="" />
           <span id="password_err" class="text-red-500 text-sm"></span>
 
         </div>
@@ -215,14 +215,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             Password Confirmation
           </label>
           <input type="password" id="confirm_password" name="confirm_password"
-            class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" value="" />
+            class="mt-1 w-full rounded-lg border-gray-400 bg-gray-50 text-sm text-gray-700 shadow-sm focus:border-transparent" value="" />
           <span id="confirm_password_err" class="text-red-500 text-sm"></span>
         </div>
 
         <div class="col-span-6">
           <label for="marketing_accept" class="flex gap-4">
             <input type="checkbox" id="marketing_accept" name="marketing_accept[]"
-              class="size-5 rounded-md border-gray-200 bg-white shadow-sm" />
+              class="size-5 rounded-md border-gray-400 bg-white shadow-sm" />
             <span class="text-sm text-gray-700">
               I want to receive emails about events, product updates and company announcements.
             </span>
@@ -241,7 +241,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="col-span-6 justify-center sm:flex sm:items-center sm:gap-4">
           <div class="flex flex-col w-full max-w-xs gap-y-5">
             <button type="submit"
-              class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
+              class="inline-block shrink-0 rounded-md border border-green-600 bg-green-600 px-12 py-3 text-lg font-semibold text-white transition hover:bg-transparent hover:text-green-600 focus:outline-none focus:ring active:text-green-600">
               Create an account
             </button>
 

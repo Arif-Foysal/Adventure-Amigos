@@ -34,7 +34,7 @@ session_start();
             <div class="relative w-full h-48">
                 <div id="cover">
                     <img id="coverp" src="../images/cover.jpg" alt="Cover Photo" class="w-full h-48 object-cover">
-                    <button id="coverBtn" class="hidden absolute -bottom-0 right-8 text-black font-semibold mb-3 p-2 bg-cyan-400 rounded-md hover:bg-cyan-300">
+                    <button id="coverBtn" class="hidden absolute -bottom-0 right-8 text-white font-semibold mb-3 pt-2 pb-2 pl-3 pr-3 bg-teal-600 shadow-lg rounded-md hover:bg-teal-500">
                     Change Cover
                 </button>
                 </div>
@@ -134,12 +134,15 @@ session_start();
     <hr>
     <!-- DP dpModal down below -->
     <div id="dpModal" class="fixed hidden inset-0 items-center justify-center bg-black bg-opacity-50">
-        <div class="bg-white p-8 rounded shadow-lg">
-            <section class="flex justify-between items-center pb-8">
+        <div class="bg-white pt-8 pb-8 pl-4 pr-4 md:p-8 rounded shadow-lg max-w-full">
+            <section class="flex justify-between gap-2 items-center pb-8">
                 <!-- Header -->
                 <h1 class=" text-xl font-semibold">Upload a new profile picture</h1>
                 <button id="closedpModal">
-                    <svg class="rounded-sm hover:text-red-600 hover:bg-gray-50" xmlns="http://www.w3.org/2000/svg"
+                    <svg class="rounded-sm 
+                    text-red-600
+                    md:text-black
+                    hover:text-red-600 hover:bg-gray-50" xmlns="http://www.w3.org/2000/svg"
                         width="30" height="30" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
                         <path
                             d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
@@ -149,9 +152,9 @@ session_start();
                 </button>
             </section>
 
-            <form id="uploadForm" class="flex items-center" enctype="multipart/form-data">
-                <input type="file" id="imageInput" name="image" class="">
-
+            <form id="dpUploadForm" class="flex items-center" enctype="multipart/form-data">
+                <input type="file" id="imageInput" name="dpImage" 
+                class="max-w-[60vw]">
 
                 <button type="submit"
                     class="flex items-center gap-2 bg-gray-100 text-black font-semibold px-4 py-2 rounded border-2 border-black hover:bg-neutral-900 hover:text-white">
@@ -168,6 +171,49 @@ session_start();
             </form>
         </div>
     </div>
+
+    <!-- Cover Modal down below -->
+    <div id="coverModal" class="fixed hidden inset-0 items-center justify-center bg-black bg-opacity-50">
+        <div class="bg-white pt-8 pb-8 pl-4 pr-4 md:p-8 rounded shadow-lg max-w-full">
+            <section class="flex justify-between gap-2 items-center pb-8">
+                <!-- Header -->
+                <h1 class=" text-xl font-semibold">Upload a new cover photo</h1>
+                <button id="closeCoverModal">
+                    <svg class="rounded-sm 
+                    text-red-600
+                    md:text-black
+                    hover:text-red-600 hover:bg-gray-50" xmlns="http://www.w3.org/2000/svg"
+                        width="30" height="30" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+                        <path
+                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                        <path
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                    </svg>
+                </button>
+            </section>
+
+            <form id="coverUploadForm" class="flex items-center" enctype="multipart/form-data">
+                <input type="file" id="coverImageInput" name="coverImage" 
+                class="max-w-[60vw]">
+                
+                <button type="submit"
+                    class="flex items-center gap-2 bg-gray-100 text-black font-semibold px-4 py-2 rounded border-2 border-black hover:bg-neutral-900 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-upload" viewBox="0 0 16 16">
+                        <path
+                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
+                        <path
+                            d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z" />
+                    </svg>
+                    <p>Upload</p>
+                </button>
+
+            </form>
+        </div>
+    </div>
+
+
+
     <section class="flex flex-col md:flex-row">
         <div class=" md:w-1/3 p-6 border-r-2 border-gray-200">
             <h1 class="text-2xl font-semibold">Achievements</h1>
@@ -413,7 +459,8 @@ session_start();
     include_once "partials/__footer.php";
     ?>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
-    <script src="js/dp-modal.js"></script>
+    <!-- <script src="js/dp-modal.js"></script> -->
+    <script src="js/profileUploads.js"></script>
 </body>
 
 </html>

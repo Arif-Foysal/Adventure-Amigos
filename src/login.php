@@ -85,7 +85,7 @@ if(empty($err))
     <link rel="stylesheet" href="output.css">
     <title>Login</title>
 </head>
-<body>
+<body class="bg-amber-50">
 <?php
 include_once "partials/__nav.php";
 // that's a weird login page. Fix the bugs asap
@@ -136,7 +136,7 @@ require_once "partials/__nav.php";
 
 <main class="flex items-top justify-center px-8 pt-4 pb-24 sm:px-12 lg:col-span-7 lg:px-16 lg:pt-8 lg:pb-40 xl:col-span-6 ">
     <div class="max-w-xl lg:max-w-3xl">
-    <h1 class="text-gray-800 text-3xl pt-4 font-bold flex items-start gap-2">
+    <h1 class="text-gray-800 text-3xl pt-4 font-black flex items-start gap-2">
   <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z"/>
   <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
@@ -154,8 +154,7 @@ require_once "partials/__nav.php";
             type="email"
             id="email"
             name="email"
-            class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-
+            class="mt-1 w-full rounded-lg border-gray-400 bg-gray-50 text-sm text-gray-700 shadow-sm focus:border-transparent"
           />
         </div>
 
@@ -166,7 +165,7 @@ require_once "partials/__nav.php";
             id="password"
             name="password"
             required
-            class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+            class="mt-1 w-full rounded-lg border-gray-400 bg-gray-50 text-sm text-gray-700 shadow-sm focus:border-transparent"
           />
 
         </div>
@@ -180,7 +179,7 @@ require_once "partials/__nav.php";
               type="checkbox"
               id="keep_loggedin"
               name="keep_loggedin"
-              class="size-5 rounded-md border-gray-200 bg-white shadow-sm"
+              class="size-5 rounded-md border-gray-400 bg-white shadow-sm"
             />
             <span class="text-sm text-gray-700">
               Keep me logged in
@@ -199,12 +198,12 @@ require_once "partials/__nav.php";
         <div class="col-span-6 justify-center sm:flex sm:items-center sm:gap-4">
             <div class="flex flex-col w-full max-w-xs gap-y-5">
                 <button type="submit"
-                  class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
+                  class="inline-block shrink-0 rounded-md border border-green-600 bg-green-600 px-12 py-3 text-lg font-semibold text-white transition hover:bg-transparent hover:text-green-600 focus:outline-none focus:ring active:text-green-600"
                 >
                   Log In
                 </button>
                 
-                <button class="bg-white flex items-center text-gray-700 justify-center rounded-md gap-x-3 text-sm sm:text-base hover:bg-gray-100 duration-300 transition-colors border px-8 py-2.5">
+                <button class="bg-white flex items-center text-gray-700 justify-center rounded-md gap-x-3 text-lg sm:text-base hover:bg-gray-100 duration-300 transition-colors border px-8 py-2.5">
                     <svg class="w-5 h-5 sm:h-6 sm:w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_3033_94454)">
                         <path d="M23.766 12.2764C23.766 11.4607 23.6999 10.6406 23.5588 9.83807H12.24V14.4591H18.7217C18.4528 15.9494 17.5885 17.2678 16.323 18.1056V21.1039H20.19C22.4608 19.0139 23.766 15.9274 23.766 12.2764Z" fill="#4285F4"/>

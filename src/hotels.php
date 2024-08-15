@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="output.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="">
 
 <?php
 include_once "partials/__nav.php"
