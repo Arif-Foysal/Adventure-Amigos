@@ -410,13 +410,22 @@ require_once 'partials/__dbconnect.php';
 
     </section>
 
-    <section class="bg-neutral-100 fixed bottom-0 w-full p-6 border-t-2 border-neutral-300 flex justify-between">
+    <section class="bg-neutral-100 fixed bottom-0 w-full pt-4 pb-4 pl-6 pr-6 md:pl-16 md:pr-16 border-t-2 border-neutral-300 flex justify-between">
         <div class="text-lg font-normal">
             <p> <span class="font-medium">$65</span> night</p>
             <p>Available for: <span class="underline font-medium">10-15</span></p>
         </div>
-        <button class="p-3 bg-green-500 hover:bg-green-400 font-semibold rounded-md text-lg">
+        <button class="flex items-center gap-2 pt-2 pb-2 pl-4 pr-4 bg-green-600 hover:bg-green-500 font-semibold rounded-md text-white text-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
+</svg>
+      
+<!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
+  <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
+</svg>       -->
+<p>
             Reserve
+        </p>
         </button>
     </section>
     <?php

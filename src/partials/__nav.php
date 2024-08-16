@@ -495,7 +495,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
       <p>Choose another language:</p>
       <br>
       <form id="lang-form" action="" class="">
-        <div class="flex justify-start justify-items-start gap-2 flex-wrap pr-3">
+        <div class="flex justify-start justify-items-start gap-2 flex-wrap pr-2">
 
           <section class="w-36 grow">
             <input type="radio" name="language" value="english-usa" id="option-english-usa" class="hidden peer">
@@ -608,23 +608,14 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <p>US Dollar</p>
 
           </div>
-          <!-- <input type="" name="language" value="" id="selected-english-usa" class="hidden peer">
-                        <label for="option-english-usa" class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
-                            <div class="flex items-center justify-between w-full">
-                                <div>
-                                    <p class="text-xl font-semibold">English</p>
-                                    <p>United States</p>
-                                </div>
-                            </div>
-                        </label> -->
         </section>
       </div>
       <br>
       <p>Choose a diffrent currency:</p>
       <br>
       <form id="currency-form" action="" class="">
-        <div class="flex justify-start justify-items-start gap-2 flex-wrap">
-        <section class="w-36">
+        <div class="flex justify-start justify-items-start gap-2 flex-wrap pr-2">
+        <section class="w-36 grow">
   <input type="radio" name="currency" value="usd" id="option-usd" class="hidden peer">
   <label for="option-usd"
     class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
@@ -637,7 +628,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   </label>
 </section>
 
-<section class="w-36">
+<section class="w-36 grow">
   <input type="radio" name="currency" value="bdt" id="option-bdt" class="hidden peer">
   <label for="option-bdt"
     class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
@@ -650,7 +641,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   </label>
 </section>
 
-<section class="w-36">
+<section class="w-36 grow">
   <input type="radio" name="currency" value="inr" id="option-inr" class="hidden peer">
   <label for="option-inr"
     class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
@@ -663,7 +654,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   </label>
 </section>
 
-<section class="w-36">
+<section class="w-36 grow">
   <input type="radio" name="currency" value="eur" id="option-eur" class="hidden peer">
   <label for="option-eur"
     class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
@@ -676,7 +667,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   </label>
 </section>
 
-<section class="w-36">
+<section class="w-36 grow">
   <input type="radio" name="currency" value="gbp" id="option-gbp" class="hidden peer">
   <label for="option-gbp"
     class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
@@ -689,7 +680,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   </label>
 </section>
 
-<section class="w-36">
+<section class="w-36 grow">
   <input type="radio" name="currency" value="jpy" id="option-jpy" class="hidden peer">
   <label for="option-jpy"
     class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
@@ -702,7 +693,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   </label>
 </section>
 
-<section class="w-36">
+<section class="w-36 grow">
   <input type="radio" name="currency" value="cad" id="option-cad" class="hidden peer">
   <label for="option-cad"
     class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
@@ -715,7 +706,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   </label>
 </section>
 
-<section class="w-36">
+<section class="w-36 grow">
   <input type="radio" name="currency" value="aud" id="option-aud" class="hidden peer">
   <label for="option-aud"
     class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
@@ -728,7 +719,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   </label>
 </section>
 
-<section class="w-36">
+<section class="w-36 grow">
   <input type="radio" name="currency" value="cny" id="option-cny" class="hidden peer">
   <label for="option-cny"
     class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
@@ -741,7 +732,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   </label>
 </section>
 
-<section class="w-36">
+<section class="w-36 grow">
   <input type="radio" name="currency" value="zar" id="option-zar" class="hidden peer">
   <label for="option-zar"
     class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">

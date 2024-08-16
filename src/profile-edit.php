@@ -22,7 +22,7 @@ require_once 'partials/__dbconnect.php';
         <div class="flex justify-between gap-8 max-w-5xl mx-auto ">
             
             <section class=" w-full md:w-3/5">
-                <h1 class="text-3xl font-semibold pb-4">Personal Information</h1>
+                <h1 class="text-3xl font-semibold pb-4 pt-4">Personal Information</h1>
                 <div class="text-lg mt-4 mb-4">
                     <div class="flex justify-between pb-2 font-semibold">
                         <p>Name</p>
