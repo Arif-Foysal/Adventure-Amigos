@@ -11,7 +11,7 @@ include_once 'partials/__session.php';
 
 // Define the page flow
 $pages = [
-    'create-listing-1-1.php' => ['prev' => '#', 'next' => 'create-listing-1-2.php'],
+    'create-listing-1-1.php' => ['prev' => 'create_listing.php', 'next' => 'create-listing-1-2.php'],
     'create-listing-1-2.php' => ['prev' => 'create-listing-1-1.php', 'next' => 'create-listing-1-3.php'],
     'create-listing-1-3.php' => ['prev' => 'create-listing-1-2.php', 'next' => 'create-listing-1-4.php'],
     'create-listing-1-4.php' => ['prev' => 'create-listing-1-3.php', 'next' => 'create-listing-1-5.php'],

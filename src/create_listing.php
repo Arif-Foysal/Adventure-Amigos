@@ -20,10 +20,10 @@ include_once "partials/__nav.php"
     </section>
     <section class= "flex justify-center mb-20 ">
 
-        <div class="w-[40vw] ">
-            <h1 class="mb-8 text-5xl font-semibold text-gray-800 dark:text-white">Welcome, Nayeem</h1>
-            <h2 class="mb-6 text-3xl font-medium text-gray-800 dark:text-white">Finish Your Listing</h2>
-            <a href="#" class = "h-24 px-8 border border-gray-500 rounded-md flex justify-between  items-center hover:bg-gray-100">
+        <div class="w-[90vw] md:w-[40vw]">
+            <h1 class="text-4xl font-semibold pb-4">Welcome, Nayeem</h1>
+            <h2 class="text-xl pb-2 font-medium">Finish Your Listing</h2>
+            <a href="#" class = " p-6 border border-gray-500 rounded-md flex  justify-between items-center hover:bg-gray-100">
                 <div class="flex">
                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-house-add-fill" viewBox="0 0 16 16">
                         <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 1 1-1 0v-1h-1a.5.5 0 1 1 0-1h1v-1a.5.5 0 0 1 1 0"/>
@@ -42,7 +42,7 @@ include_once "partials/__nav.php"
             <h2 class="mt-20 mb-6 text-3xl font-medium text-gray-800 dark:text-white">Start new listing</h2>
 
             <div class="">
-                    <a href="create-listing-1-1.php" class="flex items-center justify-between my-6">
+                <a href="create-listing-1-1.php" class="flex items-center justify-between my-4">
                         <div class="flex">
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-add" viewBox="0 0 16 16">
@@ -57,8 +57,8 @@ include_once "partials/__nav.php"
                     <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
                     </svg>
                 </a>
-
-                <a href="" class="flex items-center justify-between my-3">
+                <hr>
+                <a href="" class="flex items-center justify-between my-4">
                         <div class="flex">
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
@@ -73,7 +73,7 @@ include_once "partials/__nav.php"
                     <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
                     </svg>
                 </a>
-                
+                <hr>   
             </div>
             
 
