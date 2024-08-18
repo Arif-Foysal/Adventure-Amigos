@@ -40,7 +40,7 @@ require_once 'partials/__dbconnect.php';
             <br>
             <br>
             <section class="flex flex-wrap ">
-                <a class="grow w-full md:w-[45%] border border-black rounded-lg p-4 m-2">
+                <a href="http://localhost/Adventure-Amigos/src/profile-edit.php" class="grow w-full md:w-[45%] border border-black rounded-lg p-4 m-2 hover:bg-slate-100">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         class="bi bi-person-vcard" viewBox="0 0 16 16">
                         <path
@@ -53,7 +53,7 @@ require_once 'partials/__dbconnect.php';
                     <p>Provide personal details and how can we reach you</p>
                 </a>
 
-                <a class="grow w-full md:w-[45%] border border-black rounded-lg p-4 m-2">
+                <a href="login-security.php" class="grow w-full md:w-[45%] border border-black rounded-lg p-4 m-2 hover:bg-slate-100">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         class="bi bi-shield-lock" viewBox="0 0 16 16">
                         <path
@@ -66,7 +66,7 @@ require_once 'partials/__dbconnect.php';
                     <p>Update your passcode and secure your account</p>
                 </a>
 
-                <a class="grow w-full md:w-[45%] border border-black rounded-lg p-4 m-2">
+                <a class="grow w-full md:w-[45%] border border-black rounded-lg p-4 m-2 hover:bg-slate-100">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         class="bi bi-bell" viewBox="0 0 16 16">
                         <path
@@ -77,7 +77,7 @@ require_once 'partials/__dbconnect.php';
                     <p>Manage how you receive alerts and updates</p>
                 </a>
 
-                <a class="grow w-full md:w-[45%] border border-black rounded-lg p-4 m-2">
+                <a href="privacy.php" class="grow w-full md:w-[45%] border border-black rounded-lg p-4 m-2 hover:bg-slate-100">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         class="bi bi-shield-check" viewBox="0 0 16 16">
                         <path
@@ -90,7 +90,7 @@ require_once 'partials/__dbconnect.php';
                     <p>Control who can see your information and activity</p>
                 </a>
 
-                <a class="grow w-full md:w-[45%] border border-black rounded-lg p-4 m-2">
+                <a class="grow w-full md:w-[45%] border border-black rounded-lg p-4 m-2 hover:bg-slate-100">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         class="bi bi-globe" viewBox="0 0 16 16">
                         <path
