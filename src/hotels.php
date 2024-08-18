@@ -11,6 +11,29 @@
     <link rel="icon" type="image/x-icon" href="../images/fav.png">
     <link rel="stylesheet" href="output.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gallery-img {
+            @apply w-full h-full object-cover;
+        }
+
+        .square {
+            @apply w-full h-full;
+            position: relative;
+            /* z-index: -1;  remove it for hover animation effect*/ 
+            padding-bottom: 100%;
+            /* Aspect ratio 1:1 */
+        }
+
+        .square img {
+            position: absolute;
+            /* z-index: 0; */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body class="">
 
@@ -19,11 +42,14 @@ include_once "partials/__nav.php"
 ?>
 
     <main class="mt-4 mx-8 mb-8">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             
             <a href="view-hotel.php" class="flex flex-col p-2 hover:bg-neutral-100 rounded-lg">
-                <img src="../images/hotel/0.jpg" alt="hotel" class="w-full h-80 object-cover rounded-lg">
-                <div class="flex justify-between mt-2">
+                <div class="square">
+
+                    <img src="../images/hotel/0.jpg" alt="hotel" class="gallery-img w-full h-80 object-cover rounded-lg">
+                </div>
+                    <div class="flex justify-between mt-2">
                     <p class="text-md font-semibold">Grand Palace</p>
                     <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -58,8 +84,10 @@ include_once "partials/__nav.php"
 
 
             <a href="" class="flex flex-col p-2 hover:bg-neutral-100 rounded-lg">
-                <img src="../images/hotel/1.jpg" alt="hotel" class="w-full h-80 object-cover rounded-lg">
-                <div class="flex justify-between mt-2">
+                <div class="square">
+                    <img src="../images/hotel/1.jpg" alt="hotel" class="gallery-img w-full h-80 object-cover rounded-lg">
+                </div>
+                    <div class="flex justify-between mt-2">
                     <p class="text-md font-semibold">Sheraton</p>
                     <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -93,7 +121,10 @@ include_once "partials/__nav.php"
             </a>
 
             <a href="" class="flex flex-col p-2 hover:bg-neutral-100 rounded-lg">
-                <img src="../images/hotel/2.jpg" alt="hotel" class="w-full h-80 object-cover rounded-lg">
+                <div class="square">
+
+                    <img src="../images/hotel/2.jpg" alt="hotel" class="gallery-img w-full h-80 object-cover rounded-lg">
+                </div>
                 <div class="flex justify-between mt-2">
                     <p class="text-md font-semibold">Radisson Blu</p>
                     <div class="flex items-center">
@@ -129,7 +160,10 @@ include_once "partials/__nav.php"
 
 
             <a href="" class="flex flex-col p-2 hover:bg-neutral-100 rounded-lg">
-                <img src="../images/hotel/3.jpg" alt="hotel" class="w-full h-80 object-cover rounded-lg">
+                <div class="square">
+
+                    <img src="../images/hotel/3.jpg" alt="hotel" class="gallery-img w-full h-80 object-cover rounded-lg">
+                </div>
                 <div class="flex justify-between mt-2">
                     <p class="text-md font-semibold">Hotel 71</p>
                     <div class="flex items-center">
@@ -165,7 +199,10 @@ include_once "partials/__nav.php"
 
 
             <a href="" class="flex flex-col p-2 hover:bg-neutral-100 rounded-lg">
-                <img src="../images/hotel/4.jpg" alt="hotel" class="w-full h-80 object-cover rounded-lg">
+                <div class="square">
+
+                    <img src="../images/hotel/4.jpg" alt="hotel" class="gallery-img w-full h-80 object-cover rounded-lg">
+                </div>
                 <div class="flex justify-between mt-2">
                     <p class="text-md font-semibold">Random hotel</p>
                     <div class="flex items-center">
@@ -201,7 +238,10 @@ include_once "partials/__nav.php"
 
 
             <a href="" class="flex flex-col p-2 hover:bg-neutral-100 rounded-lg">
-                <img src="../images/hotel/5.jpg" alt="hotel" class="w-full h-80 object-cover rounded-lg">
+                <div class="square">
+
+                    <img src="../images/hotel/5.jpg" alt="hotel" class="gallery-img w-full h-80 object-cover rounded-lg">
+                </div>
                 <div class="flex justify-between mt-2">
                     <p class="text-md font-semibold">Hotel Winners</p>
                     <div class="flex items-center">
@@ -237,7 +277,10 @@ include_once "partials/__nav.php"
 
 
             <a href="" class="flex flex-col p-2 hover:bg-neutral-100 rounded-lg">
-                <img src="../images/hotel/6.jpg" alt="hotel" class="w-full h-80 object-cover rounded-lg">
+                <div class="square">
+
+                    <img src="../images/hotel/6.jpg" alt="hotel" class="gallery-img w-full h-80 object-cover rounded-lg">
+                </div>
                 <div class="flex justify-between mt-2">
                     <p class="text-md font-semibold">Hotel Sundarbans</p>
                     <div class="flex items-center">
@@ -269,11 +312,7 @@ include_once "partials/__nav.php"
                     &nbsp;
                     <p class="text-md"> night</p>
                 </div>
-            </a>
-
-
-        
-
+            </a>  
         </div>
     </main>
 
