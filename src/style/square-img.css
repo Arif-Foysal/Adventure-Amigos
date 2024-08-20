@@ -1,0 +1,28 @@
+/* Example:
+
+<div class="square">
+    <img src="../images/hotel/0.jpg" alt="hotel" class="gallery-img w-full h-80 object-cover rounded-lg">
+</div>
+
+*/
+.gallery-img {
+    @apply w-full h-full object-cover;
+}
+
+.square {
+    @apply w-full h-full;
+    position: relative;
+    /* z-index: -1;  remove it for hover animation effect*/
+    padding-bottom: 100%;
+    /* Aspect ratio 1:1 */
+}
+
+.square img {
+    position: absolute;
+    /* z-index: 0; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

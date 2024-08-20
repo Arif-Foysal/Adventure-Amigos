@@ -5,32 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Profile</title>
+    <link rel="stylesheet" href="style/square-img.css">
     <link rel="stylesheet" href="output.css">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
-
-    <style>
-        .gallery-img {
-            @apply w-full h-full object-cover;
-        }
-
-        .square {
-            @apply w-full h-full;
-            position: relative;
-            /* z-index: -1;  remove it for hover animation effect*/ 
-            padding-bottom: 100%;
-            /* Aspect ratio 1:1 */
-        }
-
-        .square img {
-            position: absolute;
-            /* z-index: 0; */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    </style>
 
     <script src="https://cdn.tailwindcss.com"></script>
 </head>

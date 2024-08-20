@@ -11,29 +11,7 @@
     <link rel="icon" type="image/x-icon" href="../images/fav.png">
     <link rel="stylesheet" href="output.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .gallery-img {
-            @apply w-full h-full object-cover;
-        }
-
-        .square {
-            @apply w-full h-full;
-            position: relative;
-            /* z-index: -1;  remove it for hover animation effect*/ 
-            padding-bottom: 100%;
-            /* Aspect ratio 1:1 */
-        }
-
-        .square img {
-            position: absolute;
-            /* z-index: 0; */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    </style>
+    <link rel="stylesheet" href="style/square-img.css">
 </head>
 <body class="">
 

@@ -10,12 +10,14 @@
 
 <body>
 <?php
+
+    ob_start();
     include_once "partials/__nav.php";
     include_once 'partials/__save-exit-btn.php';
 ?>
         <h1 class="text-4xl font-bold text-center">What type of place will guests have?</h1>
         <br>
-        <form action="">
+        <form method="post" action="">
         <div class="flex justify-center">
             <section class="w-[90vw] lg:w-[40vw]">
                 <div class= "flex flex-col gap-3">
@@ -81,6 +83,19 @@
 
 <?php
 include_once 'partials/__footer.php';
+// Form handling
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    # code...
+    if (!isset($_POST['option'])) {
+        # code...
+
+    }
+    else {
+        header("Location:$nextPage");
+    }
+}
+
+ob_end_flush();
 ?>
 
 

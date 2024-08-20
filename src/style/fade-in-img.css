@@ -1,0 +1,12 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* 5% opacity */
+    }
+    to {
+        opacity: 0.85; /* 85% opacity */
+    }
+}
+
+.animated-opacity {
+    animation: fadeIn 3s ease-in-out forwards; /* Adjust duration and easing as needed */
+}

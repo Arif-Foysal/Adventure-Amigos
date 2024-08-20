@@ -30,7 +30,7 @@ include_once 'partials/__save-exit-btn.php';
         </div>
         <div class="w-full md:w-2/5 p-8">
             <!-- SVG -->
-            <img src="../images/vectors/house.jpg" alt="A vector image of a house">
+            <img src="../images/vectors/step1.png" alt="A vector image of a house" class="rounded-lg">
         </div>
 </div>
 <form method="post" action="#">
