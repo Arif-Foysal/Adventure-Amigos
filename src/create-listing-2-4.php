@@ -11,10 +11,12 @@
 <body>
 
 <?php
-include_once "partials/__nav.php"
+ob_start();
+include_once "partials/__nav.php";
+include_once "partials/__save-exit-btn.php";
 ?>
 
 <h1>add a title of the place</h1>
 <?php
     include_once 'partials/__prev-next-btn.php';
-    ?>  
+?>  

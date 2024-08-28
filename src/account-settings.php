@@ -100,7 +100,6 @@ require_once 'partials/__dbconnect.php';
                     <h2 class="text-md font-semibold mt-3">Global preferences</h2>
                     <p>Customize your app settings and language preferences.</p>
                 </a>
-
             </section>
         </div>
     </section>
@@ -109,8 +108,5 @@ require_once 'partials/__dbconnect.php';
         include_once 'partials/__footer.php';
     ?>
 
-
-
 </body>
-
 </html>

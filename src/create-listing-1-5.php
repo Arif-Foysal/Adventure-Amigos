@@ -30,12 +30,12 @@
                 <div class="flex justify-between items-center p-3">
                     <div class="text-2xl font-medium">Guests</div>
                     <div class="flex items-center space-x-4">
-                        <button id="decrementGuests"
+                        <button type="button" id="decrementGuests"
                             class="bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-full hover:bg-gray-300 focus:outline-none">-</button>
 
                         <span id="guestCount" class="text-lg font-semibold">1</span>
 
-                        <button id="incrementGuests"
+                        <button type="button" id="incrementGuests"
                             class="bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-full hover:bg-gray-300 focus:outline-none">+</button>
                     </div>
                 </div>
@@ -43,12 +43,12 @@
                 <div class="flex justify-between items-center p-3">
                     <div class="text-2xl font-medium">Bedrooms</div>
                     <div class="flex items-center space-x-4">
-                        <button id="decrementBedrooms"
+                        <button type="button" id="decrementBedrooms"
                             class="bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-full hover:bg-gray-300 focus:outline-none">-</button>
 
                         <span id="bedroomCount" class="text-lg font-semibold">1</span>
 
-                        <button id="incrementBedrooms"
+                        <button type="button" id="incrementBedrooms"
                             class="bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-full hover:bg-gray-300 focus:outline-none">+</button>
                     </div>
                 </div>
@@ -56,12 +56,12 @@
                 <div class="flex justify-between items-center p-3">
                     <div class="text-2xl font-medium">Beds</div>
                     <div class="flex items-center space-x-4">
-                        <button id="decrementBeds"
+                        <button type="button" id="decrementBeds"
                             class="bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-full hover:bg-gray-300 focus:outline-none">-</button>
 
                         <span id="bedCount" class="text-lg font-semibold">1</span>
 
-                        <button id="incrementBeds"
+                        <button type="button" id="incrementBeds"
                             class="bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-full hover:bg-gray-300 focus:outline-none">+</button>
                     </div>
                 </div>
