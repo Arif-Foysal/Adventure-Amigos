@@ -12,9 +12,6 @@
     if ($conn->connect_error) {
         die("Connection failed: \n" . $conn->connect_error);
     }
-    else{
-        //  echo "Connected successfully.....\n";
-        //  phpinfo();
-    }
+
 ?>
 

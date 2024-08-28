@@ -9,19 +9,25 @@ include_once 'partials/__session.php';
 // include_once 'partials/__currency.php';
 $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
+
 <head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 </head>
 <style>
   .navbar-transition {
-            transition: transform 0.6s ease-in-out; /* Custom transition duration */
-        }
-  *{
-    font-family:"Nunito";
+    transition: transform 0.6s ease-in-out;
+    /* Custom transition duration */
   }
-  nav{
+
+  * {
+    font-family: "Nunito";
+  }
+
+  nav {
     z-index: 100;
   }
 </style>
@@ -255,6 +261,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <?php
             if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
               echo '
+              <a href="chat.php" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
+              focus:text-white"
+                role="menuitem" tabindex="-1" id="user-menu-item-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chat-left" viewBox="0 0 16 16">
+  <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+</svg>
+                &nbsp;&nbsp;
+                <p>Messages</p>
+                </a>
+
               <a href="profile.php" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
               focus:text-white"
                 role="menuitem" tabindex="-1" id="user-menu-item-0">
@@ -267,11 +283,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
               ';
             }
             ?>
-            <a href="#"
-              class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
+            <a href="#" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
               focus:text-white
-              "
-              role="menuitem" tabindex="-1" id="user-menu-item-1">
+              " role="menuitem" tabindex="-1" id="user-menu-item-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-sliders"
                 viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -281,10 +295,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
               <p>Settings</p>
             </a>
 
-            <a href="#"
-              class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
-              focus:text-white"
-              role="menuitem" tabindex="-1" id="user-menu-item-1">
+            <a href="#" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
+              focus:text-white" role="menuitem" tabindex="-1" id="user-menu-item-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell"
                 viewBox="0 0 16 16">
                 <path
@@ -294,10 +306,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
               <p>Notifications</p>
             </a>
 
-            <a href="create_listing.php"
-              class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
-              focus:text-white"
-              role="menuitem" tabindex="-1" id="user-menu-item-1">
+            <a href="create_listing.php" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
+              focus:text-white" role="menuitem" tabindex="-1" id="user-menu-item-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-add"
                 viewBox="0 0 16 16">
                 <path
@@ -309,10 +319,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
               <p>Become a Host</p>
             </a>
 
-            <a href="create_listing.php"
-              class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
-              focus:text-white"
-              role="menuitem" tabindex="-1" id="user-menu-item-1">
+            <a href="create_listing.php" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
+              focus:text-white" role="menuitem" tabindex="-1" id="user-menu-item-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                 class="bi bi-toggle-off" viewBox="0 0 16 16">
                 <path
@@ -387,8 +395,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   <!-- Mobile search bar -->
   <div class=" sm:hidden flex justify-center">
     <input type="text" class="py-auto border border-gray-300 rounded-l-md w-56  focus:border-gray-300 focus:ring-0
-    "
-      placeholder="Find Anything" aria-label="search">
+    " placeholder="Find Anything" aria-label="search">
     <button class="  bg-green-600 hover:bg-green-500 border text-white font-semibold py-2 px-4 rounded-r-md "
       type="button" id="search-btn">Search</button>
   </div>
@@ -408,7 +415,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   .tab-content.active {
     display: block;
   }
-  #modal{
+
+  #modal {
     z-index: 100;
   }
 </style>
@@ -615,135 +623,135 @@ $currentPage = basename($_SERVER['PHP_SELF']);
       <br>
       <form id="currency-form" action="" class="">
         <div class="flex justify-start justify-items-start gap-2 flex-wrap pr-2">
-        <section class="w-36 grow">
-  <input type="radio" name="currency" value="usd" id="option-usd" class="hidden peer">
-  <label for="option-usd"
-    class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
-    <div class="flex items-center justify-between w-full">
-      <div>
-        <p class="text-xl font-semibold">USD</p>
-        <p>US Dollar</p>
-      </div>
-    </div>
-  </label>
-</section>
+          <section class="w-36 grow">
+            <input type="radio" name="currency" value="usd" id="option-usd" class="hidden peer">
+            <label for="option-usd"
+              class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
+              <div class="flex items-center justify-between w-full">
+                <div>
+                  <p class="text-xl font-semibold">USD</p>
+                  <p>US Dollar</p>
+                </div>
+              </div>
+            </label>
+          </section>
 
-<section class="w-36 grow">
-  <input type="radio" name="currency" value="bdt" id="option-bdt" class="hidden peer">
-  <label for="option-bdt"
-    class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
-    <div class="flex items-center justify-between w-full">
-      <div>
-        <p class="text-xl font-semibold">BDT</p>
-        <p>Bangladeshi Taka</p>
-      </div>
-    </div>
-  </label>
-</section>
+          <section class="w-36 grow">
+            <input type="radio" name="currency" value="bdt" id="option-bdt" class="hidden peer">
+            <label for="option-bdt"
+              class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
+              <div class="flex items-center justify-between w-full">
+                <div>
+                  <p class="text-xl font-semibold">BDT</p>
+                  <p>Bangladeshi Taka</p>
+                </div>
+              </div>
+            </label>
+          </section>
 
-<section class="w-36 grow">
-  <input type="radio" name="currency" value="inr" id="option-inr" class="hidden peer">
-  <label for="option-inr"
-    class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
-    <div class="flex items-center justify-between w-full">
-      <div>
-        <p class="text-xl font-semibold">INR</p>
-        <p>Indian Rupee</p>
-      </div>
-    </div>
-  </label>
-</section>
+          <section class="w-36 grow">
+            <input type="radio" name="currency" value="inr" id="option-inr" class="hidden peer">
+            <label for="option-inr"
+              class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
+              <div class="flex items-center justify-between w-full">
+                <div>
+                  <p class="text-xl font-semibold">INR</p>
+                  <p>Indian Rupee</p>
+                </div>
+              </div>
+            </label>
+          </section>
 
-<section class="w-36 grow">
-  <input type="radio" name="currency" value="eur" id="option-eur" class="hidden peer">
-  <label for="option-eur"
-    class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
-    <div class="flex items-center justify-between w-full">
-      <div>
-        <p class="text-xl font-semibold">EUR</p>
-        <p>Euro</p>
-      </div>
-    </div>
-  </label>
-</section>
+          <section class="w-36 grow">
+            <input type="radio" name="currency" value="eur" id="option-eur" class="hidden peer">
+            <label for="option-eur"
+              class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
+              <div class="flex items-center justify-between w-full">
+                <div>
+                  <p class="text-xl font-semibold">EUR</p>
+                  <p>Euro</p>
+                </div>
+              </div>
+            </label>
+          </section>
 
-<section class="w-36 grow">
-  <input type="radio" name="currency" value="gbp" id="option-gbp" class="hidden peer">
-  <label for="option-gbp"
-    class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
-    <div class="flex items-center justify-between w-full">
-      <div>
-        <p class="text-xl font-semibold">GBP</p>
-        <p>British Pound</p>
-      </div>
-    </div>
-  </label>
-</section>
+          <section class="w-36 grow">
+            <input type="radio" name="currency" value="gbp" id="option-gbp" class="hidden peer">
+            <label for="option-gbp"
+              class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
+              <div class="flex items-center justify-between w-full">
+                <div>
+                  <p class="text-xl font-semibold">GBP</p>
+                  <p>British Pound</p>
+                </div>
+              </div>
+            </label>
+          </section>
 
-<section class="w-36 grow">
-  <input type="radio" name="currency" value="jpy" id="option-jpy" class="hidden peer">
-  <label for="option-jpy"
-    class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
-    <div class="flex items-center justify-between w-full">
-      <div>
-        <p class="text-xl font-semibold">JPY</p>
-        <p>Japanese Yen</p>
-      </div>
-    </div>
-  </label>
-</section>
+          <section class="w-36 grow">
+            <input type="radio" name="currency" value="jpy" id="option-jpy" class="hidden peer">
+            <label for="option-jpy"
+              class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
+              <div class="flex items-center justify-between w-full">
+                <div>
+                  <p class="text-xl font-semibold">JPY</p>
+                  <p>Japanese Yen</p>
+                </div>
+              </div>
+            </label>
+          </section>
 
-<section class="w-36 grow">
-  <input type="radio" name="currency" value="cad" id="option-cad" class="hidden peer">
-  <label for="option-cad"
-    class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
-    <div class="flex items-center justify-between w-full">
-      <div>
-        <p class="text-xl font-semibold">CAD</p>
-        <p>Canadian Dollar</p>
-      </div>
-    </div>
-  </label>
-</section>
+          <section class="w-36 grow">
+            <input type="radio" name="currency" value="cad" id="option-cad" class="hidden peer">
+            <label for="option-cad"
+              class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
+              <div class="flex items-center justify-between w-full">
+                <div>
+                  <p class="text-xl font-semibold">CAD</p>
+                  <p>Canadian Dollar</p>
+                </div>
+              </div>
+            </label>
+          </section>
 
-<section class="w-36 grow">
-  <input type="radio" name="currency" value="aud" id="option-aud" class="hidden peer">
-  <label for="option-aud"
-    class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
-    <div class="flex items-center justify-between w-full">
-      <div>
-        <p class="text-xl font-semibold">AUD</p>
-        <p>Australian Dollar</p>
-      </div>
-    </div>
-  </label>
-</section>
+          <section class="w-36 grow">
+            <input type="radio" name="currency" value="aud" id="option-aud" class="hidden peer">
+            <label for="option-aud"
+              class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
+              <div class="flex items-center justify-between w-full">
+                <div>
+                  <p class="text-xl font-semibold">AUD</p>
+                  <p>Australian Dollar</p>
+                </div>
+              </div>
+            </label>
+          </section>
 
-<section class="w-36 grow">
-  <input type="radio" name="currency" value="cny" id="option-cny" class="hidden peer">
-  <label for="option-cny"
-    class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
-    <div class="flex items-center justify-between w-full">
-      <div>
-        <p class="text-xl font-semibold">CNY</p>
-        <p>Chinese Yuan</p>
-      </div>
-    </div>
-  </label>
-</section>
+          <section class="w-36 grow">
+            <input type="radio" name="currency" value="cny" id="option-cny" class="hidden peer">
+            <label for="option-cny"
+              class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
+              <div class="flex items-center justify-between w-full">
+                <div>
+                  <p class="text-xl font-semibold">CNY</p>
+                  <p>Chinese Yuan</p>
+                </div>
+              </div>
+            </label>
+          </section>
 
-<section class="w-36 grow">
-  <input type="radio" name="currency" value="zar" id="option-zar" class="hidden peer">
-  <label for="option-zar"
-    class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
-    <div class="flex items-center justify-between w-full">
-      <div>
-        <p class="text-xl font-semibold">ZAR</p>
-        <p>South African Rand</p>
-      </div>
-    </div>
-  </label>
-</section>
+          <section class="w-36 grow">
+            <input type="radio" name="currency" value="zar" id="option-zar" class="hidden peer">
+            <label for="option-zar"
+              class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-300 peer-checked:bg-gray-300">
+              <div class="flex items-center justify-between w-full">
+                <div>
+                  <p class="text-xl font-semibold">ZAR</p>
+                  <p>South African Rand</p>
+                </div>
+              </div>
+            </label>
+          </section>
 
 
         </div>
