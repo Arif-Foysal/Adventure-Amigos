@@ -70,7 +70,7 @@ while ($row = $result->fetch_assoc()) {
     }
 
 
-    $response['body'] .= '<div onclick="receiverId='.$row['chat_with_user_id'].'" class="hover:bg-gray-100 p-2 flex gap-2 rounded-md cursor-pointer"><div class="relative w-fit"><img src="../images/dp/dp.JPG" alt="" class="h-10 rounded-full"><div class="absolute bottom-1 right-0 h-3 w-3 rounded-full bg-green-400 ring-2 ring-white"></div></div><div><p class="text-md font-medium">'.$row['user_name'].'</p><section class="flex gap-1 items-center text-sm text-neutral-400 "><p>'.$sentBy.$message.'</p><p class="">•</p><p>'.$time.'</p></section></div></div>';
+    $response['body'] .= '<div onclick="document.getElementById(\'chatBox\').innerHTML = \'<div id=&quot;loader&quot; class=&quot;loader mb-[30vh] self-center&quot;></div>\';receiverId='.$row['chat_with_user_id'].'" class="hover:bg-gray-100 p-2 flex gap-2 rounded-md cursor-pointer"><div class="relative w-fit"><img src="../images/dp/dp.JPG" alt="" class="h-10 rounded-full"><div class="absolute bottom-1 right-0 h-3 w-3 rounded-full bg-green-400 ring-2 ring-white"></div></div><div><p class="text-md font-medium">'.$row['user_name'].'</p><section class="flex gap-1 items-center text-sm text-neutral-400 "><p>'.$sentBy.$message.'</p><p class="">•</p><p>'.$time.'</p></section></div></div>';
 }
 
 // Output or use the chat list

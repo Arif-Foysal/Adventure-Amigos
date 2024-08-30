@@ -135,7 +135,7 @@
             <br>
             <section id="chatBox" class="flex flex-col justify-end gap-2 p-3 h-full">
  
-            <div id="loader" class="loader mb-[50vh] self-center "></div>
+            <div id="loader" class="loader mb-[30vh] self-center "></div>
 
 
             </section>
@@ -243,6 +243,11 @@ fetch('api/get-user-info.php')  // Replace with the actual path to your PHP scri
                 autoScroll();
                 prevLastMsgId = msg.lastMsgId;
             }
+            else if (document.getElementById("loader")) {
+                document.getElementById("loader").remove();
+                document.getElementById('chatBox').innerHTML = msg.chatbody;
+
+            }
         }
 
         function autoRefreshChatBox() {
@@ -320,7 +325,11 @@ function sendMessage() {
 }
 
 
+
+
+
     </script>
 </body>
 
 </html>
+
