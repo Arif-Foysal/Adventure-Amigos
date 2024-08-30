@@ -7,12 +7,9 @@ $input = file_get_contents('php://input');
 $data = json_decode($input, true);
 
 
-$sender_id = isset($data['sender_id']) ? (int)$data['sender_id'] : null;
 $receiver_id = isset($data['receiver_id']) ? (int)$data['receiver_id'] : null;
-
-//setting dummy id's for testing
-$sender_id = 3;
-$receiver_id = 2;
+$sender_id = $_SESSION["id"];
+// $receiver_id = 6;
 
 
 if (!$sender_id || !$receiver_id) {

@@ -9,10 +9,47 @@
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* From Uiverse.io by satyamchaudharydev */ 
+.loader {
+  display: block;
+  --height-of-loader: 4px;
+  --loader-color: #0071e2;
+  width: 200px;
+  height: var(--height-of-loader);
+  border-radius: 30px;
+  background-color: rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.loader::before {
+  content: "";
+  position: absolute;
+  background: var(--loader-color);
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  border-radius: 30px;
+  animation: moving 1s ease-in-out infinite;
+  ;
+}
+
+@keyframes moving {
+  50% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
+  }
+}
+    </style>
 </head>
 
 <body>
-
     <?php
     include_once "partials/__nav.php";
     ?>
@@ -55,246 +92,9 @@
             </div>
 
             <br>
-
-            <div class="hover:bg-gray-100 p-2 flex gap-2 rounded-md cursor-pointer">
-                <div class="relative w-fit">
-                    <img src="../images/dp/dp.JPG" alt="" class="h-10 rounded-full">
-                    <div class="absolute bottom-1 right-0 h-3 w-3 rounded-full bg-green-400 ring-2 ring-white">
-
-                    </div>
-                </div>
-
-                <div>
-
-                    <p class="text-md font-medium">Cristiano Ronaldo</p>
-                    <section class="flex gap-1 items-center text-sm text-neutral-400 ">
-                        <p>Siuuuu</p>
-                        <p class="">•</p>
-                        <p>32m</p>
-                    </section>
-                </div>
-
-            </div>
-
-            <div class="hover:bg-gray-100 p-2 flex gap-2 rounded-md">
-                <div class="relative w-fit">
-                    <img src="../images/dp/dp.JPG" alt="" class="h-10 rounded-full">
-                    <div class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-400 ">
-
-                    </div>
-                </div>
-
-                <div>
-
-                    <p class="text-md font-medium">Cristiano Ronaldo</p>
-                    <section class="flex gap-1 items-center text-sm text-neutral-400 ">
-                        <p>Siuuuu</p>
-                        <p class="">•</p>
-                        <p>32m</p>
-                    </section>
-                </div>
-
-            </div>
-
-            <div class="hover:bg-gray-100 p-2 flex gap-2 rounded-md">
-                <div class="relative w-fit">
-                    <img src="../images/dp/dp.JPG" alt="" class="h-10 rounded-full">
-                    <div class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-400 ">
-
-                    </div>
-                </div>
-
-                <div>
-
-                    <p class="text-md font-medium">Cristiano Ronaldo</p>
-                    <section class="flex gap-1 items-center text-sm text-neutral-400 ">
-                        <p>Siuuuu</p>
-                        <p class="">•</p>
-                        <p>32m</p>
-                    </section>
-                </div>
-
-            </div>
-
-            <div class="hover:bg-gray-100 p-2 flex gap-2 rounded-md">
-                <div class="relative w-fit">
-                    <img src="../images/dp/dp.JPG" alt="" class="h-10 rounded-full">
-                    <div class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-400 ">
-
-                    </div>
-                </div>
-
-                <div>
-
-                    <p class="text-md font-medium">Cristiano Ronaldo</p>
-                    <section class="flex gap-1 items-center text-sm text-neutral-400 ">
-                        <p>Siuuuu</p>
-                        <p class="">•</p>
-                        <p>32m</p>
-                    </section>
-                </div>
-
-            </div>
-
-            <div class="hover:bg-gray-100 p-2 flex gap-2 rounded-md">
-                <div class="relative w-fit">
-                    <img src="../images/dp/dp.JPG" alt="" class="h-10 rounded-full">
-                    <div class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-400 ">
-
-                    </div>
-                </div>
-
-                <div>
-
-                    <p class="text-md font-medium">Cristiano Ronaldo</p>
-                    <section class="flex gap-1 items-center text-sm text-neutral-400 ">
-                        <p>Siuuuu</p>
-                        <p class="">•</p>
-                        <p>32m</p>
-                    </section>
-                </div>
-
-            </div>
-
-            <div class="hover:bg-gray-100 p-2 flex gap-2 rounded-md">
-                <div class="relative w-fit">
-                    <img src="../images/dp/dp.JPG" alt="" class="h-10 rounded-full">
-                    <div class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-400 ">
-
-                    </div>
-                </div>
-
-                <div>
-
-                    <p class="text-md font-medium">Cristiano Ronaldo</p>
-                    <section class="flex gap-1 items-center text-sm text-neutral-400 ">
-                        <p>Siuuuu</p>
-                        <p class="">•</p>
-                        <p>32m</p>
-                    </section>
-                </div>
-
-            </div>
-
-            <div class="hover:bg-gray-100 p-2 flex gap-2 rounded-md">
-                <div class="relative w-fit">
-                    <img src="../images/dp/dp.JPG" alt="" class="h-10 rounded-full">
-                    <div class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-400 ">
-
-                    </div>
-                </div>
-
-                <div>
-
-                    <p class="text-md font-medium">Cristiano Ronaldo</p>
-                    <section class="flex gap-1 items-center text-sm text-neutral-400 ">
-                        <p>Siuuuu</p>
-                        <p class="">•</p>
-                        <p>32m</p>
-                    </section>
-                </div>
-
-            </div>
-
-            <div class="hover:bg-gray-100 p-2 flex gap-2 rounded-md">
-                <div class="relative w-fit">
-                    <img src="../images/dp/dp.JPG" alt="" class="h-10 rounded-full">
-                    <div class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-400 ">
-
-                    </div>
-                </div>
-
-                <div>
-
-                    <p class="text-md font-medium">Cristiano Ronaldo</p>
-                    <section class="flex gap-1 items-center text-sm text-neutral-400 ">
-                        <p>Siuuuu</p>
-                        <p class="">•</p>
-                        <p>32m</p>
-                    </section>
-                </div>
-
-            </div>
-
-            <div class="hover:bg-gray-100 p-2 flex gap-2 rounded-md">
-                <div class="relative w-fit">
-                    <img src="../images/dp/dp.JPG" alt="" class="h-10 rounded-full">
-                    <div class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-400 ">
-
-                    </div>
-                </div>
-
-                <div>
-
-                    <p class="text-md font-medium">Cristiano Ronaldo</p>
-                    <section class="flex gap-1 items-center text-sm text-neutral-400 ">
-                        <p>Siuuuu</p>
-                        <p class="">•</p>
-                        <p>32m</p>
-                    </section>
-                </div>
-
-            </div>
-
-            <div class="hover:bg-gray-100 p-2 flex gap-2 rounded-md">
-                <div class="relative w-fit">
-                    <img src="../images/dp/dp.JPG" alt="" class="h-10 rounded-full">
-                    <div class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-400 ">
-
-                    </div>
-                </div>
-
-                <div>
-
-                    <p class="text-md font-medium">Cristiano Ronaldo</p>
-                    <section class="flex gap-1 items-center text-sm text-neutral-400 ">
-                        <p>Siuuuu</p>
-                        <p class="">•</p>
-                        <p>32m</p>
-                    </section>
-                </div>
-
-            </div>
-
-            <div class="hover:bg-gray-100 p-2 flex gap-2 rounded-md">
-                <div class="relative w-fit">
-                    <img src="../images/dp/dp.JPG" alt="" class="h-10 rounded-full">
-                    <div class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-400 ">
-
-                    </div>
-                </div>
-
-                <div>
-
-                    <p class="text-md font-medium">Cristiano Ronaldo</p>
-                    <section class="flex gap-1 items-center text-sm text-neutral-400 ">
-                        <p>Siuuuu</p>
-                        <p class="">•</p>
-                        <p>32m</p>
-                    </section>
-                </div>
-
-            </div>
-
-            <div class="hover:bg-gray-100 p-2 flex gap-2 rounded-md">
-                <div class="relative w-fit">
-                    <img src="../images/dp/dp.JPG" alt="" class="h-10 rounded-full">
-                    <div class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-400 ">
-
-                    </div>
-                </div>
-
-                <div>
-
-                    <p class="text-md font-medium">Cristiano Ronaldo</p>
-                    <section class="flex gap-1 items-center text-sm text-neutral-400 ">
-                        <p>Siuuuu</p>
-                        <p class="">•</p>
-                        <p>32m</p>
-                    </section>
-                </div>
-
-            </div>
+<section id="chatList">
+          
+</section>
 
 
         </section>
@@ -309,8 +109,7 @@
                     </div>
 
                     <div>
-
-                        <p class="text-md font-medium">Cristiano Ronaldo</p>
+                        <p id="name" class="text-md font-medium">Cristiano Ronaldo</p>
                         <section class="flex gap-1 items-center text-sm text-neutral-400 ">
                             <p>Active now</p>
                         </section>
@@ -334,8 +133,9 @@
             </section>
             <hr>
             <br>
-            <section id="chatBox" class="flex flex-col justify-end gap-2 p-3">
-
+            <section id="chatBox" class="flex flex-col justify-end gap-2 p-3 h-full">
+ 
+            <div id="loader" class="loader mb-[50vh] self-center "></div>
 
 
             </section>
@@ -383,10 +183,37 @@
         </section>
     </div>
     <script>
+
+let receiverId = 8;
+
+let prevLastMsgId = -1;
+
+// setting user-info---------------
+// Define a global variable to hold the user ID
+let userId = null;
+
+fetch('api/get-user-info.php')  // Replace with the actual path to your PHP script
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        userId = data.user_id;  // Save the fetched user ID to the global variable
+        console.log('User ID inside fetch:', userId);  // Log the user ID to the console
+        // Now you can call a function that uses the userId
+        // useUserId();
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });
+
+
         function ajaxRequest(url, callback) {
             var xhr = new XMLHttpRequest();
             xhr.open('GET', url, true);
-
+            
             xhr.onload = function () {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     callback(null, xhr.responseText);  // Call the callback function with the response data
@@ -408,19 +235,39 @@
                 console.log("there is an error retriving the messages from API");
                 return;
             }
-
-            document.getElementById('chatBox').innerHTML =
-                data;
-            autoScroll();
+            const msg = JSON.parse(data);
+            
+            if (msg.lastMsgId != prevLastMsgId) {
+                document.getElementById('name').innerHTML = msg.name;
+                document.getElementById('chatBox').innerHTML = msg.chatbody;
+                autoScroll();
+                prevLastMsgId = msg.lastMsgId;
+            }
         }
 
         function autoRefreshChatBox() {
-            ajaxRequest('api/get-messages.php?sender_id=2&receiver_id=3', updateChatBox);
+            if (userId && receiverId) {
+                ajaxRequest("api/get-messages.php?sender_id="+userId+"&receiver_id="+receiverId, updateChatBox);
+            }
             setTimeout(autoRefreshChatBox, 2000);
         }
+//chat list update
+function updateChatList(error,data){
+    if (error) {
+                console.error(error);
+                console.log("there is an error retriving the messages from API");
+                return;
+            }
+            const msg = JSON.parse(data);
+            document.getElementById('chatList').innerHTML = msg.body;
+}   
 
+function autoRefreshChatList(){
+            ajaxRequest("api/get-chat-list.php", updateChatList);
+            setTimeout(autoRefreshChatList, 5000);
+        }
 
-
+        autoRefreshChatList();
         autoRefreshChatBox();
 
 function autoScroll(){
@@ -428,9 +275,11 @@ function autoScroll(){
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-window.onload= function () {
-    // setTimeout(autoScroll,100);
-}
+
+
+//Sending messages-------------
+
+
 
 function sendMessage() {
     // Get the textarea element by its ID
@@ -447,7 +296,8 @@ function sendMessage() {
 
     // Data to send in the request body
     var data = {
-        message_text: messageText
+        message_text: messageText,
+        receiver_id:receiverId//replace this with your receiver id
     };
 
     // Send a POST request using the fetch API
@@ -468,7 +318,6 @@ function sendMessage() {
         console.error("Error sending message:", error);
     });
 }
-
 
 
     </script>

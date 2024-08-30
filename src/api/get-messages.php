@@ -4,7 +4,7 @@ require_once '../partials/__session.php';
 require_once '../partials/__dbconnect.php';
 
 // Set content type to JSON
-// header('Content-Type: application/json');
+header('Content-Type: application/json');
 
 
 // 2. Get user IDs from request (e.g., via GET or POST)
@@ -57,16 +57,58 @@ $result = $stmt->get_result();
 
 // 8. Fetch and process the results into an array
 $messages = [];
+$lastMsgId = null;
+$response = [
+    "name" => "",
+    "chatbody" => "",
+    "lastMsgId" => -1
+];
+
+function chatHeading($sender, $receiver, $conn){
+    $headingId = -1;
+    $name = '';
+    if ($sender == $_SESSION['id']) {
+        # code...
+        $headingId = $receiver;
+    }
+    else {
+        $headingId = $sender;
+    }
+    // Prepare the SQL query
+$sql = "SELECT fname, lname FROM Users WHERE user_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $headingId); // "i" denotes an integer parameter
+
+// Execute the query
+$stmt->execute();
+$fname = '';
+$lname = '';
+// Bind the result variables
+$stmt->bind_result($fname, $lname);
+if ($stmt->fetch()) {
+   $name .= $fname;
+   $name .= ' ';
+   $name .= $lname;
+   return $name;
+} else {
+    // echo "No user found with user_id".$headingId;
+    echo json_encode(["error" => "Receiver user do not exist"]);
+}    
 
 
+}
 
-var_dump($_SESSION);
+$response['name']= chatHeading($sender_id,$receiver_id, $conn);
+
+
+// var_dump($_SESSION);
 // 9. Output the result as JSON
-echo json_encode($messages);
+// echo json_encode($messages);
 
 while ($row = $result->fetch_assoc()) {
     $messages[] = [
         "message_id" => $row['message_id'],
+        $lastMsgId => $row['message_id'],
         "sender_id" => $row['sender_id'],
         "receiver_id" => $row['receiver_id'],
         "message_text" => $row['message_text'],
@@ -74,40 +116,28 @@ while ($row = $result->fetch_assoc()) {
         "status" => $row['status'],
         "photo_url" => $row['photo_url'] ? $row['photo_url'] : null
     ];
-if ($row['sender_id'] == 3) { //replace 2 with the user id/ userid' perspective
+
+    $dateTime = new DateTime($row['sent_at']);
+    $time = $dateTime->format('g:ia'); // Example output: 7:17pm
 
 
-    echo '
-    <div class="flex self-end flex-col p-3 rounded-md bg-blue-600 text-white w-fit max-w-lg">
-    <p>'.$row['message_text'].'</p>
-    <div class="flex items-center gap-2 text-neutral-200 text-sm">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>
-</svg>
-        <p>3:09pm</p>
-    </div>
-</div>
+
+if ($row['sender_id'] == $_SESSION["id"]) { 
+
+$response['chatbody'] .= '<div class="flex self-end flex-col p-3 rounded-md bg-blue-600 text-white w-fit max-w-lg"><p>'.$row['message_text'].'</p><div class="flex items-center gap-2 text-neutral-200 text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/></svg><p>'.$time.'</p></div></div>';
+$response['lastMsgId'] = $row['message_id'];
+}
+
+else if($row['receiver_id'] == $_SESSION["id"]){
+    $response['chatbody'] .='<div class="flex flex-col p-3 rounded-md bg-neutral-50 w-fit max-w-lg"><p>'.$row['message_text'].'</p><div class="flex items-center gap-2 text-neutral-400 text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/></svg><p>'.$time. '</p></div></div>
     ';
-
-}
-
-else if($row['receiver_id'] == 3){
-    echo '
-    <div class="flex flex-col p-3 rounded-md bg-neutral-50 w-fit max-w-lg">
-    <p>'.$row['message_text'].'</p>
-    <div class="flex items-center gap-2 text-neutral-400 text-sm">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>
-</svg>
-
-        <p>'.$row['sent_at'].'</p>
-
-    </div>
-</div>
-    ';
+    $response['lastMsgId'] = $row['message_id'];
 }
 
 }
+
+// echo json_encode($messages);
+echo json_encode($response,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 
 
 
