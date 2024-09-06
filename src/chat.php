@@ -51,7 +51,7 @@
 
 <body>
     <?php
-    include_once "partials/__nav.php";
+        include_once "partials/__nav.php";
     ?>
 
     <div class="flex h-[80vh] md:h-[90vh] max-w-7xl mx-auto ">
@@ -246,7 +246,6 @@ fetch('api/get-user-info.php')  // Replace with the actual path to your PHP scri
             else if (document.getElementById("loader")) {
                 document.getElementById("loader").remove();
                 document.getElementById('chatBox').innerHTML = msg.chatbody;
-
             }
         }
 
@@ -323,9 +322,6 @@ function sendMessage() {
         console.error("Error sending message:", error);
     });
 }
-
-
-
 
 
     </script>
