@@ -1,0 +1,5 @@
+{
+    "require": {
+        "intervention/image": "^3.8"
+    }
+}

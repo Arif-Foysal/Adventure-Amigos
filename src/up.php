@@ -1,5 +1,6 @@
 <?php
-require 'vendor/autoload.php'; // Ensure this line is present
+require '../vendor/autoload.php'; // Ensure this line is present
+ini_set('memory_limit', '256M'); // or '512M', '1G', etc., depending on your needs
 
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
@@ -27,9 +28,9 @@ $image->toPng()->save($outputFile);
 
 
 // Directory to store uploaded images
-$uploadDir = 'uploads/temp/';
+$uploadDir = '../uploads/temp/';
 
-$resizedDir = 'uploads';
+$resizedDir = '../uploads/';
 
 // Create the directory if it doesn't exist
 if (!is_dir($uploadDir)) {
