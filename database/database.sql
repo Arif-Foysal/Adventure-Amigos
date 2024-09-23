@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `Hotels` (
     `address` VARCHAR(255),
     `phone` VARCHAR(50),
     `email` VARCHAR(100),
+    `accom_type` VARCHAR(100),
     FOREIGN KEY (`location_id`) REFERENCES `Locations`(`location_id`),
     FOREIGN KEY (`host_id`) REFERENCES `Users`(`user_id`)
  );
