@@ -22,8 +22,10 @@ CREATE TABLE IF NOT EXISTS `Cities` (
 
 CREATE TABLE IF NOT EXISTS `Locations` (
     `location_id` INT AUTO_INCREMENT PRIMARY KEY,
-    `name` VARCHAR(100),
+    `street` VARCHAR(500),
+    `postal_code` VARCHAR(100),
     `description` TEXT,
+    `link` TEXT,
     `city_id` INT,
     FOREIGN KEY (`city_id`) REFERENCES `Cities`(`city_id`)
 );

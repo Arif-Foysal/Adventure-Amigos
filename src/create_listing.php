@@ -54,7 +54,7 @@ include_once "partials/__nav.php"
             <h2 class="mt-20 mb-6 text-3xl font-medium text-gray-800 dark:text-white">Start new listing</h2>
 
             <div class="">
-                <a href="create-listing-1-1.php" class="flex items-center justify-between my-4">
+                <a id="new-listing" href="create-listing-1-1.php" class="flex items-center justify-between my-4">
                         <div class="flex">
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-add" viewBox="0 0 16 16">
@@ -96,5 +96,29 @@ include_once "partials/__nav.php"
     <?php
     include_once 'partials/__footer.php';
     ?>
+
+<script>
+    document.getElementById('new-listing').addEventListener('click', function(event) {
+        // Prevent the default behavior of the link
+        event.preventDefault();
+
+        // Call the API using fetch
+        fetch('api/new-listing.php', {
+            method: 'GET' // or 'POST' depending on your API
+        })
+        .then(response => response.json())  // assuming your API returns JSON
+        .then(data => {
+            console.log('API response:', data);
+            // After API call completes, navigate to next_step.php
+            window.location.href = 'create-listing-1-1.php';
+        })
+        .catch(error => {
+            console.error('Error calling API:', error);
+            // Handle error or navigate anyway
+            window.location.href = '#';
+        });
+    });
+</script>
+
 </body>
 </html>

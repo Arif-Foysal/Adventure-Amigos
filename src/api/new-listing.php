@@ -11,7 +11,7 @@ $response = array("message" => "", "status" => "", "hotel_id" => "");
 if ($conn->query($sql) === TRUE) {
     // Get the ID of the newly inserted hotel
     $hotel_id = $conn->insert_id;
-    
+    $_SESSION['list_hotel_id']=$hotel_id;
     // Prepare the response
     $response['message'] = "New record created";
     $response['status'] = "success";

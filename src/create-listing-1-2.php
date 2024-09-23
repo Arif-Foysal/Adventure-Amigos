@@ -27,7 +27,7 @@ include_once 'partials/__save-exit-btn.php';
         echo $_SESSION['err'];
     }
     echo '
-    <form method="post" action="#">
+    <form id="prop_type" method="post" action="#">
     ';
     ?>
     <section class="flex flex-wrap gap-2">       
@@ -110,19 +110,6 @@ include_once 'partials/__save-exit-btn.php';
 include_once 'partials/__footer.php';
     //form handling
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (!isset($_POST['options'])) {
-            $_SESSION['err'] = "Please select an option";
-        }
-        else {
-            # code...
-            //todo: put selected option to db
-            header("Location:$nextPage");
-            unset($_SESSION['err']);
-        }
-        // var_dump($_SESSION);
-        exit;
-    }
     ob_end_flush();//learn more about this piece of shit
 ?>
 </body>

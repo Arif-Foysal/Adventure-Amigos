@@ -48,6 +48,7 @@ echo '
         </a>
 
         <button
+                id = "next"
                 type="submit"
                 class="inline-flex items-center gap-2 rounded border border-neutral-700 bg-neutral-700 px-8 py-3 text-white hover:bg-transparent hover:text-neutral-700 focus:outline-none focus:ring active:text-neutral-700">
                 <span class="text-sm font-medium"> Next </span>
@@ -70,6 +71,117 @@ echo '
                     
     </div>
 ';
+
+
+
+if ($_SESSION['current_file'] == 'create-listing-1-2.php') {
+
+  echo '
+    <script>
+    document.getElementById("next").addEventListener("click", function(event) {
+       
+        event.preventDefault();
+
+ // Get all radio buttons with the name \'options\'
+    const options = document.querySelectorAll("input[name=\'options\']");
+    
+    let selectedOption = null;
+    options.forEach((option) => {
+      if (option.checked) {
+        selectedOption = option.value;
+      }
+    });
+    
+    // Log the result based on whether an option was selected
+    if (selectedOption) {
+      console.log("Selected option: " + selectedOption);
+
+        const apiUrl = `../src/api/set-property-type.php?prop_type=${selectedOption}`;
+
+     
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("API response:", data);
+                
+              
+                window.location.href = "create-listing-1-3.php";
+            })
+            .catch(error => {
+                console.error("There was a problem with the fetch operation:", error);
+            });
+
+    } else {
+      console.log("No option selected");
+    }
+    
+
+      
+    });
+</script>
+  
+  ';
+}
+
+if ($_SESSION['current_file'] == 'create-listing-1-3.php') {
+  echo '
+  <script>
+  document.getElementById("next").addEventListener("click", function(event) {
+     
+      event.preventDefault();
+
+// Get all radio buttons with the name \'option\'
+  const option = document.querySelectorAll("input[name=\'option\']");
+  
+  let selectedOption = null;
+  option.forEach((opt) => {
+    if (opt.checked) {
+      selectedOption = opt.value;
+    }
+  });
+  
+  // Log the result based on whether an option was selected
+  if (selectedOption) {
+    console.log("Selected option: " + selectedOption);
+
+      const apiUrl = `../src/api/set-accom-type.php?accom_type=${selectedOption}`;
+
+   
+      fetch(apiUrl)
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error("Network response was not ok");
+              }
+              return response.json();
+          })
+          .then(data => {
+              console.log("API response:", data);
+              
+            
+              window.location.href = "create-listing-1-4.php";
+          })
+          .catch(error => {
+              console.error("There was a problem with the fetch operation:", error);
+          });
+
+  } else {
+    console.log("No option selected");
+  }
+  
+
+    
+  });
+</script>
+
+';
+
+}
+
 
 // <a
 //             class="inline-flex items-center gap-2 rounded border border-neutral-700 bg-neutral-700 px-8 py-3 text-white hover:bg-transparent hover:text-neutral-700 focus:outline-none focus:ring active:text-neutral-700"

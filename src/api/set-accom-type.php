@@ -4,7 +4,7 @@ include_once '../partials/__dbconnect.php';
 include_once '../partials/__session.php';
 
 
-$hotelID = $_GET['hotel_id'];
+$hotelID = $_SESSION['list_hotel_id'];
 $accom_type = $_GET['accom_type'];
 
 $hotelID = intval($hotelID);
