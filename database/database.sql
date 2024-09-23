@@ -30,14 +30,16 @@ CREATE TABLE IF NOT EXISTS `Locations` (
 
 CREATE TABLE IF NOT EXISTS `Hotels` (
     `hotel_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `host_id` INT,
     `entity_type` VARCHAR(100) DEFAULT 'hotel',
     `name` VARCHAR(100),
     `location_id` INT,
     `address` VARCHAR(255),
     `phone` VARCHAR(50),
     `email` VARCHAR(100),
-    FOREIGN KEY (`location_id`) REFERENCES `Locations`(`location_id`)
-);
+    FOREIGN KEY (`location_id`) REFERENCES `Locations`(`location_id`),
+    FOREIGN KEY (`host_id`) REFERENCES `Users`(`user_id`)
+ );
 
 CREATE TABLE IF NOT EXISTS `Restaurants` (
     `restaurant_id` INT AUTO_INCREMENT PRIMARY KEY,

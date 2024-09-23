@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload with Preview and Submission</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-md">
+        <form action="up.php" method="POST" enctype="multipart/form-data" id="upload-form" class="bg-white shadow-md rounded-lg p-6">
+            <div id="drop-area" class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center cursor-pointer transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                </svg>
+                <p class="mt-2 text-sm text-gray-600">Click to upload or drag and drop</p>
+                <p class="mt-1 text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                <p id="file-name" class="mt-2 text-sm text-gray-600"></p>
+            </div>
+            <input type="file" id="file-input" name="image" accept=".svg,.png,.jpg,.jpeg,.gif" class="hidden" required>
+            <div id="image-preview" class="mt-4 hidden relative group">
+                <img id="preview-image" class="max-w-full h-auto rounded-lg" alt="Image preview">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <button type="button" id="change-photo" class="bg-white text-gray-800 font-bold py-2 px-4 rounded">
+                        Change Photo
+                    </button>
+                </div>
+            </div>
+            <button type="submit" id="submit-button" class="mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors">
+                Upload
+            </button>
+        </form>
+        <div id="upload-status" class="mt-4 text-center hidden"></div>
+    </div>
+
+    <script>
+        const dropArea = document.getElementById('drop-area');
+        const fileInput = document.getElementById('file-input');
+        const fileName = document.getElementById('file-name');
+        const uploadForm = document.getElementById('upload-form');
+        const imagePreview = document.getElementById('image-preview');
+        const previewImage = document.getElementById('preview-image');
+        const changePhotoButton = document.getElementById('change-photo');
+        const submitButton = document.getElementById('submit-button');
+        const uploadStatus = document.getElementById('upload-status');
+
+        dropArea.addEventListener('click', () => fileInput.click());
+        changePhotoButton.addEventListener('click', () => fileInput.click());
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight() {
+            dropArea.classList.add('border-blue-400', 'bg-blue-50');
+        }
+
+        function unhighlight() {
+            dropArea.classList.remove('border-blue-400', 'bg-blue-50');
+        }
+
+        dropArea.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            fileInput.files = files;
+            updateFileInfo();
+        }
+
+        fileInput.addEventListener('change', updateFileInfo);
+
+        function updateFileInfo() {
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                fileName.textContent = `Selected file: ${file.name}`;
+                previewImage.src = URL.createObjectURL(file);
+                imagePreview.classList.remove('hidden');
+                dropArea.classList.add('hidden');
+            } else {
+                fileName.textContent = '';
+                imagePreview.classList.add('hidden');
+                dropArea.classList.remove('hidden');
+            }
+        }
+
+        uploadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (!fileInput.files.length) {
+                alert('Please select a file to upload.');
+                return;
+            }
+
+            const formData = new FormData(uploadForm);
+            submitButton.disabled = true;
+            submitButton.textContent = 'Uploading...';
+            uploadStatus.textContent = 'Uploading...';
+            uploadStatus.classList.remove('hidden', 'text-green-500', 'text-red-500');
+            uploadStatus.classList.add('text-blue-500');
+
+            try {
+                const response = await fetch('up.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const result = await response.text();
+                    uploadStatus.textContent = 'Upload successful!';
+                    uploadStatus.classList.remove('text-blue-500');
+                    uploadStatus.classList.add('text-green-500');
+                    console.log(result);
+                } else {
+                    throw new Error('Upload failed');
+                }
+            } catch (error) {
+                uploadStatus.textContent = 'Upload failed. Please try again.';
+                uploadStatus.classList.remove('text-blue-500');
+                uploadStatus.classList.add('text-red-500');
+                console.error('Error:', error);
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Upload';
+            }
+        });
+    </script>
+</body>
+</html>
