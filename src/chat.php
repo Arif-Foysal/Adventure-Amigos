@@ -131,6 +131,7 @@
                     </button>
                 </div>
             </section>
+            
             <hr>
             <br>
             <section id="chatBox" class="flex flex-col justify-end gap-2 p-3 h-full">
@@ -184,7 +185,7 @@
     </div>
     <script>
 
-let receiverId = 8;
+let receiverId = 2;
 
 let prevLastMsgId = -1;
 
