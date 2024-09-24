@@ -1,8 +1,6 @@
 <?php
 // url.=?city_name=YourCityName&country_name=YourCountryName&street_name=YourStreetName&postal_code=YourPostalCode&des=YourDescription&link=YourLink
 
-
-
 header('Content-Type: application/json');
 include_once '../partials/__dbconnect.php'; // Ensure this initializes $conn
 include_once '../partials/__session.php'; // Assuming this handles session management

@@ -70,11 +70,11 @@
                     <p class="text-2xl font-medium pb-2">Does every bedroom have a lock?</p>
                     <div class="flex items-center gap-2">
 
-                        <input type="radio" id="Yes" name="gender" value="Yes">
+                        <input type="radio" id="Yes" name="lock" value="Yes">
                         <label for="Yes" class="text-lg font-medium">Yes</label>
                     </div>
                     <div class="flex items-center gap-2">
-                        <input type="radio" id="No" name="gender" value="No">
+                        <input type="radio" id="No" name="lock" value="No" checked>
                         <label for="No" class="text-lg font-medium">No</label>
                     </div>
                 </div>
@@ -96,7 +96,50 @@
 
         ?>
     </form>
+
+
     <script src="js/guest-counter.js"></script>
+
+    <script>
+
+
+document.getElementById("next").addEventListener("click", function(event) {
+      console.log("clicked");
+      event.preventDefault();  // Prevent form submission
+
+      // Get the values of input fields
+      let guestCnt = document.getElementById('guestCount').textContent;
+let bedroomCnt = document.getElementById('bedroomCount').textContent;
+let bedCnt = document.getElementById('bedCount').textContent;
+let lock = document.querySelector('input[name="lock"]:checked');
+
+      // Construct the API URL
+      const apiUrl = `../src/api/set-room-details.php?guests=${guestCnt}&bedrooms=${bedroomCnt}&beds=${bedCnt}&lock_availability=${lock.value}`;
+
+      // Perform the API call using fetch
+      fetch(apiUrl)
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error("Network response was not ok");
+              }
+              return response.json();
+          })
+          .then(data => {
+              console.log("API response:", data);
+
+              // Redirect to the next page after successful API response
+              window.location.href = "create-listing-2-1.php";
+          })
+          .catch(error => {
+              console.error("There was a problem with the fetch operation:", error);
+          });
+  });
+
+
+
+
+
+    </script>
 </body>
 
 </html>

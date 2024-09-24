@@ -227,50 +227,6 @@ if ($_SESSION['current_file'] == 'create-listing-1-4.php') {
 
 
 
-if ($_SESSION['current_file'] == 'create-listing-1-5.php') {
-  echo '
- <script>
-  document.getElementById("next").addEventListener("click", function(event) {
-      console.log("clicked");
-      event.preventDefault();  // Prevent form submission
-
-      // Get the values of input fields
-      const country = document.getElementById("country").value;
-      const city = document.getElementById("city").value;
-      const street = document.getElementById("street").value;
-      const additionalInfo = document.getElementById("additionalInfo").value;
-      const postalCode = document.getElementById("postalCode").value;
-      const mapLink = document.getElementById("mapLink").value;
-
-      // Construct the API URL
-      const apiUrl = `../src/api/set-location.php?city_name=${city}&country_name=${country}&street_name=${street}&postal_code=${postalCode}&des=${additionalInfo}&link=${mapLink}`;
-
-      // Perform the API call using fetch
-      fetch(apiUrl)
-          .then(response => {
-              if (!response.ok) {
-                  throw new Error("Network response was not ok");
-              }
-              return response.json();
-          })
-          .then(data => {
-              console.log("API response:", data);
-
-              // Redirect to the next page after successful API response
-              window.location.href = "create-listing-1-5.php";
-          })
-          .catch(error => {
-              console.error("There was a problem with the fetch operation:", error);
-          });
-  });
-</script>
-
-
-  ';
-
-}
-
-
 
 
 

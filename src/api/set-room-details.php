@@ -1,4 +1,6 @@
 <?php
+//double check the link
+// ?guests=2&bedrooms=1&beds=2&lock_availability=Yes&hotel_id=123
 header('Content-Type: application/json');
 include_once '../partials/__dbconnect.php';
 include_once '../partials/__session.php';
@@ -11,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $bedrooms = isset($_GET['bedrooms']) ? intval($_GET['bedrooms']) : 1;
     $beds = isset($_GET['beds']) ? intval($_GET['beds']) : 1;
     $lockAvailability = isset($_GET['lock_availability']) ? $_GET['lock_availability'] : 'No';
-    $hotel_id = $_GET['hotel_id'];  // This would typically come from your application logic or URL
+    $hotel_id = $_SESSION['list_hotel_id'];  // This would typically come from your application logic or URL
     
     // Create the JSON object for room details
     $roomDetails = json_encode([
