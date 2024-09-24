@@ -11,13 +11,13 @@ $prop_type = $_GET['prop_type'];
 $hotelID = intval($hotelID);
 $prop_type = $conn->real_escape_string($prop_type);
 
-$sql_check = "SELECT hotel_id FROM hotels WHERE hotel_id = $hotelID";
+$sql_check = "SELECT hotel_id FROM Hotels WHERE hotel_id = $hotelID";
 $result = $conn->query($sql_check);
 
 $response = array("message" => "", "status" => "", "hotel_id" => "");
 
 if ($result->num_rows > 0) {
-    $sql_update = "UPDATE hotels SET entity_type = '$prop_type' WHERE hotel_id = $hotelID";
+    $sql_update = "UPDATE Hotels SET entity_type = '$prop_type' WHERE hotel_id = $hotelID";
     if ($conn->query($sql_update) === TRUE) {
         $response['message'] = "New record created";
         $response['status'] = "success";
