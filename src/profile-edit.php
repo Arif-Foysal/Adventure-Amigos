@@ -42,7 +42,7 @@ require_once 'partials/__dbconnect.php';
                         <input id="username-input" class="rounded-lg" type="text">
                         
                         <div class="pt-1">
-                        <button type="button" class="focus:outline-none text-white bg-green-600 hover:bg-green-500 focus:ring-4 focus:ring-green-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Update</button>
+                        <button onclick="updateUserInfo('fname', document.getElementById('username-input').value);" type="button" class="focus:outline-none text-white bg-green-600 hover:bg-green-500 focus:ring-4 focus:ring-green-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Update</button>
                         <button onclick="toggleVisibility('username-edit','username')" type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Cancel</button>
                         </div>
                     </div>
@@ -68,7 +68,7 @@ require_once 'partials/__dbconnect.php';
                         <input id="email-input" class="rounded-lg" type="text">
                         
                         <div class="pt-1">
-                        <button type="button" class="focus:outline-none text-white bg-green-600 hover:bg-green-500 focus:ring-4 focus:ring-green-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Update</button>
+                        <button onclick="updateUserInfo('email', document.getElementById('email-input').value);" type="button" class="focus:outline-none text-white bg-green-600 hover:bg-green-500 focus:ring-4 focus:ring-green-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Update</button>
                         <button onclick="toggleVisibility('email-edit','email')" type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Cancel</button>
                         </div>
                     </div>
@@ -93,7 +93,7 @@ require_once 'partials/__dbconnect.php';
                         <input id="phone-input" class="rounded-lg" type="text">
                         
                         <div class="pt-1">
-                        <button type="button" class="focus:outline-none text-white bg-green-600 hover:bg-green-500 focus:ring-4 focus:ring-green-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Update</button>
+                        <button onclick="updateUserInfo('phone', document.getElementById('phone-input').value);" type="button" class="focus:outline-none text-white bg-green-600 hover:bg-green-500 focus:ring-4 focus:ring-green-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Update</button>
                         <button onclick="toggleVisibility('phone-edit','phone')" type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Cancel</button>
                         </div>
                     </div>
@@ -208,6 +208,7 @@ include_once 'partials/__footer.php';
 ?>
 
 <script>
+    
 // Define the API URL with user_id
 const apiUrl = '../src/api/get-user.php';
 
@@ -252,8 +253,39 @@ fetch(apiUrl)
 
 
 <script>
+
     //change user info api call
-    
+    function updateUserInfo(field, newValue) {
+        //    $allowedFields = ['fname', 'lname', 'email', 'phone', 'password', 'profile_photo_url'];
+    // Construct the URL
+    const url = `api/update-user-info.php?field=${field}&newValue=${newValue}`;
+
+    // Make the API call using Fetch
+    fetch(url, {
+        method: 'GET', // or 'POST' if your API requires it
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => {
+        // Check if the response is ok (status in the range 200-299)
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json(); // or response.text() if you expect text
+    })
+    .then(data => {
+        console.log('Success:', data);
+        // Optionally, update the UI or handle the response data
+        window.location.reload(true);
+
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+
 </script>
 
 </body>
