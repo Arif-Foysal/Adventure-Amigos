@@ -38,7 +38,7 @@ A well-known landmark near the hotel (e.g., "Near Eiffel Tower").
                 <div class="">
                     <div class="relative">
 
-                        <select id="options" name="options" class="w-full pt-6 pr-2 pl-4 pb-2 rounded-lg text-lg border-2">
+                        <select id="country" name="options" class="w-full pt-6 pr-2 pl-4 pb-2 rounded-lg text-lg border-2">
                             <option value="Bangladesh">Bangladesh</option>
                             <option value="India">Option 2</option>
                             <option value="option3">Option 3</option>
@@ -50,10 +50,10 @@ A well-known landmark near the hotel (e.g., "Near Eiffel Tower").
                     </div>
                     <br>
 
-                    <input class="w-full p-3 rounded-tl-lg rounded-tr-lg border-2" type="text" placeholder="City">
-                    <input class="border-2 border-t-0 w-full p-3" type="text" placeholder="Street">
-                    <input class="border-2 border-t-0 w-full p-3" type="text" placeholder="Additional info(optional)">
-                    <input class="border-2 border-t-0 w-full p-3 rounded-bl-lg rounded-br-lg" type="text"
+                    <input id="city" class="w-full p-3 rounded-tl-lg rounded-tr-lg border-2" type="text" placeholder="City">
+                    <input id="street" class="border-2 border-t-0 w-full p-3" type="text" placeholder="Street">
+                    <input id="additionalInfo" class="border-2 border-t-0 w-full p-3" type="text" placeholder="Additional info(optional)">
+                    <input id="postalCode" class="border-2 border-t-0 w-full p-3 rounded-bl-lg rounded-br-lg" type="text"
                         placeholder="Postal code">
                     <br>
                     <br>
@@ -62,7 +62,7 @@ A well-known landmark near the hotel (e.g., "Near Eiffel Tower").
                             href="https://developers.google.com/maps/documentation/embed/embedding-map">learn more</a>
                     </p>
                     <!-- <input class="w-full h-28 p-3 rounded-lg" type="text" placeholder="Google map embed link"> -->
-                    <textarea class="border-2 w-full h-28 p-3 rounded-lg resize-none overflow-y-auto"
+                    <textarea id="mapLink" class="border-2 w-full h-28 p-3 rounded-lg resize-none overflow-y-auto"
                         placeholder="Paste your link here"></textarea>
 
                 </div>
@@ -75,9 +75,6 @@ A well-known landmark near the hotel (e.g., "Near Eiffel Tower").
         include_once 'partials/__footer.php';
 
         //form validation
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            header("Location:$nextPage");
-        }
         ob_end_flush();
         ?>
     </form>
