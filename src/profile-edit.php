@@ -26,7 +26,7 @@ require_once 'partials/__dbconnect.php';
                 <div class="text-lg mt-4 mb-4">
                     <div class="flex justify-between pb-2 font-semibold">
                         <p>Name</p>
-                        <a href="profile-edit.php"
+                        <a id="username-edit-btn" onclick="toggleVisibility('username-edit','username')"
                             class="flex items-center border-b-2 border-transparent hover:border-black hover:border-b-2 h-6">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-pen" viewBox="0 0 16 16">
@@ -37,13 +37,22 @@ require_once 'partials/__dbconnect.php';
                             <p class="text-md font-semibold text-black">Edit</p>
                         </a>
                     </div>
-                    <p>Arif Foysal</p>
+                    <p id="username"></p>
+                    <div id="username-edit" class="hidden">
+                        <input id="username-input" class="rounded-lg" type="text">
+                        
+                        <div class="pt-1">
+                        <button type="button" class="focus:outline-none text-white bg-green-600 hover:bg-green-500 focus:ring-4 focus:ring-green-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Update</button>
+                        <button onclick="toggleVisibility('username-edit','username')" type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Cancel</button>
+                        </div>
+                    </div>
                 </div>
                 <hr>
                 <div class="text-lg mt-4 mb-4">
                     <div class="flex justify-between pb-2 font-semibold">
                         <p>Email</p>
-                        <a href="profile-edit.php"
+
+                        <a onclick="toggleVisibility('email-edit','email')"
                             class="flex items-center border-b-2 border-transparent hover:border-black hover:border-b-2 h-6">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-pen" viewBox="0 0 16 16">
@@ -54,13 +63,21 @@ require_once 'partials/__dbconnect.php';
                             <p class="text-md font-semibold text-black">Edit</p>
                         </a>
                     </div>
-                    <p>example@gmail.com</p>
+                    <p id="email"></p>
+                    <div id="email-edit" class="hidden">
+                        <input id="email-input" class="rounded-lg" type="text">
+                        
+                        <div class="pt-1">
+                        <button type="button" class="focus:outline-none text-white bg-green-600 hover:bg-green-500 focus:ring-4 focus:ring-green-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Update</button>
+                        <button onclick="toggleVisibility('email-edit','email')" type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Cancel</button>
+                        </div>
+                    </div>
                 </div>
                 <hr>
                 <div class="text-lg mt-4 mb-4">
                     <div class="flex justify-between pb-2 font-semibold">
                         <p>Phone</p>
-                        <a href="profile-edit.php"
+                        <a onclick="toggleVisibility('phone-edit','phone')"
                             class="flex items-center border-b-2 border-transparent hover:border-black hover:border-b-2 h-6">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-pen" viewBox="0 0 16 16">
@@ -71,7 +88,15 @@ require_once 'partials/__dbconnect.php';
                             <p class="text-md font-semibold text-black">Edit</p>
                         </a>
                     </div>
-                    <p>01798938948</p>
+                    <p id="phone"></p>
+                    <div id="phone-edit" class="hidden">
+                        <input id="phone-input" class="rounded-lg" type="text">
+                        
+                        <div class="pt-1">
+                        <button type="button" class="focus:outline-none text-white bg-green-600 hover:bg-green-500 focus:ring-4 focus:ring-green-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Update</button>
+                        <button onclick="toggleVisibility('phone-edit','phone')" type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Cancel</button>
+                        </div>
+                    </div>
                 </div>
                 <hr>
                 <div class="text-lg mt-4 mb-4">
@@ -181,6 +206,49 @@ require_once 'partials/__dbconnect.php';
 <?php
 include_once 'partials/__footer.php';
 ?>
+
+<script>
+// Define the API URL with user_id
+const apiUrl = '../src/api/get-user.php';
+
+// Fetch data from the API
+fetch(apiUrl)
+  .then(response => response.json())  // Parse the JSON response
+  .then(data => {
+    // Check if the API returned the user details
+    if (data && data.user_id) {
+      // Set the username as fname + " " + lname
+      let name = data.fname + ' ' + data.lname;
+      document.getElementById('username').textContent = name;
+      document.getElementById('username-input').value = name;
+        
+      // Set the email
+      document.getElementById('email').textContent = data.email;
+      document.getElementById('email-input').value = data.email;
+
+      // Set the phone (check if it's null, and show a default if necessary)
+      document.getElementById('phone').textContent = data.phone ? data.phone : 'No phone number';
+      document.getElementById('phone-input').value = data.phone ? data.phone : 'No phone number';
+      
+    } else {
+      // Handle the case when no user is found (optional)
+      console.error('User not found or API error');
+    }
+  })
+  .catch(error => console.error('Error fetching user details:', error));
+</script>
+
+
+<script>
+    // Function to toggle the visibility of an element using Tailwind CSS classes
+        function toggleVisibility(elementId, valueId) {
+        const element = document.getElementById(elementId);
+        const val = document.getElementById(valueId);
+        // Toggle the 'hidden' class to show or hide the element
+        element.classList.toggle('hidden');
+        val.classList.toggle('hidden');
+        }
+</script>
 
 </body>
 
