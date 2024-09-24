@@ -250,6 +250,12 @@ fetch(apiUrl)
         }
 </script>
 
+
+<script>
+    //change user info api call
+    
+</script>
+
 </body>
 
 </html>
