@@ -3,51 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your OTP for Adventure Amigos</title>
+    <title>Image Click with Pitch, Yaw, and Upload</title>
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Styling for the image container */
+        #imageContainer {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Styling for the dot */
+        .dot {
+            width: 20px;
+            height: 20px;
+            background-color: brown;
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        /* Container for the dynamic entries */
+        .entry {
+            margin-top: 10px;
+        }
+
+        .entry input {
+            margin-right: 10px;
+        }
+
+        .entry button {
+            margin-left: 10px;
         }
     </style>
 </head>
-<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333333; margin: 0; padding: 0; background-color: #f0f7f0;">
-    <table role="presentation" style="width: 100%; border-collapse: collapse;">
-        <tr>
-            <td style="padding: 0;">
-                <table role="presentation" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                    <!-- Header -->
-                    <tr>
-                        <td style="background-color:cornsilk; text-align: center; padding: 20px; font-family:monospace; color: teal;">
-                            <h1>Adventure</h1>
-                            <h1>Amigos</h1>
-                            </td>
-                    </tr>
-                    <!-- Content -->
-                    <tr>
-                        <td style="padding: 30px;">
-                            <h1 style="color: #2E7D32; margin-bottom: 20px;">Your One-Time Password</h1>
-                            <p style="margin-bottom: 20px;">Hello Adventure Seeker,</p>
-                            <p style="margin-bottom: 20px;">You've requested a one-time password for your Adventure Amigos account. Use the code below to continue your journey:</p>
-                            <div style="background-color: #E8F5E9; border: 2px dashed #4CAF50; border-radius: 8px; padding: 15px; text-align: center; margin-bottom: 20px;">
-                                <h2 style="color: #2E7D32; font-size: 28px; margin: 0;">123456</h2>
-                            </div>
-                            <p style="margin-bottom: 20px;">This code will expire in 10 minutes. If you didn't request this OTP, please ignore this email or contact our support team.</p>
-                            <p style="margin-bottom: 20px;">Get ready for your next adventure!</p>
-                            <p style="margin-bottom: 20px;">The Adventure Amigos Team</p>
-                        </td>
-                    </tr>
-                    <!-- Footer -->
-                    <tr>
-                        <td style="background-color: #0f990b; color: #ffffff; text-align: center; padding: 20px; font-size: 14px;">
-                            <p style="margin: 0;">© 2023 Adventure Amigos. All rights reserved.</p>
-                            <p style="margin: 5px 0 0; color:blue">Contact us: support@adventureamigos.com | +1 (555) 123-4567</p>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
+<body>
+
+<div id="imageContainer">
+    <img id="myImage" src="pano.jpg" alt="Image" style="width: 600px; height: 400px;">
+</div>
+
+<!-- Container where the pitch/yaw entries will appear -->
+<div id="entryContainer"></div>
+
+<script>
+    let clickCounter = 0;  // Initialize a counter for the sequence of letters
+
+    // Function to handle the click event on the image
+    document.getElementById('myImage').addEventListener('click', function(event) {
+        // Ensure the sequence doesn't go beyond 'Z' (26 clicks)
+        if (clickCounter >= 26) return;
+
+        // Get the position of the image relative to the page
+        const imageRect = this.getBoundingClientRect();
+
+        // Get the click coordinates relative to the image
+        const clickX = event.clientX - imageRect.left;
+        const clickY = event.clientY - imageRect.top;
+
+        // Normalize the coordinates to range from -1 to 1
+        const imageWidth = imageRect.width;
+        const imageHeight = imageRect.height;
+        const normalizedX = (clickX / imageWidth) * 2 - 1;
+        const normalizedY = -((clickY / imageHeight) * 2 - 1); // invert Y
+
+        // Calculate pitch and yaw
+        const yaw = normalizedX * Math.PI;  // Range: -π to π
+        const pitch = normalizedY * Math.PI / 2;  // Range: -π/2 to π/2
+
+        // Create a new dot element
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+
+        // Set the dot's position at the click coordinates
+        dot.style.left = `${clickX}px`;
+        dot.style.top = `${clickY}px`;
+
+        // Convert the clickCounter to a letter (A = 65 in ASCII)
+        const letter = String.fromCharCode(65 + clickCounter); // A, B, C...
+        dot.textContent = letter;
+
+        // Add the dot to the image container
+        document.getElementById('imageContainer').appendChild(dot);
+
+        // Create a new entry div
+        const entryDiv = document.createElement('div');
+        entryDiv.classList.add('entry');
+        entryDiv.id = `entry-${clickCounter}`;  // Give a unique ID to the entry
+
+        // Add pitch and yaw text
+        const pitchYawText = document.createElement('span');
+        pitchYawText.textContent = `Dot ${letter}: Pitch = ${pitch.toFixed(2)}, Yaw = ${yaw.toFixed(2)}`;
+
+        // Add input field for name
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.placeholder = 'Name of the entry';
+
+        // Add file input for image upload
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = 'image/*';
+
+        // Add delete button
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.onclick = function() {
+            // Remove the dot and entry when the delete button is clicked
+            dot.remove();
+            entryDiv.remove();
+        };
+
+        // Append elements to the entry div
+        entryDiv.appendChild(pitchYawText);
+        entryDiv.appendChild(nameInput);
+        entryDiv.appendChild(fileInput);
+        entryDiv.appendChild(deleteButton);
+
+        // Append the entry div to the entryContainer
+        document.getElementById('entryContainer').appendChild(entryDiv);
+
+        // Increment the clickCounter
+        clickCounter++;
+    });
+</script>
+
 </body>
 </html>

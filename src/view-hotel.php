@@ -11,7 +11,9 @@ require_once 'partials/__dbconnect.php';
     <title>Find Accomodation | Amigos</title>
     <link rel="icon" type="image/x-icon" href="../images/fav.png">
     <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
     <script src="https://cdn.tailwindcss.com"></script>
+
 
     <style>
         .gallery-img {
@@ -36,6 +38,37 @@ require_once 'partials/__dbconnect.php';
             object-fit: cover;
         }
     </style>
+     <style>
+        #panorama {
+            width: 100%;
+            height: 500px;
+        }
+        #loading {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        #virtual-tour-container{
+            position: relative;
+        }
+        #scene-info {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+    </style>
+
 </head>
 
 <body class="mb-24">
@@ -84,6 +117,16 @@ require_once 'partials/__dbconnect.php';
                 <h1 class="text-2xl font-semibold">Dhaka, Bangladesh</h1>
             </section>
             <h2 class="text-xl font-normal text-gray-500">details/ # of beds, # of bathrooms etc</h2>
+<br>
+        <div id="virtual-tour-container">
+
+    <h1 class="text-2xl font-semibold pb-2">Virtual Tour</h1>
+    <div id="panorama" class="rounded-lg"></div>
+    <div id="loading">Loading...</div>
+    <div id="scene-info"></div>
+</div>
+           
+           
             <h1 class="text-2xl font-semibold pb-2">Ratings and reviews</h1>
             <section class="flex gap-4">
                 <div class="flex items-center mb-2">
@@ -431,6 +474,122 @@ require_once 'partials/__dbconnect.php';
     <?php
     include_once "partials/__footer.php";
     ?>
+
+
+<script>
+let viewer;
+let currentScene;
+const config = {
+  "initialScene": "scene1",
+  "scenes": {
+    "scene1": {
+      "panorama": "pano.jpg",
+      "title": "Initial Panorama",
+      "hotSpots": [
+        {
+          "pitch": 18.1,
+          "yaw": 1.5,
+          "type": "scene",
+          "text": "Go to Scene 2",
+          "sceneId": "scene2"
+        },
+        {
+          "pitch": -9.4,
+          "yaw": 222.6,
+          "type": "scene",
+          "text": "Go to Scene 3",
+          "sceneId": "scene3"
+        }
+      ]
+    },
+    "scene2": {
+      "panorama": "pano2.jpg",
+      "title": "Second Panorama",
+      "hotSpots": [
+        {
+          "pitch": -9.4,
+          "yaw": 222.6,
+          "type": "scene",
+          "text": "Return to Initial Panorama",
+          "sceneId": "scene1"
+        },
+        {
+          "pitch": 15,
+          "yaw": 110,
+          "type": "scene",
+          "text": "Art Exhibition",
+          "sceneId": null
+        }
+      ]
+    },
+    "scene3": {
+      "panorama": "pano3.jpg",
+      "title": "Third Panorama",
+      "hotSpots": [
+        {
+          "pitch": 14.1,
+          "yaw": 1.5,
+          "type": "scene",
+          "text": "Return to Initial Panorama",
+          "sceneId": "scene1"
+        }
+      ]
+    }
+  }
+};
+
+function initPannellum() {
+    loadScene(config.initialScene);
+}
+
+
+
+function loadScene(sceneId) {
+    const scene = config.scenes[sceneId];
+    currentScene = sceneId;
+    
+    document.getElementById('loading').style.display = 'block';
+    updateSceneInfo(scene.title);
+
+    if (viewer) {
+        viewer.destroy();
+    }
+
+    // Simulate loading delay (remove this in production)
+    setTimeout(() => {
+        viewer = pannellum.viewer('panorama', {
+            "type": "equirectangular",
+            "panorama": scene.panorama,
+            "autoLoad": true,
+            "hotSpots": scene.hotSpots.map(hotspot => ({
+                ...hotspot,
+                clickHandlerFunc: createClickHandler(hotspot)
+            }))
+        });
+        document.getElementById('loading').style.display = 'none';
+    }, 2000); // Simulated 2-second delay
+}
+
+function createClickHandler(hotspot) {
+    return function(event, hs) {
+        if (hotspot.sceneId) {
+            loadScene(hotspot.sceneId);
+        } else {
+            alert(hotspot.text);
+        }
+    };
+}
+
+function updateSceneInfo(title) {
+    document.getElementById('scene-info').textContent = `Current Scene: ${title}`;
+}
+
+// Initialize Pannellum when the page loads
+window.onload = initPannellum;
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 </body>
 
 </html>
