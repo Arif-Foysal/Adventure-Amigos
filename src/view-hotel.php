@@ -40,8 +40,8 @@ require_once 'partials/__dbconnect.php';
     </style>
      <style>
         #panorama {
-            width: 100%;
-            height: 500px;
+            width: 600PX;
+            height: 400px;
         }
         #loading {
             display: none;
@@ -494,8 +494,8 @@ const config = {
           "sceneId": "scene2"
         },
         {
-          "pitch": -9.4,
-          "yaw": 222.6,
+          "pitch": -32.40,
+          "yaw": -151.20,
           "type": "scene",
           "text": "Go to Scene 3",
           "sceneId": "scene3"

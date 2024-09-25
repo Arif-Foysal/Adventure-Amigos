@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Click with Pitch, Yaw, and Upload</title>
+    <title>Panorama Pitch and Yaw with Click</title>
     <style>
         /* Styling for the image container */
         #imageContainer {
@@ -15,7 +15,7 @@
         .dot {
             width: 20px;
             height: 20px;
-            background-color: brown;
+            background-color: red;
             border-radius: 50%;
             position: absolute;
             transform: translate(-50%, -50%);
@@ -25,7 +25,6 @@
             color: white;
             font-size: 12px;
             font-weight: bold;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
 
         /* Container for the dynamic entries */
@@ -66,15 +65,20 @@
         const clickX = event.clientX - imageRect.left;
         const clickY = event.clientY - imageRect.top;
 
-        // Normalize the coordinates to range from -1 to 1
+        // Image width and height
         const imageWidth = imageRect.width;
         const imageHeight = imageRect.height;
-        const normalizedX = (clickX / imageWidth) * 2 - 1;
-        const normalizedY = -((clickY / imageHeight) * 2 - 1); // invert Y
 
-        // Calculate pitch and yaw
-        const yaw = normalizedX * Math.PI;  // Range: -π to π
-        const pitch = normalizedY * Math.PI / 2;  // Range: -π/2 to π/2
+        // Normalize the X and Y coordinates to range from 0 to 1
+        const normalizedX = clickX / imageWidth;
+        const normalizedY = clickY / imageHeight;
+
+        // Map normalizedX and normalizedY to Pannellum pitch and yaw:
+        // Yaw ranges from -180 (left) to 180 (right) degrees
+        const yaw = (normalizedX * 360) - 180;
+
+        // Pitch ranges from -90 (top) to 90 (bottom) degrees
+        const pitch = 90 - (normalizedY * 180);
 
         // Create a new dot element
         const dot = document.createElement('div');
