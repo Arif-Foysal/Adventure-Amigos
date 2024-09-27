@@ -122,6 +122,7 @@ let lock = document.querySelector('input[name="lock"]:checked');
               if (!response.ok) {
                   throw new Error("Network response was not ok");
               }
+              
               return response.json();
           })
           .then(data => {
@@ -134,12 +135,10 @@ let lock = document.querySelector('input[name="lock"]:checked');
               console.error("There was a problem with the fetch operation:", error);
           });
   });
-
-
-
-
-
     </script>
+
+
+
 </body>
 
 </html>

@@ -142,11 +142,13 @@ require_once 'partials/__dbconnect.php';
                 <h1 class="text-4xl font-semibold">Location</h1>
             </div>
            <br>
-           
-           <iframe class="w-full rounded-xl" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.5821981175636!2d90.44713507492538!3d23.797887786952415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7d8042caf2d%3A0x686fa3e360361ddf!2sUnited%20International%20University!5e0!3m2!1sen!2sbd!4v1727297340900!5m2!1sen!2sbd" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-           
-           </section>
-           <br><br><br>
+           <div class="w-full rounded-xl flex justify-center">
+
+           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58397.5298389343!2d90.31743598160196!3d23.824088326575502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7715a40c603%3A0xec01cd75f33139f5!2sBRAC%20University!5e0!3m2!1sen!2sbd!4v1727432913212!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+               </div>
+                
+               </section>
+               <br><br><br>
            <div class="flex justify-center items-center gap-2">
             <img src="../images/vectors/star.png" width=30 alt="">
                 <h1 class="text-4xl font-semibold">Ratings and Reviews</h1>

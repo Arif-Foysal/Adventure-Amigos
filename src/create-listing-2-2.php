@@ -26,8 +26,8 @@
                 <br>
                 <section class="flex flex-wrap gap-2">
                     <div class="w-40 grow">
-                        <input type="checkbox" name="options" value="hotel" id="option-hotel" class="hidden peer">
-                        <label for="option-hotel"
+                        <input type="checkbox" name="options" value="wifi" id="option-wifi" class="hidden peer">
+                        <label for="option-wifi"
                             class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-100 peer-checked:bg-gray-300">
                             <div class="flex flex-col justify-start">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
@@ -43,8 +43,8 @@
                         </label>
                     </div>
                     <div class=" w-40 grow">
-                        <input type="checkbox" name="options" value="house" id="option-house" class="hidden peer">
-                        <label for="option-house"
+                        <input type="checkbox" name="options" value="tv" id="option-tv" class="hidden peer">
+                        <label for="option-tv"
                             class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-100 peer-checked:bg-gray-300">
                             <div class="flex flex-col justify-start">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
@@ -57,9 +57,9 @@
                         </label>
                     </div>
                     <div class="w-40 grow">
-                        <input type="checkbox" name="options" value="treehouse" id="option-treehouse"
+                        <input type="checkbox" name="options" value="ac" id="option-ac"
                             class="hidden peer">
-                        <label for="option-treehouse"
+                        <label for="option-ac"
                             class="border-2 border-gray-800 rounded-md p-4 cursor-pointer inline-flex w-full h-full hover:bg-zinc-100 peer-checked:bg-gray-300">
                             <div class="flex flex-col justify-start">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
@@ -183,6 +183,7 @@
 
     <?php
     include_once 'partials/__prev-next-btn.php';
+    var_dump($_SESSION);
     ?>
     </form>
 
@@ -190,14 +191,64 @@
     <br>
     <?php
         include_once 'partials/__footer.php';
-
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            # code...
-            header("Location:$nextPage");
-        }
         ob_end_flush();
-
     ?>
+
+<script>
+
+document.getElementById("next").addEventListener("click", function(event) {
+    console.log("clicked");
+    event.preventDefault();  // Prevent form submission
+
+    // Function to get the selected checkbox values
+    function getCheckboxValues(fieldName) {
+        const checkboxes = document.querySelectorAll(`input[name="${fieldName}"]:checked`);
+        const selectedValues = [];
+
+        checkboxes.forEach((checkbox) => {
+            selectedValues.push(checkbox.value);
+        });
+
+        return selectedValues; // Return the selected values
+    }
+
+    let features = getCheckboxValues('options');
+    console.log(features);
+
+    // Create a JSON object where each feature is set to true
+    let featuresJSON = {};
+
+    features.forEach((feature) => {
+        featuresJSON[feature] = true;
+    });
+
+    console.log(featuresJSON);
+
+    // Convert the JSON object to a string
+    let jsonString = JSON.stringify(featuresJSON);
+
+    // Send the JSON data via POST to your API
+    
+    fetch('../src/api/set-room-features.php', {
+        method: 'POST',  // POST request
+        headers: {
+            'Content-Type': 'application/json',  // Tell the server we're sending JSON
+        },
+        body: jsonString  // Send the JSON object as the body of the request
+    })
+    .then(response => response.json())  // Convert the response to JSON
+    .then(data => {
+        console.log('Success:', data);  // Handle success response from the server
+        window.location.href = "create-listing-2-3.php";
+
+    })
+    .catch((error) => {
+        console.error('Error:', error);  // Handle any errors
+    });
+});
+
+
+</script>
 
 </body>
 
