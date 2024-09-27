@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <?php
     ob_start();
     include_once "partials/__nav.php";

@@ -42,7 +42,8 @@ CREATE TABLE IF NOT EXISTS `Hotels` (
     `accom_type` VARCHAR(100),
     `room_details` VARCHAR(1000),
     `features` VARCHAR(1000),
-    
+    `description` VARCHAR(1000),  
+    `price` INT,  
     FOREIGN KEY (`location_id`) REFERENCES `Locations`(`location_id`),
     FOREIGN KEY (`host_id`) REFERENCES `Users`(`user_id`)
  );

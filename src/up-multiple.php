@@ -1,6 +1,9 @@
 <?php
 require '../vendor/autoload.php';
 
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
+
 // Dynamically increase PHP limits using ini_set
 ini_set('memory_limit', '512M');           // Increase memory limit
 ini_set('max_execution_time', '300');      // Set maximum execution time to 5 minutes
@@ -8,9 +11,6 @@ ini_set('post_max_size', '64M');           // Increase post data size limit
 ini_set('upload_max_filesize', '64M');     // Increase max upload file size
 ini_set('max_file_uploads', '10');         // Allow up to 10 files to be uploaded at once
 
-
-use Intervention\Image\ImageManager;
-use Intervention\Image\Drivers\Gd\Driver;
 
 function imageScaler($inputFile, $outputFile, $scaleFactor) {
     $manager = new ImageManager(new Driver());

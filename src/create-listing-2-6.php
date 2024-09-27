@@ -18,17 +18,7 @@
     include_once 'partials/__save-exit-btn.php';
     ?>
 
-    <!-- To take as input:
-country
-city
-street
-postal code
-additional info
-Google Maps Embed Link (Optional)
-Landmark (Optional)
-A well-known landmark near the hotel (e.g., "Near Eiffel Tower").
 
--->
     <form action="#" method="post">
 
         <section class=" p-6">
@@ -40,7 +30,7 @@ A well-known landmark near the hotel (e.g., "Near Eiffel Tower").
 
                     <h1 class="text-9xl font-extrabold flex text-slate-800"><p>$</p><p id="price">19</p></h1>
                     <input id="price-edit" class="h-28 w-72 hidden text-9xl" type="text">                        
-                    <button onclick="toggleVisibility('price-edit','price')">
+                    <button id="edit" type="button" onclick="toggleVisibility('price-edit','price')">
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pencil-square text-slate-800 cursor-pointer" viewBox="0 0 16 16">
                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -62,15 +52,55 @@ A well-known landmark near the hotel (e.g., "Near Eiffel Tower").
         ?>
     </form>
     <script>
+    document.getElementById("price-edit").value =document.getElementById("price").innerText;
+
     // Function to toggle the visibility of an element using Tailwind CSS classes
         function toggleVisibility(elementId, valueId) {
         const element = document.getElementById(elementId);
         const val = document.getElementById(valueId);
+ 
         // Toggle the 'hidden' class to show or hide the element
-        element.classList.toggle('hidden');
-        val.classList.toggle('hidden');
+        element.classList.remove('hidden');
+        val.classList.add('hidden');
         }
+
+
+//send to api
+document.getElementById("next").addEventListener("click", function(event) {
+event.preventDefault();  // Prevent default form submission
+
+
+const price =document.getElementById("price-edit").value;
+
+const data = {
+    price:price
+};
+console.log(price);
+
+fetch('api/set-price.php', {
+        method: 'POST',  // POST request
+        headers: {
+            'Content-Type': 'application/json',  // Set content type to JSON
+        },
+        body: JSON.stringify(data)  // Send the JSON data as the body of the request
+    })
+    .then(response => response.json())  // Parse the response as JSON
+    .then(data => {
+        console.log('Success:', data);  // Handle success response from the server
+        window.location.href = "create-listing-2-7.php";
+
+    })
+    .catch((error) => {
+        console.error('Error:', error);  // Handle any errors
+    });
+
+
+
+});
+
 </script>
+
+
 </body>
 
 </html>
