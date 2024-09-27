@@ -15,7 +15,7 @@
         .dot {
             width: 20px;
             height: 20px;
-            background-color: red;
+            background-color: brown;
             border-radius: 50%;
             position: absolute;
             transform: translate(-50%, -50%);
