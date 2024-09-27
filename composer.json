@@ -1,5 +1,6 @@
 {
     "require": {
-        "intervention/image": "^3.8"
+        "intervention/image": "^3.8",
+        "guzzlehttp/guzzle": "^7.9"
     }
 }
