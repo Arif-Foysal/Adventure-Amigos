@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['images'])) {
                 $resizedFile = $resizedDir . $uniqueName . '.' . $imageFileType;
 
                 if (move_uploaded_file($fileTmpName, $targetFile)) {
-                    imageScaler($targetFile, $resizedFile, 500);
+                    imageScaler($targetFile, $resizedFile, 900);
                     
                     $response[] = [
                         'status' => 'success',
