@@ -44,6 +44,8 @@ CREATE TABLE IF NOT EXISTS `Hotels` (
     `features` VARCHAR(1000),
     `description` VARCHAR(1000),  
     `price` INT,  
+    `auto_reserve` TINYINT(1) DEFAULT 0,
+     `status` ENUM('draft', 'listed', 'archived') DEFAULT 'draft',
     FOREIGN KEY (`location_id`) REFERENCES `Locations`(`location_id`),
     FOREIGN KEY (`host_id`) REFERENCES `Users`(`user_id`)
  );
@@ -93,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `Reviews` (
 CREATE TABLE IF NOT EXISTS `Photos` (
     `photo_id` INT AUTO_INCREMENT PRIMARY KEY,
     `user_id` INT,
-    `entity_type` ENUM('hotel', 'restaurant', 'attraction'),
+    `entity_type` ENUM('hotel', 'restaurant', 'attraction', 'nid'),
     `entity_id` INT,
     `photo_url` VARCHAR(255),
     `upload_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

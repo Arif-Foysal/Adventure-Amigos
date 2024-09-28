@@ -41,6 +41,8 @@ A well-known landmark near the hotel (e.g., "Near Eiffel Tower").
                         <h1 class="text-4xl font-bold">Create your description</h1>
                         <textarea id="description" class="border-2 w-full h-28 p-3 rounded-lg resize-none overflow-y-auto"
                         placeholder="Put your description here"></textarea>
+                        <br><br>
+                       
 
                 </div>
             </div>
