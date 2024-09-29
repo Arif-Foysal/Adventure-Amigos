@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS `Users` (
   `phone` VARCHAR(255),
   `password` VARCHAR(255),
   `rcvEmails` BOOLEAN,
+  `currency` VARCHAR(3) DEFAULT 'USD';
   `CreatedAt` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `profile_photo_url` VARCHAR(255) NULL
 );
