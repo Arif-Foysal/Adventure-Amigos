@@ -1,5 +1,8 @@
 <?php
 require_once 'partials/__dbconnect.php';
+require_once 'partials/__session.php';
+
+
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +11,7 @@ require_once 'partials/__dbconnect.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Accomodation | Amigos</title>
+    <title>Find Stays | Amigos</title>
     <link rel="icon" type="image/x-icon" href="../images/fav.png">
     <link rel="stylesheet" href="output.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
@@ -77,22 +80,22 @@ require_once 'partials/__dbconnect.php';
         ?>
     <section class=" p-6">
         <div class=" max-w-5xl mx-auto">
-            <h1 class="text-3xl font-semibold pb-4">Title of the Accomodation</h1>
+            <h1 id="name" class="text-3xl font-semibold pb-4"></h1>
             <div class="grid grid-cols-4 grid-rows-2 gap-2">
                 <div class="col-span-2 row-span-2 square">
-                    <img src="../images/hotel/1.jpg" alt="Image 1" class="gallery-img rounded-l-xl">
+                    <img id="img1" src="../images/hotel/1.jpg" alt="Image 1" class="gallery-img rounded-l-xl">
                 </div>
                 <div class="square">
-                    <img src="../images/hotel/2.jpg" alt="Image 2" class="gallery-img">
+                    <img id="img2" src="../images/hotel/2.jpg" alt="Image 2" class="gallery-img">
                 </div>
                 <div class="square">
-                    <img src="../images/hotel/3.jpg" alt="Image 3" class="gallery-img rounded-tr-xl">
+                    <img id="img3" src="../images/hotel/3.jpg" alt="Image 3" class="gallery-img rounded-tr-xl">
                 </div>
                 <div class="square">
-                    <img src="../images/hotel/4.jpg" alt="Image 4" class="gallery-img">
+                    <img id="img4" src="../images/hotel/4.jpg" alt="Image 4" class="gallery-img">
                 </div>
                 <div class="square relative">
-                    <img src="../images/hotel/5.jpg" alt="Image 5" class="gallery-img rounded-br-xl">
+                    <img id="img5" src="../images/hotel/5.jpg" alt="Image 5" class="gallery-img rounded-br-xl">
                     <a href="hotel-gallery.php" id="overlay"
                         class="absolute md:hidden flex justify-center items-center text-white inset-0 bg-black bg-opacity-50 rounded-br-xl">
                         <p class="text-lg">Show all</p>
@@ -114,16 +117,45 @@ require_once 'partials/__dbconnect.php';
                         d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10" />
                     <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
                 </svg>
-                <h1 class="text-2xl font-semibold">Dhaka, Bangladesh</h1>
+                <h1 class="text-2xl font-semibold"><span id = "city_name"></span>, <span id="country_name"></span></h1>
             </section>
-            <h2 class="text-xl font-normal text-gray-500">details/ # of beds, # of bathrooms etc</h2>
+            <h2 id="room_details" class="text-xl font-normal text-gray-500"><span id="guest"></span> guests, <span id="bedroom"></span> bedrooms, <span id="bed"></span> beds <span id="vault"></span></h2>
+            <br>
+            <hr>
+            <div class="flex p-2 gap-4">
+                <div>
+                    <img class="w-20 h-20 rounded-full object-cover" src="../uploads/66f83d1d90190.jpg" alt="">
+                </div>
+                <div class="text-xl font-medium flex flex-col justify-between">
+                    <div>
+
+                        <span>Hosted by </span><span id="host_name">mahin</span>
+                    </div>
+                    <div class="flex gap-3">
+                    <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-800 text-gray-800 hover:border-gray-500 hover:text-gray-500 focus:outline-none focus:border-gray-500 focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left" viewBox="0 0 16 16">
+  <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+</svg>
+                    Message
+</button>
+<button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-800 text-gray-800 hover:border-gray-500 hover:text-gray-500 focus:outline-none focus:border-gray-500 focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none ">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+</svg>
+                    View profile
+</button>
+
+                    </div>
+                </div>
+            </div>
+            <hr>
 <br><br>
         <div id="virtual-tour-container">
 
         <div class="flex justify-center items-center gap-2">
 
             <img src="../images/vectors/virtual.png" width="35px" alt="">
-            <h1 class="text-4xl font-semibold ">Virtual Tour </h1>
+            <h1 class="text-4xl font-semibold ">Virtual Tour</h1>
         </div>
     <br>
     <div id="panorama" class="rounded-lg"></div>
@@ -142,9 +174,8 @@ require_once 'partials/__dbconnect.php';
                 <h1 class="text-4xl font-semibold">Location</h1>
             </div>
            <br>
-           <div class="w-full rounded-xl flex justify-center">
+           <div id="map" class="w-full rounded-xl flex justify-center">
 
-           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58397.5298389343!2d90.31743598160196!3d23.824088326575502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7715a40c603%3A0xec01cd75f33139f5!2sBRAC%20University!5e0!3m2!1sen!2sbd!4v1727432913212!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                </div>
                 
                </section>
@@ -480,8 +511,8 @@ require_once 'partials/__dbconnect.php';
 
     <section class="bg-neutral-100 fixed bottom-0 w-full pt-4 pb-4 pl-6 pr-6 md:pl-16 md:pr-16 border-t-2 border-neutral-300 flex justify-between">
         <div class="text-lg font-normal">
-            <p> <span class="font-medium">$65</span> night</p>
-            <p>Available for: <span class="underline font-medium">10-15</span></p>
+            <p> <span class="font-medium">$<span id="price"></span></span> night</p>
+            <p>Available for: <span id="date" class="underline font-medium">10-15</span></p>
         </div>
         <button class="flex items-center gap-2 pt-2 pb-2 pl-4 pr-4 bg-green-600 hover:bg-green-500 font-semibold rounded-md text-white text-lg">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
@@ -613,6 +644,86 @@ function updateSceneInfo(title) {
 window.onload = initPannellum;
 </script>
 
+
+<script>
+        function formatDateRange(hotel) {
+    const optionsSameMonth = { month: 'short', day: 'numeric' };
+    const optionsDifferentMonth = { month: 'short', day: 'numeric' };
+
+    // Convert the 'from' and 'to' date strings into Date objects
+    const fromDate = new Date(hotel.from);
+    const toDate = new Date(hotel.to);
+
+    let formattedDateRange;
+
+    // Check if the 'from' and 'to' dates are in the same month and year
+    if (fromDate.getMonth() === toDate.getMonth() && fromDate.getFullYear() === toDate.getFullYear()) {
+        // If they are in the same month, display the month once
+        formattedDateRange = `${fromDate.toLocaleDateString('en-US', optionsSameMonth)}-${toDate.getDate()}`;
+    } else {
+        // If they are in different months, display both month and day for both dates
+        formattedDateRange = `${fromDate.toLocaleDateString('en-US', optionsDifferentMonth)} - ${toDate.toLocaleDateString('en-US', optionsDifferentMonth)}`;
+    }
+
+    return formattedDateRange;
+}
+
+// Function to get the 'id' parameter from the URL
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+// Get the 'id' from the current URL
+const hotelId = getQueryParam('id');
+// const hotelId = 32;
+console.log("Hotel id:");
+console.log(hotelId);
+
+
+// Fetch the hotel details based on the 'id'
+fetch(`get-hotels.php?id=${hotelId}`)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        
+        document.getElementById('name').innerHTML = data.hotel.name;
+        document.getElementById('city_name').innerHTML = data.hotel.city_name;
+        document.getElementById('country_name').innerHTML = data.hotel.country_name;
+
+        let roomDetails = JSON.parse(data.hotel.room_details);
+
+        document.getElementById('guest').innerHTML =roomDetails['guests'];
+        document.getElementById('bedroom').innerHTML =roomDetails['bedrooms'];
+        document.getElementById('bed').innerHTML =roomDetails['beds'];
+        if (roomDetails['lock_availability']=='Yes') {
+            document.getElementById('vault').innerHTML =", vault available";
+        }
+
+        const mapElement = document.getElementById('map');
+        document.getElementById('map').innerHTML = data.hotel.link;
+        const childElementMap = mapElement.firstElementChild;
+
+if (childElementMap) {
+  childElementMap.classList.add('w-full', 'rounded-xl');
+}
+
+
+document.getElementById('price').innerHTML = data.hotel.price;
+document.getElementById('date').innerHTML = formatDateRange(data.hotel);
+
+// document.getElementById('img1').src = data.hotel.photos[1];
+for (let i = 1; i <= 5; i++) {
+    document.getElementById('img' + i).src = data.hotel.photos[i - 1];
+}
+
+
+
+    })
+    .catch(error => console.error('Error fetching hotels:', error));
+
+
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 </body>

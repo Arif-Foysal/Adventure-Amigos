@@ -141,8 +141,8 @@ SELECT
     H.room_details,
     H.features,
     H.description,
-    H.from,
-    H.to,
+    H.from ,
+    H.to ,
     H.price,
     H.rating,
     H.auto_reserve,
@@ -151,6 +151,7 @@ SELECT
     C.country AS country_name,
     L.street,
     L.postal_code,
+    L.link,  -- Including the link field from the Locations table
     -- Subquery to get the first photo URL for each hotel
     (SELECT P.photo_url 
      FROM Photos P 
