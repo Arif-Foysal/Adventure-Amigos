@@ -10,7 +10,11 @@
 </head>
 <body>
 
-<?php include_once "partials/__nav.php"; ?>
+<?php 
+
+include_once "partials/__nav.php"; 
+?>
+
 
 <main class="mt-4 mx-8 mb-8">
     <div id="hotel-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
@@ -20,7 +24,9 @@
     </div>
 </main>
 
-<?php include_once "partials/__footer.php"; ?>
+<?php include_once "partials/__footer.php";
+ 
+?>
 
 <script>
     let currentPage = 1;

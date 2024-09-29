@@ -23,13 +23,7 @@ include_once 'partials/__session.php';
 <?php
 include_once "partials/__nav.php"
 ?>
-<div  class="bg-green-400 font-medium flex justify-center space-x-8">
 
-
-<h1>BappaRaj</h1>
-<h1>Khonju Raaj</h1>
-
-</div>
 
 <footer>
 
