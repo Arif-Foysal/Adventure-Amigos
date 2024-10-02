@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking Confirmation</title>
+</head>
+<body style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.2; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f0f7f0;">
+    <table cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        
+        <tr>
+            <td style="background-color:cornsilk; text-align: center;  font-family:monospace; color: teal;">
+                <h1>Adventure</h1>
+                <h1>Amigos</h1>
+                </td>
+        </tr>
+        <tr>
+            <td style="background-color: #4CAF50; padding: 30px; text-align: center;">
+                <h1 style="color: #ffffff; margin: 0; font-size: 28px; text-transform: uppercase; letter-spacing: 2px;">Booking Confirmation</h1>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 30px;">
+                <p style="font-size: 18px; color: #4CAF50; font-weight: bold;">Dear Valued Guest,</p>
+                <p style="font-size: 16px; color: #555;">Thank you for choosing our eco-friendly hotel. We're delighted to confirm your booking. Here are the details of your green getaway:</p>
+                
+                <table cellpadding="12" cellspacing="0" width="100%" style="border-collapse: separate; margin-top: 20px; margin-bottom: 20px; border-radius: 8px; overflow: hidden; border: 1px solid #e0e0e0;">
+                    <tr style="background-color: #E8F5E9;">
+                        <td style="border-bottom: 1px solid #e0e0e0; font-weight: bold; color: #2E7D32;">Booking Reference:</td>
+                        <td style="border-bottom: 1px solid #e0e0e0; color: #333;">#ECO12345</td>
+                    </tr>
+                    <tr>
+                        <td style="border-bottom: 1px solid #e0e0e0; font-weight: bold; color: #2E7D32;">Check-in Date:</td>
+                        <td style="border-bottom: 1px solid #e0e0e0; color: #333;">July 15, 2023</td>
+                    </tr>
+                    <tr style="background-color: #E8F5E9;">
+                        <td style="border-bottom: 1px solid #e0e0e0; font-weight: bold; color: #2E7D32;">Check-out Date:</td>
+                        <td style="border-bottom: 1px solid #e0e0e0; color: #333;">July 20, 2023</td>
+                    </tr>
+                    <tr>
+                        <td style="border-bottom: 1px solid #e0e0e0; font-weight: bold; color: #2E7D32;">Room Type:</td>
+                        <td style="border-bottom: 1px solid #e0e0e0; color: #333;">Eco-Friendly Suite</td>
+                    </tr>
+                    <tr style="background-color: #E8F5E9;">
+                        <td style="font-weight: bold; color: #2E7D32;">Number of Guests:</td>
+                        <td style="color: #333;">2 Adults</td>
+                    </tr>
+                </table>
+                
+                <p style="font-size: 16px; color: #555; background-color: #E8F5E9; padding: 15px; border-radius: 8px; border-left: 4px solid #4CAF50;">
+                    <strong style="color: #2E7D32;">Green Tip:</strong> To reduce your carbon footprint during your stay, consider reusing towels and opting out of daily room cleaning. Every small action counts!
+                </p>
+                
+                <p style="font-size: 16px; color: #555;">Need to make changes or have questions? We're here to help! Contact our eco-conscious concierge team anytime.</p>
+                
+                <p style="font-size: 16px; color: #555;">We're excited to provide you with a sustainable and memorable stay!</p>
+                
+                <p style="font-size: 16px; color: #555;">
+                    Warm regards,<br>
+                    <span style="color: #4CAF50; font-weight: bold;">The Adventure Amigos Team</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #4CAF50; color: #ffffff; padding: 20px; text-align: center;">
+                <p style="margin: 0; font-size: 14px;">Contact us: support@adventureamigos.com | +1 (555) 123-4567</p>
+                <p style="margin: 5px 0 0 0; font-size: 14px;">© 2023 Adventure Amigos. All rights reserved.</p>
+                <p style="margin: 15px 0 0 0; font-size: 12px;">This email is sent using renewable energy ♻️</p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
