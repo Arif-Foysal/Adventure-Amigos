@@ -109,7 +109,11 @@
                     </div>
 
                     <div>
-                        <p id="name" class="text-md font-medium">Cristiano Ronaldo</p>
+                        <p id="name" class="text-md font-medium">
+                        <div id="name-loader" class="animate-spin inline-block size-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full dark:text-blue-500" role="status" aria-label="loading">
+  <span class="sr-only">Loading...</span>
+</div>
+                        </p>
                         <section class="flex gap-1 items-center text-sm text-neutral-400 ">
                             <p>Active now</p>
                         </section>
@@ -184,13 +188,22 @@
         </section>
     </div>
     <script>
+// Function to get the 'id' parameter from the URL
+function getQueryParam(param) {
 
-let receiverId = 2;
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+
+}
+
+let receiverId = getQueryParam('receiver');
+console.log(receiverId);
 
 let prevLastMsgId = -1;
 
 // setting user-info---------------
 // Define a global variable to hold the user ID
+
 let userId = null;
 
 fetch('api/get-user-info.php')  // Replace with the actual path to your PHP script
@@ -240,6 +253,7 @@ fetch('api/get-user-info.php')  // Replace with the actual path to your PHP scri
             
             if (msg.lastMsgId != prevLastMsgId) {
                 document.getElementById('name').innerHTML = msg.name;
+                document.getElementById('name-loader').classList.add('hidden');
                 document.getElementById('chatBox').innerHTML = msg.chatbody;
                 autoScroll();
                 prevLastMsgId = msg.lastMsgId;

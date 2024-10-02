@@ -100,7 +100,7 @@ require_once 'partials/__session.php';
                         class="absolute md:hidden flex justify-center items-center text-white inset-0 bg-black bg-opacity-50 rounded-br-xl">
                         <p class="text-lg">Show all</p>
                     </a>
-                    <button
+                    <button id="photos"
                         class="absolute bottom-4 right-4 hidden md:flex gap-2 items-center bg-white rounded-lg pl-2 pr-2 pt-1 pb-1 text-lg font-normal border-2 border-gray-500 hover:bg-neutral-300">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-border-all" viewBox="0 0 16 16">
@@ -132,13 +132,13 @@ require_once 'partials/__session.php';
                         <span>Hosted by </span><span id="host_name">mahin</span>
                     </div>
                     <div class="flex gap-3">
-                    <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-800 text-gray-800 hover:border-gray-500 hover:text-gray-500 focus:outline-none focus:border-gray-500 focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none ">
+                    <button id="message" type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-800 text-gray-800 hover:bg-gray-200 focus:outline-none focus:border-gray-500 focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left" viewBox="0 0 16 16">
   <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
 </svg>
                     Message
 </button>
-<button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-800 text-gray-800 hover:border-gray-500 hover:text-gray-500 focus:outline-none focus:border-gray-500 focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none ">
+<button id="host-profile" type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-800 text-gray-800 hover:bg-gray-200 focus:outline-none focus:border-gray-500 focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none ">
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
   <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
 </svg>
@@ -717,11 +717,26 @@ for (let i = 1; i <= 5; i++) {
     document.getElementById('img' + i).src = data.hotel.photos[i - 1];
 }
 
+// set messge host and host profile links
+document.getElementById('message').addEventListener('click', function() {
+    // Assuming data.hotel.host_id contains the host_id
+    const host_id = data.hotel.host_id;
 
+    // Construct the URL by concatenating the receiver with the host_id
+    const url = `chat.php?receiver=${encodeURIComponent(host_id)}`;
+
+    // Redirect the user to the constructed URL
+    window.location.href = url;
+});
+document.getElementById('photos').addEventListener('click', function() {
+    // Construct the URL by concatenating the receiver with the hotel_id
+    const url = `gallery.php?hotel_id=${encodeURIComponent(data.hotel.hotel_id)}`;
+    // Redirect the user to the constructed URL
+    window.location.href = url;
+});
 
     })
     .catch(error => console.error('Error fetching hotels:', error));
-
 
 </script>
 

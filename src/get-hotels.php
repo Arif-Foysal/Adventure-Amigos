@@ -10,7 +10,7 @@ $hotel_id = isset($_GET['id']) ? (int)$_GET['id'] : null;
 // If hotel_id is provided, fetch details for that hotel only
 if ($hotel_id) {
     // Query to fetch the specific hotel details from the HotelDetails view including new fields
-    $sql = "SELECT hotel_id, `name`, `from`, `to`, city_name, country_name, street, postal_code, link, first_photo_url, accom_type, room_details, features, `description`, price, rating, auto_reserve
+    $sql = "SELECT hotel_id,`host_id`, `name`, `from`, `to`, city_name, country_name, street, postal_code, link, first_photo_url, accom_type, room_details, features, `description`, price, rating, auto_reserve
             FROM HotelDetails
             WHERE hotel_id = ? AND status = 'listed'";
     $stmt = $conn->prepare($sql);
