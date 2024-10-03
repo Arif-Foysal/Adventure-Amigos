@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `Users` (
   `phone` VARCHAR(255),
   `password` VARCHAR(255),
   `rcvEmails` BOOLEAN,
-  `currency` VARCHAR(3) DEFAULT 'USD';
+  `currency` VARCHAR(3) DEFAULT 'USD',
   `CreatedAt` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `profile_photo_url` VARCHAR(255) NULL
 );
@@ -128,8 +128,7 @@ CREATE TABLE IF NOT EXISTS `SentPhotos` (
   FOREIGN KEY (`message_id`) REFERENCES `Messages`(`message_id`) ON DELETE CASCADE
 );
 
---Views
---experimental
+
 CREATE OR REPLACE VIEW HotelDetails AS
 SELECT 
     H.hotel_id,

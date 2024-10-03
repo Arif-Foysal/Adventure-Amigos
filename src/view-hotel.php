@@ -1,8 +1,6 @@
 <?php
 require_once 'partials/__dbconnect.php';
 require_once 'partials/__session.php';
-
-
 ?>
 
 <!DOCTYPE html>
@@ -514,7 +512,7 @@ require_once 'partials/__session.php';
             <p> <span class="font-medium">$<span id="price"></span></span> night</p>
             <p>Available for: <span id="date" class="underline font-medium">10-15</span></p>
         </div>
-        <button class="flex items-center gap-2 pt-2 pb-2 pl-4 pr-4 bg-green-600 hover:bg-green-500 font-semibold rounded-md text-white text-lg">
+        <button id = "reserve" class="flex items-center gap-2 pt-2 pb-2 pl-4 pr-4 bg-green-600 hover:bg-green-500 font-semibold rounded-md text-white text-lg">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
   <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
 </svg>
@@ -734,6 +732,13 @@ document.getElementById('photos').addEventListener('click', function() {
     // Redirect the user to the constructed URL
     window.location.href = url;
 });
+document.getElementById('reserve').addEventListener('click', function() {
+    // Construct the URL by concatenating the receiver with the hotel_id
+    const reserve_url = `reserve.php?hotel_id=${encodeURIComponent(data.hotel.hotel_id)}`;
+    // Redirect the user to the constructed URL
+    window.location.href = reserve_url;
+});
+
 
     })
     .catch(error => console.error('Error fetching hotels:', error));

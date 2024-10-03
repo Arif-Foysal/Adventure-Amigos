@@ -1,0 +1,110 @@
+//all hotel
+	
+hotels	
+0	
+hotel_id	32
+name	"The cottage"
+city_name	"Dhaka"
+country_name	"Bangladesh"
+from	"2024-09-28"
+to	"2024-09-30"
+street	"Sayednagar"
+postal_code	"5400"
+link	'<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29205.054591750028!2d90.43312639999999!3d23.7961216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c62fb95f16c1%3A0xb333248370356dee!2sJamuna%20Future%20Park!5e0!3m2!1sen!2sbd!4v1727627913000!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'
+first_photo_url	"../uploads/66f8191883b51.png"
+accom_type	"room"
+room_details	'{"guests":1,"bedrooms":1,"beds":1,"lock_availability":"Yes"}'
+features	'{"tv":true,"pool":true}'
+description	"THEEE FUCKING DESCRIPTION OF THE Funking COTTAGE"
+price	19
+rating	"4.50"
+auto_reserve	1
+photos	
+0	"../uploads/66f8191883b51.png"
+1	"../uploads/66f81a234deee.png"
+1	
+hotel_id	34
+name	"The home"
+city_name	"Rajshahi"
+country_name	"Bangladesh"
+from	"2024-09-28"
+to	"2024-09-30"
+street	""
+postal_code	""
+link	""
+first_photo_url	"../uploads/66f83d1d90190.jpg"
+accom_type	"entire"
+room_details	'{"guests":1,"bedrooms":1,"beds":1,"lock_availability":"No"}'
+features	'{"tv":true,"pool":true,"workout":true}'
+description	"lala"
+price	19
+rating	"4.50"
+auto_reserve	1
+photos	
+0	"../uploads/66f83d1d90190.jpg"
+2	
+hotel_id	35
+name	"Ghor Bari"
+city_name	"Dhaka"
+country_name	"Bangladesh"
+from	"2024-09-28"
+to	"2024-09-30"
+street	""
+postal_code	""
+link	""
+first_photo_url	"../uploads/66f83fb2c83c7.jpg"
+accom_type	"room"
+room_details	'{"guests":1,"bedrooms":1,"beds":1,"lock_availability":"No"}'
+features	'{"tv":true,"pool":true}'
+description	""
+price	19
+rating	"4.50"
+auto_reserve	1
+photos	
+0	"../uploads/66f83fb2c83c7.jpg"
+3	
+hotel_id	36
+name	"Mantion"
+city_name	"Rangpue"
+country_name	"Bangladesh"
+from	"2024-09-29"
+to	"2024-09-30"
+street	""
+postal_code	""
+link	""
+first_photo_url	"../uploads/66f846a7dda3c.png"
+accom_type	"room"
+room_details	'{"guests":1,"bedrooms":1,"beds":1,"lock_availability":"No"}'
+features	'{"kitchen":true}'
+description	""
+price	190
+rating	"4.50"
+auto_reserve	1
+photos	
+0	"../uploads/66f846a7dda3c.png"
+total_hotels	"7"
+current_page	1
+total_pages	2
+
+//specific hotel
+hotel_id	32
+host_id	1
+name	"The cottage"
+from	"2024-09-28"
+to	"2024-09-30"
+city_name	"Dhaka"
+country_name	"Bangladesh"
+street	"Sayednagar"
+postal_code	"5400"
+link	'<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29205.054591750028!2d90.43312639999999!3d23.7961216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c62fb95f16c1%3A0xb333248370356dee!2sJamuna%20Future%20Park!5e0!3m2!1sen!2sbd!4v1727627913000!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'
+first_photo_url	"../uploads/66f8191883b51.png"
+accom_type	"room"
+room_details	'{"guests":1,"bedrooms":1,"beds":1,"lock_availability":"Yes"}'
+features	'{"tv":true,"pool":true}'
+description	"THEEE FUCKING DESCRIPTION OF THE Funking COTTAGE"
+price	19
+rating	"4.50"
+auto_reserve	1
+photos	
+0	"../uploads/66f8191883b51.png"
+1	"../uploads/66f81a234deee.png"
