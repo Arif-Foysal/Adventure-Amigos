@@ -321,7 +321,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
               <p>Become a Host</p>
             </a>
 
-            <a href="create_listing.php" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
+            <a href="host-dashboard.php" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
               focus:text-white" role="menuitem" tabindex="-1" id="user-menu-item-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                 class="bi bi-toggle-off" viewBox="0 0 16 16">

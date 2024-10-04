@@ -98,7 +98,7 @@
                     <p id="date" class="text-md text-gray-500"></p>
                     
                 </div>
-                <p><span id="currancy">$</span><span id="price"></span> <span>night</span></p>
+                <p><span class="currancy-sign">$</span><span id="price"></span> <span>night</span></p>
         </div>
        </section>
        <br><hr><br>
@@ -106,15 +106,15 @@
    
 
        <div class="flex justify-between pr-6">
-        <p><span>$</span><span id="price-d">299</span> x <span id="multiplier">1</span> <span>nights</span></p>
-        <p><span>$</span><span id="total"></span></p>
+        <p><span class="currancy-sign">$</span><span id="price-d">299</span> x <span id="multiplier">1</span> <span>nights</span></p>
+        <p><span class="currancy-sign" >$</span><span id="total"></span></p>
            
 
        </div>
        <br><hr><br>
        <div class="flex justify-between pr-6">
         <p class="text-lg"><b>Total</b><span>BDT</span></p>
-        <p><span>$</span><span id="total-final">598</span></p>
+        <p><span>$</span><span id="total-final"></span></p>
     </div>
 </div>
 </section>
@@ -420,6 +420,7 @@ document.getElementById('rating').innerHTML = data.hotel.rating;
 document.getElementById('price').innerHTML =data.hotel.price;
 document.getElementById('price-d').innerHTML =data.hotel.price;
 document.getElementById('total').innerHTML =data.hotel.price;
+document.getElementById('total-final').innerHTML =data.hotel.price;
 price = data.hotel.price;
 let roomDetails = JSON.parse(data.hotel.room_details);
 
