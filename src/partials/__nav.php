@@ -16,7 +16,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   <link
     href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" /> -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" /> -->
   <!-- <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script> -->
 </head>
 <!-- <style>
@@ -465,7 +465,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </svg>
         <p id="query_price">Any price</p>
       </button>
-      <button id="query_search"
+      <button id="query_search" onclick="runQuery()"
         class="hidden ml-4 text-white bg-orange-600 hover:bg-orange-700 rounded-full w-8 h-8 md:w-11 md:h-11  items-center justify-center"><svg
           xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search"
           viewBox="0 0 16 16">
@@ -535,9 +535,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </div>
         <br>
         <div class="">
-          <input id="cityInput" type="text" class="w-full rounded-lg bg-gray-100 border-neutral-500 border-2" placeholder="Enter destination" onkeyup="fetchCitySuggestions()">
-           <!-- City suggestions dropdown -->
-    <ul id="citySuggestions" class=" mt-1 rounded-lg shadow-lg"></ul>
+          <input id="cityInput" type="text" class="w-full rounded-lg bg-gray-100 border-neutral-500 border-2"
+            placeholder="Enter destination" onkeyup="fetchCitySuggestions()">
+          <!-- City suggestions dropdown -->
+          <ul id="citySuggestions" class=" mt-1 rounded-lg shadow-lg"></ul>
 
         </div>
         <br>
@@ -558,11 +559,13 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <div class="flex justify-around">
           <section class="flex flex-col w-2/5">
             <label class="text-lg font-normal" for="query-checkin">Check in:</label>
-            <input type="date" id="query-checkin" class="border-2 border-neutral-500 rounded-lg">
+            <input type="date" id="query-checkin" class="border-2 border-neutral-500 rounded-lg"
+              onchange="selectCheckinDate()">
           </section>
           <section class="flex flex-col w-2/5">
             <label class="text-lg font-normal" for="query-checkout">Check out:</label>
-            <input type="date" id="query-checkout" class="border-2 border-neutral-500 rounded-lg">
+            <input type="date" id="query-checkout" class="border-2 border-neutral-500 rounded-lg"
+              onchange="selectCheckoutDate()">
           </section>
         </div>
         <br>
@@ -578,50 +581,40 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             Close
           </button>
         </div>
-        <p>Content for Any price</p>
-        <button onclick="closePanel(2)">Close</button>
+        <br>
+        <section class="flex justify-between">
+          <div class="w-2/5">
+            <p>Minimum price:</p>
+            <input id="minPriceInput" type="number" class="w-full rounded-lg bg-gray-100 border-neutral-500 border-2"
+              placeholder="Enter min-price" onkeyup="selectMinPrice()">
+          </div>
+          <div class="w-2/5">
+            <p>Maximum price</p>
+            <input id="maxPriceInput" type="number" class="w-full rounded-lg bg-gray-100 border-neutral-500 border-2"
+              placeholder="Enter max-price" onkeyup="selectMaxPrice()">
+          </div>
+        </section>
       </div>
     </div>
   </section>
 
 </div>
 
-<!-- <script>
-    // Function to fetch city suggestions
-    function fetchCitySuggestions() {
-      const input = document.getElementById('cityInput').value;
-      
-      if (input.length >= 2) { // Start search after 2 characters
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', `get-cities.php?q=${input}`, true);
-        xhr.onload = function () {
-          if (xhr.status === 200) {
-            const results = JSON.parse(xhr.responseText);
-            let suggestions = '';
 
-            if (results.length > 0) {
-              results.forEach(city => {
-                suggestions += `<li class="p-2 hover:bg-gray-200 cursor-pointer">${city.name}, ${city.country}</li>`;
-              });
-            } else {
-              suggestions = `<li class="p-2">No results found</li>`;
-            }
-            document.getElementById('citySuggestions').innerHTML = suggestions;
-          }
-        };
-        xhr.send();
-      } else {
-        document.getElementById('citySuggestions').innerHTML = '';
-      }
-    }
-  </script> -->
+<script>
+  //fetch city suggestions, set quary values on nav, send get req to hotels.php
+  let queryData = {
+    city: null,
+    checkin: null,
+    checkout: null,
+    minPrice: null,
+    maxPrice: null
+  };
 
-
-  <script>
   // Function to fetch city suggestions
   function fetchCitySuggestions() {
     const input = document.getElementById('cityInput').value;
-    
+
     if (input.length >= 1) { // Start search after 2 characters
       const xhr = new XMLHttpRequest();
       xhr.open('GET', `get-cities.php?q=${input}`, true);
@@ -632,7 +625,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
           if (results.length > 0) {
             results.forEach(city => {
-              suggestions += `<li class="p-2 hover:bg-gray-200 cursor-pointer" onclick="selectCity('${city.name}, ${city.country}')">${city.name}, ${city.country}</li>`;
+              suggestions += `<li class="p-2 hover:bg-gray-200 cursor-pointer" onclick="selectCity('${city.name}')">${city.name}, ${city.country}</li>`;
             });
           } else {
             suggestions = `<li class="p-2">No results found</li>`;
@@ -648,10 +641,128 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
   // Function to select a city and populate the input field
   function selectCity(city) {
-    document.getElementById('cityInput').value = city;
+    queryData.city = city;
+    // const inputValue = document.getElementById('cityInput').value;
+    document.getElementById('query_city').textContent = city + ', Bangladesh';//#fake country
+    document.getElementById('cityInput').value = city + ', Bangladesh';
     document.getElementById('citySuggestions').innerHTML = ''; // Clear suggestions
+    console.log(queryData);
   }
+
+  function selectCheckinDate() {
+    const selectedDate = document.getElementById('query-checkin').value;
+    document.getElementById('query_date').textContent = convertDateQuery(selectedDate);
+    queryData.checkin = selectedDate;
+  }
+
+  function selectCheckoutDate() {
+    const selectedDate = document.getElementById('query-checkout').value;
+    document.getElementById('query_date').textContent = convertDateQuery(queryData.checkin) + " - " + convertDateQuery(selectedDate);
+    queryData.checkout = selectedDate;
+  }
+  function selectMinPrice() {
+    const minPriceInput = document.getElementById('minPriceInput').value;
+    if (queryData.maxPrice) {
+      document.getElementById('query_price').textContent = "min:" + minPriceInput + " max: $" + queryData.maxPrice;
+    }
+    else {
+      document.getElementById('query_price').textContent = "min: $" + minPriceInput;
+    }
+    queryData.minPrice = minPriceInput;
+  }
+  function selectMaxPrice() {
+    const maxPriceInput = document.getElementById('maxPriceInput').value;
+    const minPrice = queryData.minPrice === null ? 'N/A' : queryData.minPrice;
+
+    document.getElementById('query_price').textContent = "min:" + minPrice + " max: $" + maxPriceInput;
+    queryData.maxPrice = maxPriceInput;
+  }
+
+  function convertDateQuery(dateString) {
+    // Create a new Date object from the input string
+    const date = new Date(dateString);
+
+    // Array of month names
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+    // Get the month (0-11) and day (1-31)
+    const month = monthNames[date.getMonth()];
+    const day = date.getDate();
+
+    // Return the formatted date
+    return `${month} ${day}`;
+  }
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("Given req:");
+    console.log(getQueryParam('city'));
+    if (getQueryParam('city') != null) {
+      queryData.city = getQueryParam('city');
+      document.getElementById('query_city').textContent = queryData.city + ', Bangladesh';//#fake country
+    }
+
+    if (getQueryParam('check_in') != null) {
+      document.getElementById('query_date').textContent = convertDateQuery(getQueryParam('check_in'));
+      queryData.checkin = getQueryParam('check_in');
+    }
+
+    if (getQueryParam('check_out') != null) {
+      document.getElementById('query_date').textContent = convertDateQuery(queryData.checkin) + " - " + convertDateQuery(getQueryParam('check_out'));
+      queryData.checkout = selectedDate;
+    }
+    if (getQueryParam('min_price') != null) {
+      if (getQueryParam('max_price')) {
+        document.getElementById('query_price').textContent = "min:" + getQueryParam('min_price') + " max: $" + getQueryParam('max_price');
+      }
+      else {
+        document.getElementById('query_price').textContent = "min: $" + getQueryParam('min_price');
+      }
+      queryData.minPrice = getQueryParam('min_price');
+    }
+
+    if (getQueryParam('max_price') != null) {
+      const minPrice = getQueryParam('min_price') === null ? 'N/A' : getQueryParam('min_price');
+
+document.getElementById('query_price').textContent = "min:" + minPrice + " max: $" + getQueryParam('max_price');
+queryData.maxPrice = getQueryParam('max_price');
+    }
+
+  });
+
+
+
+
+  function runQuery() {
+    let query_url = "hotels.php?";
+
+    if (queryData.city) {
+      query_url += `city=${encodeURIComponent(queryData.city)}&`;
+    }
+    if (queryData.checkin) {
+      query_url += `check_in=${encodeURIComponent(queryData.checkin)}&`;
+    }
+    if (queryData.checkout) {
+      query_url += `check_out=${encodeURIComponent(queryData.checkout)}&`;
+    }
+    if (queryData.minPrice !== null) {
+      query_url += `min_price=${encodeURIComponent(queryData.minPrice)}&`;
+    }
+    if (queryData.maxPrice !== null) {
+      query_url += `max_price=${encodeURIComponent(queryData.maxPrice)}&`;
+    }
+
+    // Remove the trailing '&' if it exists
+    query_url = query_url.endsWith('&') ? query_url.slice(0, -1) : query_url;
+
+    // Example usage
+    console.log(query_url);
+    // return query_url;
+    window.location.href = query_url;
+  }
+
 </script>
+
 
 <!-- currency modal -->
 

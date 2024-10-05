@@ -52,8 +52,46 @@ include_once "partials/__nav.php";
 
     return formattedDateRange;
 }
+
+        // Function to get the 'id' parameter from the URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+          // Get the 'id' from the current URL
+        let query = "";
+
+          const city = getQueryParam('city');
+        if (city) {
+            query+="&city="+city;
+        }
+
+        const min_price = getQueryParam('min_price');
+        if (min_price) {
+            query+="&min_price="+min_price;
+        }
+        
+        const max_price = getQueryParam('max_price');
+        if (max_price) {
+            query+="&max_price="+max_price;
+        }
+
+        const check_in = getQueryParam('check_in');
+        if (check_in) {
+            query+="&check_in="+check_in;
+        }
+        const check_out = getQueryParam('check_out');
+        if (check_out) {
+            query+="&check_out="+check_out;
+        }
+        
+   console.log(query);
+   
+
+
     function fetchHotels(page) {
-        fetch(`get-hotels.php?page=${page}`)
+        fetch(`get-hotels.php?page=${page}${query}`)
             .then(response => response.json())
             .then(data => {
                 const hotelList = document.getElementById('hotel-list');

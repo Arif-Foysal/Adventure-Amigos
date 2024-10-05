@@ -586,7 +586,8 @@ require_once 'partials/__session.php';
 
         // Get the 'id' from the current URL
         const hotelId = getQueryParam('id');
-
+        
+        
         // const hotelId = 32;
         console.log("Hotel id:");
         console.log(hotelId);

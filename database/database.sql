@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS `Users` (
   `password` VARCHAR(255),
   `rcvEmails` BOOLEAN,
   `currency` VARCHAR(3) DEFAULT 'USD',
+  `status` VARCHAR(255) DEFAULT 'unverified',
   `CreatedAt` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `profile_photo_url` VARCHAR(255) NULL
 );
@@ -126,6 +127,17 @@ CREATE TABLE IF NOT EXISTS `SentPhotos` (
   `photo_url` VARCHAR(255) NOT NULL,
   `uploaded_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (`message_id`) REFERENCES `Messages`(`message_id`) ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS `User_OTPs` (
+  `otp_id` INT PRIMARY KEY AUTO_INCREMENT,
+  `user_id` INT,  -- Foreign key reference to the Users table
+  `otp_code` VARCHAR(6),  -- The OTP code
+  `expires_at` TIMESTAMP,  -- Expiry timestamp
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- When the OTP was generated
+  `is_verified` BOOLEAN DEFAULT FALSE,  -- If the OTP was successfully used for verification
+  FOREIGN KEY (`user_id`) REFERENCES `Users`(`user_id`) ON DELETE CASCADE
 );
 
 
