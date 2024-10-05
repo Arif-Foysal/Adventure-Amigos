@@ -16,7 +16,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   <link
     href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" /> -->
+  <!-- <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script> -->
 </head>
+<!-- <style>
+        #calendar {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 10px;
+        }
+    </style> -->
 <style>
   .navbar-transition {
     transition: transform 0.6s ease-in-out;
@@ -34,63 +43,63 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
 <script src="https://cdn.tailwindcss.com"></script>
 <nav id="navbar" class="bg-white border-b border-gray-300 pb-2 sm:pb-0 sticky top-0 w-full navbar-transition">
-<section id="main-nav">
+  <section id="main-nav">
 
-  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-    <div class="relative flex h-16 items-center justify-between">
-      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-        <!-- Mobile menu button-->
-        <!-- onclick="toggleHam()" -->
-        <button type="button" id="hamburger"
-          class="relative inline-flex items-center justify-center rounded-md p-2  hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-          aria-controls="mobile-menu" aria-expanded="false">
-          <span class="absolute -inset-0.5"></span>
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button-->
+          <!-- onclick="toggleHam()" -->
+          <button type="button" id="hamburger"
+            class="relative inline-flex items-center justify-center rounded-md p-2  hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            aria-controls="mobile-menu" aria-expanded="false">
+            <span class="absolute -inset-0.5"></span>
 
-          <span class="sr-only">Open main menu</span>
+            <span class="sr-only">Open main menu</span>
 
 
-          <!--
+            <!--
             Icon when menu is closed. fill="currentColor" class="h-6 w-6" viewBox="0 0 16 16"
             Menu open: "hidden", Menu closed: "block"
           -->
-          <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-            aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-          <!--
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <!--
             Icon when menu is open.
             Menu open: "block", Menu closed: "hidden"
           -->
-          <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-            aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-        <div class="flex flex-shrink-0 items-center">
-          <img class="h-10 w-auto" src="../images/logo.png" alt="Your Company">
+            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="flex flex-shrink-0 items-center">
+            <img class="h-10 w-auto" src="../images/logo.png" alt="Your Company">
+          </div>
 
-        <div class="hidden sm:ml-6 sm:block">
-          <div class="flex space-x-4">
-            <!-- Search Bar -->
-            <div class="relative">
-              <input type="text" class="  pr-24 py-auto border border-gray-300 rounded-md w-64"
-                placeholder="Find Anything" aria-label="search">
-              <button
-                class="absolute right-0 top-0 bg-green-600 hover:bg-green-500 border text-white font-semibold py-2 px-4 rounded-r-md "
-                type="button" id="search-btn">Search</button>
-            </div>
-            <!-- experimental -->
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <!-- Search Bar -->
+              <div class="relative">
+                <input type="text" class="  pr-24 py-auto border border-gray-300 rounded-md w-64"
+                  placeholder="Find Anything" aria-label="search">
+                <button
+                  class="absolute right-0 top-0 bg-green-600 hover:bg-green-500 border text-white font-semibold py-2 px-4 rounded-r-md "
+                  type="button" id="search-btn">Search</button>
+              </div>
+              <!-- experimental -->
 
-            <!-- search bar end -->
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            &nbsp;&nbsp;
+              <!-- search bar end -->
+              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+              &nbsp;&nbsp;
 
-            <?php
-            if ($currentPage == 'discover.php') {
-              echo '
+              <?php
+              if ($currentPage == 'discover.php') {
+                echo '
              <a href="discover.php" class="flex items-center border-b-2 border-black">
             <svg class="text-black" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe-americas" viewBox="0 0 16 16">
              <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z"/>
@@ -101,8 +110,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
               </a>
     
     ';
-            } else {
-              echo '
+              } else {
+                echo '
              <a href="discover.php" class="flex items-center border-b-2 border-transparent hover:border-gray-600 hover:border-b-2">
             <svg class="text-gray-600" xxmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe-americas" viewBox="0 0 16 16">
              <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z"/>
@@ -112,12 +121,12 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 class="text-md font-semibold text-gray-600">Discover</p>
               </a>
     ';
-            }
+              }
 
 
 
-            if ($currentPage == 'hotels.php') {
-              echo '
+              if ($currentPage == 'hotels.php') {
+                echo '
              <a href="hotels.php" class="flex items-center border-b-2 border-black">
             <svg class="text-black" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
               <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
@@ -128,8 +137,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
               </a>
     
     ';
-            } else {
-              echo '
+              } else {
+                echo '
              <a href="hotels.php" class="flex items-center border-b-2 border-transparent hover:border-gray-600 hover:border-b-2">
             <svg class="text-gray-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
               <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
@@ -139,11 +148,11 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 class="text-md font-semibold text-gray-600">Stays</p>
               </a>
     ';
-            }
+              }
 
 
-            if ($currentPage == 'activities.php') {
-              echo '
+              if ($currentPage == 'activities.php') {
+                echo '
              <a href="activities.php" class="flex items-center border-b-2 border-black">
             <svg class="text-black" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-flag" viewBox="0 0 16 16">
               <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21 21 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21 21 0 0 0 14 7.655V1.222z"/>
@@ -154,8 +163,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
               </a>
     
     ';
-            } else {
-              echo '
+              } else {
+                echo '
              <a href="activities.php" class="flex items-center border-b-2 border-transparent hover:border-gray-600 hover:border-b-2">
             <svg class="text-gray-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-flag" viewBox="0 0 16 16">
               <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21 21 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21 21 0 0 0 14 7.655V1.222z"/>
@@ -165,10 +174,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 class="text-md font-semibold text-gray-600">Activities</p>
               </a>
     ';
-            }
+              }
 
-            if ($currentPage == 'home.php') {
-              echo '
+              if ($currentPage == 'home.php') {
+                echo '
              <a href="home.php" class="flex items-center border-b-2 border-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
   <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
@@ -179,8 +188,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
               </a>
     
     ';
-            } else {
-              echo '
+              } else {
+                echo '
              <a href="home.php" class="flex items-center border-b-2 border-transparent hover:border-gray-600 hover:border-b-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
   <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
@@ -190,34 +199,34 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 class="text-md font-semibold text-gray-600">Forum</p>
               </a>
     ';
-            }
+              }
 
-            ?>
+              ?>
 
 
+            </div>
           </div>
         </div>
-      </div>
-      <div class=" absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-        <!--Region and Currency -->
-        <div class="container flex p-1 bg-gray-100 border rounded-md ">
-          <button id="openModalBtn"
-            class="mr-1 text-sm font-medium text-gray-950 border-black hover:border-b-2 focus:border-b-2">
-            BDT
-          </button>
-          <div class="w-0.5 h-6 mr-1 bg-gray-400"></div>
-          <button type="button"
-            class="relative flex rounded-full  text-sm focus:outline-none hover:ring-1 hover:ring-green-400 focus:ring-2 focus:ring-green-400 "
-            id="" aria-expanded="false" aria-haspopup="true">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-6 w-6" viewBox="0 0 16 16">
-              <path
-                d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z" />
-            </svg>
-          </button>
+        <div class=" absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <!--Region and Currency -->
+          <div class="container flex p-1 bg-gray-100 border rounded-md ">
+            <button id="openModalBtn"
+              class="mr-1 text-sm font-medium text-gray-950 border-black hover:border-b-2 focus:border-b-2">
+              BDT
+            </button>
+            <div class="w-0.5 h-6 mr-1 bg-gray-400"></div>
+            <button type="button"
+              class="relative flex rounded-full  text-sm focus:outline-none hover:ring-1 hover:ring-green-400 focus:ring-2 focus:ring-green-400 "
+              id="" aria-expanded="false" aria-haspopup="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-6 w-6" viewBox="0 0 16 16">
+                <path
+                  d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z" />
+              </svg>
+            </button>
 
-        </div>
+          </div>
 
-        <!-- <button type="button" class="relative rounded-full bg-gray-800 p-1 text-black hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+          <!-- <button type="button" class="relative rounded-full bg-gray-800 p-1 text-black hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
           <span class="absolute -inset-1.5"></span>
           <span class="sr-only">View notifications</span>
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -225,27 +234,27 @@ $currentPage = basename($_SERVER['PHP_SELF']);
           </svg>
         </button> -->
 
-        <!-- Profile dropdown -->
+          <!-- Profile dropdown -->
 
 
-        <div class="relative ml-3">
-          <div>
-            <button id="profile-toggle" type="button"
-              class="relative flex rounded-full  text-sm focus:outline-none hover:ring-2  hover:ring-green-400 focus:ring-2 focus:ring-green-400 "
-              id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-              <span class="absolute -inset-1.5"></span>
-              <span class="sr-only">Open user menu</span>
-              <!-- <img class="h-8 w-8 rounded-full" src="../images/ifat.png" alt=""> -->
-              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-7 w-7 text-gray-600"
-                viewBox="0 0 16 16">
-                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                <path fill-rule="evenodd"
-                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-              </svg>
-            </button>
-          </div>
+          <div class="relative ml-3">
+            <div>
+              <button id="profile-toggle" type="button"
+                class="relative flex rounded-full  text-sm focus:outline-none hover:ring-2  hover:ring-green-400 focus:ring-2 focus:ring-green-400 "
+                id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <span class="absolute -inset-1.5"></span>
+                <span class="sr-only">Open user menu</span>
+                <!-- <img class="h-8 w-8 rounded-full" src="../images/ifat.png" alt=""> -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-7 w-7 text-gray-600"
+                  viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                  <path fill-rule="evenodd"
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                </svg>
+              </button>
+            </div>
 
-          <!--
+            <!--
             Dropdown menu, show/hide based on menu state.
 
             Entering: "transition ease-out duration-100"
@@ -255,14 +264,14 @@ $currentPage = basename($_SERVER['PHP_SELF']);
               From: "transform opacity-100 scale-100"
               To: "transform opacity-0 scale-95"
           -->
-          <div id="profile-menu"
-            class="absolute hidden right-0 mt-2 w-52 origin-top-right rounded-md bg-gray-50 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-            role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-            <!-- Active: "bg-gray-100", Not Active: "" -->
+            <div id="profile-menu"
+              class="absolute hidden right-0 mt-2 w-52 origin-top-right rounded-md bg-gray-50 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+              <!-- Active: "bg-gray-100", Not Active: "" -->
 
-            <?php
-            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-              echo '
+              <?php
+              if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+                echo '
               <a href="chat.php" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
               focus:text-white"
                 role="menuitem" tabindex="-1" id="user-menu-item-0">
@@ -271,6 +280,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 </svg>
                 &nbsp;&nbsp;
                 <p>Messages</p>
+                </a>
+                            <a href="calendar.php" class="flex items-center px-3 py-2 text-lg font-medium text-gray-900 hover:bg-green-600 hover:text-white focus:bg-green-500
+              focus:text-white"
+                role="menuitem" tabindex="-1" id="user-menu-item-0">
+               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class=" bi bi-calendar-range" viewBox="0 0 16 16">
+  <path d="M9 7a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1M1 9h4a1 1 0 0 1 0 2H1z"/>
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+</svg>
+                &nbsp;&nbsp;
+                <p>Event calendar</p>
                 </a>
 
               <a href="profile.php" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
@@ -283,58 +302,58 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <p>Profile</p>
                 </a>
               ';
-            }
-            ?>
-            <a href="#" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
+              }
+              ?>
+              <a href="#" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
               focus:text-white
               " role="menuitem" tabindex="-1" id="user-menu-item-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-sliders"
-                viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                  d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z" />
-              </svg>
-              &nbsp;&nbsp;
-              <p>Settings</p>
-            </a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-sliders"
+                  viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z" />
+                </svg>
+                &nbsp;&nbsp;
+                <p>Settings</p>
+              </a>
 
-            <a href="#" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
+              <a href="#" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
               focus:text-white" role="menuitem" tabindex="-1" id="user-menu-item-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell"
-                viewBox="0 0 16 16">
-                <path
-                  d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
-              </svg>
-              &nbsp;&nbsp;
-              <p>Notifications</p>
-            </a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
+                </svg>
+                &nbsp;&nbsp;
+                <p>Notifications</p>
+              </a>
 
-            <a href="create_listing.php" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
+              <a href="create_listing.php" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
               focus:text-white" role="menuitem" tabindex="-1" id="user-menu-item-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-add"
-                viewBox="0 0 16 16">
-                <path
-                  d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h4a.5.5 0 1 0 0-1h-4a.5.5 0 0 1-.5-.5V7.207l5-5 6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
-                <path
-                  d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0m-3.5-2a.5.5 0 0 0-.5.5v1h-1a.5.5 0 0 0 0 1h1v1a.5.5 0 1 0 1 0v-1h1a.5.5 0 1 0 0-1h-1v-1a.5.5 0 0 0-.5-.5" />
-              </svg>
-              &nbsp;&nbsp;
-              <p>Become a Host</p>
-            </a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-house-add" viewBox="0 0 16 16">
+                  <path
+                    d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h4a.5.5 0 1 0 0-1h-4a.5.5 0 0 1-.5-.5V7.207l5-5 6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
+                  <path
+                    d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0m-3.5-2a.5.5 0 0 0-.5.5v1h-1a.5.5 0 0 0 0 1h1v1a.5.5 0 1 0 1 0v-1h1a.5.5 0 1 0 0-1h-1v-1a.5.5 0 0 0-.5-.5" />
+                </svg>
+                &nbsp;&nbsp;
+                <p>Become a Host</p>
+              </a>
 
-            <a href="host-dashboard.php" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
+              <a href="host-dashboard.php" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
               focus:text-white" role="menuitem" tabindex="-1" id="user-menu-item-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                class="bi bi-toggle-off" viewBox="0 0 16 16">
-                <path
-                  d="M11 4a4 4 0 0 1 0 8H8a5 5 0 0 0 2-4 5 5 0 0 0-2-4zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8M0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5" />
-              </svg>
-              &nbsp;&nbsp;
-              <p>Switch to Hosting</p>
-            </a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-toggle-off" viewBox="0 0 16 16">
+                  <path
+                    d="M11 4a4 4 0 0 1 0 8H8a5 5 0 0 0 2-4 5 5 0 0 0-2-4zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8M0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5" />
+                </svg>
+                &nbsp;&nbsp;
+                <p>Switch to Hosting</p>
+              </a>
 
-            <?php
-            if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-              echo '
+              <?php
+              if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+                echo '
                   <a href="signup.php" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
                   focus:text-white" role="menuitem" tabindex="-1" id="user-menu-item-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
@@ -355,8 +374,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                         <p>Log In</p>
                 </a>
                 ';
-            } else {
-              echo '
+              } else {
+                echo '
                 <a href="logout.php" class="flex items-center px-3 py-2 text-lg font-medium text-red-600 hover:bg-red-500 hover:text-white focus:bg-red-400" role="menuitem" tabindex="-1" id="user-menu-item-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
                   <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1"/>
@@ -366,91 +385,273 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <p>Log Out</p>
                 </a>
                 ';
-            }
-            ?>
-          </div>
+              }
+              ?>
+            </div>
 
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="hidden sm:hidden bg-white absolute h-svh w-72 shadow-2xl shadow-gray-600  " id="mobile-menu">
-    <div class="space-y-1 px-2 pb-3 pt-2">
-      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-      <a href="#"
-        class="block rounded-md px-3 py-2 text-base font-medium text-black  hover:bg-gray-700 hover:text-white"
-        aria-current="page">Discover</a>
-      <a href="hotels.php"
-        class="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">
-        Hotels</a>
-      <a href="#"
-        class="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">Things to
-        do</a>
-      <a href="#"
-        class="block rounded-md px-3 py-2 text-base font-medium text-gray-950 hover:bg-gray-700 hover:text-white">Holiday
-        Home</a>
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="hidden sm:hidden bg-white absolute h-svh w-72 shadow-2xl shadow-gray-600  " id="mobile-menu">
+      <div class="space-y-1 px-2 pb-3 pt-2">
+        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+        <a href="#"
+          class="block rounded-md px-3 py-2 text-base font-medium text-black  hover:bg-gray-700 hover:text-white"
+          aria-current="page">Discover</a>
+        <a href="hotels.php"
+          class="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">
+          Hotels</a>
+        <a href="#"
+          class="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">Things
+          to
+          do</a>
+        <a href="#"
+          class="block rounded-md px-3 py-2 text-base font-medium text-gray-950 hover:bg-gray-700 hover:text-white">Holiday
+          Home</a>
+      </div>
     </div>
-  </div>
 
-  <!-- Mobile search bar -->
-  <div class=" sm:hidden flex justify-center">
-    <input type="text" class="py-auto border border-gray-300 rounded-l-md w-56  focus:border-gray-300 focus:ring-0
+    <!-- Mobile search bar -->
+    <div class=" sm:hidden flex justify-center">
+      <input type="text" class="py-auto border border-gray-300 rounded-l-md w-56  focus:border-gray-300 focus:ring-0
     " placeholder="Find Anything" aria-label="search">
-    <button class="  bg-green-600 hover:bg-green-500 border text-white font-semibold py-2 px-4 rounded-r-md "
-      type="button" id="search-btn">Search</button>
-  </div>
+      <button class="  bg-green-600 hover:bg-green-500 border text-white font-semibold py-2 px-4 rounded-r-md "
+        type="button" id="search-btn">Search</button>
+    </div>
   </section>
 
-<section class="flex justify-center items-center gap-3 p-3">
-  
-  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z"/>
-  </svg>
+  <section class="flex justify-center items-center gap-3 p-3">
 
-<div class="inline-flex rounded-md shadow-sm " role="group">
-  <button type="button" class=" flex items-center gap-1 px-2 py-3 sm:px-4 sm:py-3 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-s-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-  <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
-  <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-</svg>  
-  <p>
-      Anywhere
-    </p>
-  </button>
-  <button type="button" class="flex items-center gap-2  px-2 py-3 sm:px-4 sm:py-3 text-sm font-medium text-gray-900 bg-transparent border-t border-b border-gray-900 hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
-  <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
-  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
-</svg>  
-  <p>
-      Any week
-    </p>
-  </button>
-  <button type="" class=" flex items-center gap-1 px-2 py-3 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-e-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
-  <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z"/>
-</svg>
-    <p>Any price</p>
-    <div class=" rounded-sm text-black">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-sliders"
+      viewBox="0 0 16 16">
+      <path fill-rule="evenodd"
+        d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z" />
+    </svg>
 
-      
+    <div class="inline-flex rounded-md shadow-sm " role="group">
+      <button onclick="showPanel(0)" type="button"
+        class=" flex items-center gap-1 px-2 py-3 sm:px-4 sm:py-3 text-sm font-medium text-gray-800 bg-transparent border border-gray-800 rounded-s-lg hover:border-teal-600 hover:bg-teal-600 hover:text-white focus:z-10  focus:bg-teal-700 focus:border-teal-700 focus:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt"
+          viewBox="0 0 16 16">
+          <path
+            d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10" />
+          <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+        </svg>
+        <p id="query_city">
+          Anywhere
+        </p>
+      </button>
+      <button onclick="showPanel(1)" type="button"
+        class="flex items-center gap-2  px-2 py-3 sm:px-4 sm:py-3 text-sm font-medium text-gray-800 bg-transparent border-t border-b border-gray-800 hover:border-teal-600 hover:bg-teal-600 hover:text-white focus:z-10 focus:border-teal-700  focus:bg-teal-700 focus:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event"
+          viewBox="0 0 16 16">
+          <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z" />
+          <path
+            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+        </svg>
+        <p id="query_date">
+          Any week
+        </p>
+      </button>
+      <button onclick="showPanel(2)" type="button"
+        class=" flex items-center gap-1 px-2 py-3 text-sm font-medium text-gray-800 bg-transparent border border-gray-800 rounded-e-lg hover:border-teal-600 hover:bg-teal-600 hover:text-white focus:z-10 focus:bg-teal-700 focus:border-teal-700 focus:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet2"
+          viewBox="0 0 16 16">
+          <path
+            d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z" />
+        </svg>
+        <p id="query_price">Any price</p>
+      </button>
+      <button id="query_search"
+        class="hidden ml-4 text-white bg-orange-600 hover:bg-orange-700 rounded-full w-8 h-8 md:w-11 md:h-11  items-center justify-center"><svg
+          xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search"
+          viewBox="0 0 16 16">
+          <path
+            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+        </svg></button>
     </div>
-    </button>
-  </div>
 
 
-    
-<!-- 
+
+
+    <!-- 
 <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Light</button> -->
 
   </section>
+  <!-- Content Panels -->
+  <!-- Filtering modal -->
+
+
+  <script>
+    function showPanel(panelIndex) {
+      document.body.style.overflow = 'hidden'; // Disable scrolling
+      const panels = document.querySelectorAll(".content-panel");
+      panels.forEach((panel, index) => {
+        panel.style.display = (index === panelIndex) ? "block" : "none";
+      });
+
+      const querySearch = document.getElementById('query_search');
+      querySearch.classList.remove('hidden', 'opacity-0');  // Make it visible
+      querySearch.classList.add('flex', 'opacity-100', 'transition-opacity', 'duration-300');
+    }
+
+    function closePanel(panelIndex) {
+      document.body.style.overflow = ''; // Re-enable scrolling
+      const panel = document.getElementById('panel' + panelIndex);
+      const querySearch = document.getElementById('query_search');
+
+      panel.style.display = 'none';
+
+      // Fade out the element by adjusting opacity
+      querySearch.classList.remove('opacity-100');
+      querySearch.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+
+      // After transition, hide the element
+      setTimeout(() => {
+        querySearch.classList.add('hidden');
+        querySearch.classList.remove('flex');
+      }, 300);  // Same as duration of the transition
+    }
+
+  </script>
 
 </nav>
+<div class="relative">
+
+  <section class="fixed w-full flex justify-center">
+    <div class="w-full md:w-1/2">
+
+      <!-- Panel 0 -->
+      <div class="content-panel bg-stone-100 shadow-xl border rounded-xl p-3 mb-2" id="panel0" style="display: none;">
+        <div class="flex justify-between">
+          <p class="text-3xl font-light">Select destinations</p>
+          <button type="button" onclick="closePanel(0)"
+            class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-red-600 text-red-600 hover:bg-gray-200 focus:outline-none focus:border-gray-500 focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none">
+            Close
+          </button>
+        </div>
+        <br>
+        <div class="">
+          <input id="cityInput" type="text" class="w-full rounded-lg bg-gray-100 border-neutral-500 border-2" placeholder="Enter destination" onkeyup="fetchCitySuggestions()">
+           <!-- City suggestions dropdown -->
+    <ul id="citySuggestions" class=" mt-1 rounded-lg shadow-lg"></ul>
+
+        </div>
+        <br>
+
+      </div>
+
+      <!-- Panel 1 -->
+      <div class="content-panel bg-neutral-50 border-2 rounded-xl p-3 mb-2" id="panel1" style="display: none;">
+        <div class="flex justify-between">
+          <p class="text-3xl font-light">Select date</p>
+          <button type="button" onclick="closePanel(1)"
+            class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-red-600 text-red-600 hover:bg-gray-200 focus:outline-none focus:border-gray-500 focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none">
+            Close
+          </button>
+        </div>
+        <br>
+
+        <div class="flex justify-around">
+          <section class="flex flex-col w-2/5">
+            <label class="text-lg font-normal" for="query-checkin">Check in:</label>
+            <input type="date" id="query-checkin" class="border-2 border-neutral-500 rounded-lg">
+          </section>
+          <section class="flex flex-col w-2/5">
+            <label class="text-lg font-normal" for="query-checkout">Check out:</label>
+            <input type="date" id="query-checkout" class="border-2 border-neutral-500 rounded-lg">
+          </section>
+        </div>
+        <br>
+
+      </div>
+
+      <!-- Panel 2 -->
+      <div class="content-panel bg-neutral-50 border rounded-xl p-3 mb-2" id="panel2" style="display: none;">
+        <div class="flex justify-between">
+          <p class="text-3xl font-light">Select price</p>
+          <button type="button" onclick="closePanel(2)"
+            class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-red-600 text-red-600 hover:bg-gray-200 focus:outline-none focus:border-gray-500 focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none">
+            Close
+          </button>
+        </div>
+        <p>Content for Any price</p>
+        <button onclick="closePanel(2)">Close</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- <script>
+    // Function to fetch city suggestions
+    function fetchCitySuggestions() {
+      const input = document.getElementById('cityInput').value;
+      
+      if (input.length >= 2) { // Start search after 2 characters
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', `get-cities.php?q=${input}`, true);
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            const results = JSON.parse(xhr.responseText);
+            let suggestions = '';
+
+            if (results.length > 0) {
+              results.forEach(city => {
+                suggestions += `<li class="p-2 hover:bg-gray-200 cursor-pointer">${city.name}, ${city.country}</li>`;
+              });
+            } else {
+              suggestions = `<li class="p-2">No results found</li>`;
+            }
+            document.getElementById('citySuggestions').innerHTML = suggestions;
+          }
+        };
+        xhr.send();
+      } else {
+        document.getElementById('citySuggestions').innerHTML = '';
+      }
+    }
+  </script> -->
 
 
+  <script>
+  // Function to fetch city suggestions
+  function fetchCitySuggestions() {
+    const input = document.getElementById('cityInput').value;
+    
+    if (input.length >= 1) { // Start search after 2 characters
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', `get-cities.php?q=${input}`, true);
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          const results = JSON.parse(xhr.responseText);
+          let suggestions = '';
 
+          if (results.length > 0) {
+            results.forEach(city => {
+              suggestions += `<li class="p-2 hover:bg-gray-200 cursor-pointer" onclick="selectCity('${city.name}, ${city.country}')">${city.name}, ${city.country}</li>`;
+            });
+          } else {
+            suggestions = `<li class="p-2">No results found</li>`;
+          }
+          document.getElementById('citySuggestions').innerHTML = suggestions;
+        }
+      };
+      xhr.send();
+    } else {
+      document.getElementById('citySuggestions').innerHTML = '';
+    }
+  }
+
+  // Function to select a city and populate the input field
+  function selectCity(city) {
+    document.getElementById('cityInput').value = city;
+    document.getElementById('citySuggestions').innerHTML = ''; // Clear suggestions
+  }
+</script>
 
 <!-- currency modal -->
 
@@ -850,3 +1051,4 @@ One way to handle this is to use AJAX to submit the forms asynchronously, which 
 <script src="partials/menuToggler.js" async></script>
 <script src="js/lang-curr-modal.js" async></script>
 <script src="js/scroll-nav.js" defer></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script> -->

@@ -22,15 +22,23 @@ include_once 'partials/__session.php';
     include_once "partials/__nav.php";
     ?>
 <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div class="px-4 py-6 sm:px-0">
-            <h1 class="text-2xl font-semibold text-gray-900">Welcome back, John!</h1>
-            <p class="mt-1 text-sm text-gray-600">Manage your listings and reservations</p>
+        <div class="px-4 py-6 sm:px-0 flex justify-between">
+            <div>
+
+                <h1 class="text-2xl font-semibold text-gray-900">Welcome back, John!</h1>
+                <p class="mt-1 text-sm text-gray-600">Manage your listings and reservations</p>
+            </div>
+            <div>
+            <button id="message" type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-md font-medium rounded-lg border border-gray-800 text-gray-800 hover:bg-gray-200 focus:outline-none focus:border-gray-500 focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none ">Add new listing</button>&nbsp;
+            <button id="message" type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-md font-medium rounded-lg border border-red-700  hover:bg-gray-200 focus:outline-none focus:border-gray-500 focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none text-red-600">Delete existing listing</button>
+            
+            </div>
         </div>
 
         <div class="mt-4">
             <div class="sm:hidden">
                 <label for="tabs-host" class="sr-only">Select a tab</label>
-                <select id="tabs-host" name="tabs-host" class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                <select id="tabs-host" name="tabs-host" class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm rounded-md">
                     <option selected>Dashboard</option>
                     <option>Listings</option>
                     <option>Reservations</option>
@@ -39,7 +47,7 @@ include_once 'partials/__session.php';
             <div class="hidden sm:block">
                 <div class="border-b border-gray-200">
                     <nav class="-mb-px flex space-x-8" aria-label="tabs-host">
-                        <button class="tab-button border-indigo-500 text-indigo-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="dashboard">
+                        <button class="tab-button border-gray-500 text-green-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="dashboard">
                             Dashboard
                         </button>
                         <button class="tab-button border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="listings">
@@ -70,7 +78,7 @@ include_once 'partials/__session.php';
                                         Total Listings
                                     </dt>
                                     <dd>
-                                        <div class="text-lg font-medium text-gray-900">
+                                        <div id="total_listings" class="text-lg font-medium text-gray-900">
                                             5
                                         </div>
                                     </dd>
@@ -80,7 +88,7 @@ include_once 'partials/__session.php';
                     </div>
                     <div class="bg-gray-50 px-5 py-3">
                         <div class="text-sm">
-                            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
+                            <a href="#" class="font-medium text-green-600 hover:text-gray-500">
                                 View all
                             </a>
                         </div>
@@ -96,13 +104,14 @@ include_once 'partials/__session.php';
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                 </svg>
                             </div>
+                            
                             <div class="ml-5 w-0 flex-1">
                                 <dl>
                                     <dt class="text-sm font-medium text-gray-500 truncate">
                                         Upcoming Reservations
                                     </dt>
                                     <dd>
-                                        <div class="text-lg font-medium text-gray-900">
+                                        <div id="upcoming_reservations" class="text-lg font-medium text-gray-900">
                                             12
                                         </div>
                                     </dd>
@@ -112,13 +121,46 @@ include_once 'partials/__session.php';
                     </div>
                     <div class="bg-gray-50 px-5 py-3">
                         <div class="text-sm">
-                            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
+                            <a href="#" class="font-medium text-green-600 hover:text-gray-500">
                                 View all
                             </a>
                         </div>
                     </div>
                 </div>
 
+
+                 <!-- Card -->
+                 <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <svg class="h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">
+                                        Currently hosting
+                                    </dt>
+                                    <dd>
+                                        <div id="currently_hosting" class="text-lg font-medium text-gray-900">
+                                            12
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-5 py-3">
+                        <div class="text-sm">
+                            <a href="#" class="font-medium text-green-600 hover:text-gray-500">
+                                View all
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <!-- Card -->
                 <div class="bg-white overflow-hidden shadow rounded-lg">
                     <div class="p-5">
@@ -135,7 +177,7 @@ include_once 'partials/__session.php';
                                     </dt>
                                     <dd>
                                         <div class="text-lg font-medium text-gray-900">
-                                            $12,545
+                                            <span>BDT </span><span id="total_earnings">0</span>
                                         </div>
                                     </dd>
                                 </dl>
@@ -144,7 +186,7 @@ include_once 'partials/__session.php';
                     </div>
                     <div class="bg-gray-50 px-5 py-3">
                         <div class="text-sm">
-                            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
+                            <a href="#" class="font-medium text-green-600 hover:text-gray-500">
                                 View details
                             </a>
                         </div>
@@ -162,7 +204,7 @@ include_once 'partials/__session.php';
                             <a href="#" class="block hover:bg-gray-50">
                                 <div class="px-4 py-4 sm:px-6">
                                     <div class="flex items-center justify-between">
-                                        <p class="text-sm font-medium text-indigo-600 truncate">
+                                        <p class="text-sm font-medium text-green-600 truncate">
                                             New reservation for Cozy Apartment
                                         </p>
                                         <div class="ml-2 flex-shrink-0 flex">
@@ -188,7 +230,7 @@ include_once 'partials/__session.php';
                             <a href="#" class="block hover:bg-gray-50">
                                 <div class="px-4 py-4 sm:px-6">
                                     <div class="flex items-center justify-between">
-                                        <p class="text-sm font-medium text-indigo-600 truncate">
+                                        <p class="text-sm font-medium text-green-600 truncate">
                                             New review for Mountain View Cabin
                                         </p>
                                         <div class="ml-2 flex-shrink-0 flex">
@@ -223,7 +265,7 @@ include_once 'partials/__session.php';
                         <a href="#" class="block hover:bg-gray-50">
                             <div class="px-4 py-4 sm:px-6">
                                 <div class="flex items-center justify-between">
-                                    <p class="text-sm font-medium text-indigo-600 truncate">
+                                    <p class="text-sm font-medium text-green-600 truncate">
                                         Cozy Apartment in Downtown
                                     </p>
                                     <div class="ml-2 flex-shrink-0 flex">
@@ -255,7 +297,7 @@ include_once 'partials/__session.php';
                         <a href="#" class="block hover:bg-gray-50">
                             <div class="px-4 py-4 sm:px-6">
                                 <div class="flex items-center justify-between">
-                                    <p class="text-sm font-medium text-indigo-600 truncate">
+                                    <p class="text-sm font-medium text-green-600 truncate">
                                         Mountain View Cabin
                                     </p>
                                     <div class="ml-2 flex-shrink-0 flex">
@@ -295,7 +337,7 @@ include_once 'partials/__session.php';
                         <a href="#" class="block hover:bg-gray-50">
                             <div class="px-4 py-4 sm:px-6">
                                 <div class="flex items-center justify-between">
-                                    <p class="text-sm font-medium text-indigo-600 truncate">
+                                    <p class="text-sm font-medium text-green-600 truncate">
                                         Cozy Apartment in Downtown
                                     </p>
                                     <div class="ml-2 flex-shrink-0 flex">
@@ -327,7 +369,7 @@ include_once 'partials/__session.php';
                         <a href="#" class="block hover:bg-gray-50">
                             <div class="px-4 py-4 sm:px-6">
                                 <div class="flex items-center justify-between">
-                                    <p class="text-sm font-medium text-indigo-600 truncate">
+                                    <p class="text-sm font-medium text-green-600 truncate">
                                         Mountain View Cabin
                                     </p>
                                     <div class="ml-2 flex-shrink-0 flex">
@@ -361,45 +403,74 @@ include_once 'partials/__session.php';
     </main>
 
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabContents = document.querySelectorAll('.tab-content-host');
+ document.addEventListener('DOMContentLoaded', (event) => {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content-host');
 
-            function setActiveTab(tabName) {
-                tabButtons.forEach(button => {
-                    if (button.dataset.tab === tabName) {
-                        button.classList.add('border-indigo-500', 'text-indigo-600');
-                        button.classList.remove('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
-                    } else {
-                        button.classList.remove('border-indigo-500', 'text-indigo-600');
-                        button.classList.add('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
-                    }
-                });
-
-                tabContents.forEach(content-host => {
-                    if (content-host.id === tabName) {
-                        content-host.classList.remove('hidden');
-                    } else {
-                        content-host.classList.add('hidden');
-                    }
-                });
+    function setActiveTab(tabName) {
+        tabButtons.forEach(button => {
+            if (button.dataset.tab === tabName) {
+                button.classList.add('border-gray-500', 'text-green-600');
+                button.classList.remove('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
+            } else {
+                button.classList.remove('border-gray-500', 'text-green-600');
+                button.classList.add('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
             }
-
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    setActiveTab(button.dataset.tab);
-                });
-            });
-
-            // Handle mobile tab selection
-            const mobiletabs-hostelect = document.getElementById('tabs-host');
-            mobiletabs-hostelect.addEventListener('change', (e) => {
-                setActiveTab(e.target.value.toLowerCase());
-            });
-
-            // Set initial active tab
-            setActiveTab('dashboard');
         });
+
+        tabContents.forEach(contentHost => { // Changed 'content-host' to 'contentHost'
+            if (contentHost.id === tabName) {
+                contentHost.classList.remove('hidden');
+            } else {
+                contentHost.classList.add('hidden');
+            }
+        });
+    }
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            setActiveTab(button.dataset.tab);
+        });
+    });
+
+    // Handle mobile tab selection
+    const mobileTabsHostSelect = document.getElementById('tabs-host'); // Fixed variable name
+    mobileTabsHostSelect.addEventListener('change', (e) => {
+        setActiveTab(e.target.value.toLowerCase());
+    });
+
+    // Set initial active tab
+    setActiveTab('dashboard');
+});
+
     </script>
+
+<script>
+
+function setParams(data){
+    console.log(data);
+
+    document.getElementById('total_listings').innerHTML = data.total_listings;
+    document.getElementById('upcoming_reservations').innerHTML = data.upcoming_reservations;
+    document.getElementById('currently_hosting').innerHTML = data.currently_hosting;
+    if (data.total_earnings != null) {
+        document.getElementById('total_earnings').innerHTML = data.total_earnings;
+    }
+    
+}
+
+// Fetch the hotel details based on the 'id'
+fetch(`get-bookings-info.php`)
+    .then(response => response.json())
+    .then(data => {
+        // console.log(data);
+        setParams(data);
+
+    })
+    .catch(error => console.error('Error fetching hotels:', error));
+
+</script>
+
+
 </body>
 </html>

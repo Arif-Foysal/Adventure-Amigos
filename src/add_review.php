@@ -62,6 +62,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             
             // Execute the query
             if ($stmt->execute()) {
+//                 $query = "UPDATE Hotels
+//           SET rating = (
+//               SELECT AVG(rating) FROM Reviews WHERE entity_id = $hotel_id AND entity_type = 'hotel'
+//           )
+//           WHERE hotel_id = $hotel_id";
+// mysqli_query($conn, $query);
+
+
                 echo json_encode(array("message" => "Review created successfully.", "review_id" => $conn->insert_id));
             } else {
                 echo json_encode(array("message" => "Unable to create review: " . $stmt->error));

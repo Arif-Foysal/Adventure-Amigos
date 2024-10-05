@@ -13,21 +13,84 @@ $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 10;
 $offset = ($page - 1) * $limit;
 
 // Simple SQL query to fetch paginated hotel reviews for a specific hotel
-$sql = "SELECT 
-            R.review_id, 
-            R.user_id,
-            R.entity_type, 
-            R.entity_id, 
-            R.rating, 
-            R.review_text, 
-            R.review_date, 
-            U.fname AS reviewer_first_name, 
-            U.CreatedAt AS reviewer_join_date, -- Added missing comma here
-            U.profile_photo_url AS reviewer_dp_url
-        FROM Reviews R
-        JOIN Users U ON R.user_id = U.user_id
-        WHERE R.entity_type = 'hotel' AND R.entity_id = $id
-        LIMIT $offset, $limit";
+// $sql = "SELECT 
+//             R.review_id, 
+//             R.user_id,
+//             R.entity_type, 
+//             R.entity_id, 
+//             R.rating, 
+//             R.review_text, 
+//             R.review_date, 
+//             U.fname AS reviewer_first_name, 
+//             U.CreatedAt AS reviewer_join_date, -- Added missing comma here
+//             U.profile_photo_url AS reviewer_dp_url
+//         FROM Reviews R
+//         JOIN Users U ON R.user_id = U.user_id
+//         WHERE R.entity_type = 'hotel' AND R.entity_id = $id
+//         LIMIT $offset, $limit";
+
+$sql= "SELECT 
+    R.review_id, 
+    R.user_id,
+    R.entity_type, 
+    R.entity_id, 
+    R.rating, 
+    R.review_text, 
+    R.review_date, 
+    U.fname AS reviewer_first_name, 
+    U.CreatedAt AS reviewer_join_date, 
+    U.profile_photo_url AS reviewer_dp_url,
+    -- Calculating percentage for each rating level
+    (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel' AND rating = 5) / (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel') * 100 AS percentage_5_star,
+    (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel' AND rating = 4) / (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel') * 100 AS percentage_4_star,
+    (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel' AND rating = 3) / (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel') * 100 AS percentage_3_star,
+    (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel' AND rating = 2) / (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel') * 100 AS percentage_2_star,
+    (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel' AND rating = 1) / (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel') * 100 AS percentage_1_star
+FROM Reviews R
+JOIN Users U ON R.user_id = U.user_id
+WHERE R.entity_type = 'hotel' AND R.entity_id = $id
+LIMIT $offset, $limit;
+";
+
+// $sql = "
+//     SELECT 
+//         R.review_id, 
+//         R.user_id,
+//         R.entity_type, 
+//         R.entity_id, 
+//         R.rating, 
+//         R.review_text, 
+//         R.review_date, 
+//         U.fname AS reviewer_first_name, 
+//         U.CreatedAt AS reviewer_join_date, 
+//         U.profile_photo_url AS reviewer_dp_url,
+        
+//         -- Calculating percentage for each rating level
+//         (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel' AND rating = 5) / 
+//         (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel') * 100 AS percentage_5_star,
+        
+//         (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel' AND rating = 4) / 
+//         (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel') * 100 AS percentage_4_star,
+        
+//         (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel' AND rating = 3) / 
+//         (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel') * 100 AS percentage_3_star,
+        
+//         (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel' AND rating = 2) / 
+//         (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel') * 100 AS percentage_2_star,
+        
+//         (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel' AND rating = 1) / 
+//         (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel') * 100 AS percentage_1_star,
+        
+//         -- Total number of reviews for the hotel
+//         (SELECT COUNT(*) FROM Reviews WHERE entity_id = $id AND entity_type = 'hotel') AS total_reviews
+
+//     FROM Reviews R
+//     JOIN Users U ON R.user_id = U.user_id
+//     WHERE R.entity_type = 'hotel' AND R.entity_id = $id
+//     LIMIT $offset, $limit;
+// ";
+
+
 
 $result = mysqli_query($conn, $sql);
 
@@ -53,7 +116,8 @@ echo json_encode([
     'hotel_id' => $id,
     'current_page' => $page,
     'total_pages' => $total_pages,
-    'reviews' => $reviews
+    'reviews' => $reviews,
+    'total_reviews' => $total_reviews
 ]);
 
 // Close the connection

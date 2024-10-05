@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `Hotels` (
     `from` DATE,
     `to` DATE,
     `price` INT,  
-    `rating` DECIMAL(3, 2) DEFAULT 4.5,
+    `rating` DECIMAL(3, 2) DEFAULT 0.00,
     `auto_reserve` TINYINT(1) DEFAULT 0,
      `status` ENUM('draft', 'listed', 'archived') DEFAULT 'draft',
     FOREIGN KEY (`location_id`) REFERENCES `Locations`(`location_id`),
@@ -165,3 +165,25 @@ JOIN
     Cities C ON L.city_id = C.city_id
 GROUP BY 
     H.hotel_id;
+
+
+
+DELIMITER //
+
+CREATE TRIGGER update_hotel_rating
+AFTER INSERT ON Reviews
+FOR EACH ROW
+BEGIN
+    IF NEW.entity_type = 'hotel' THEN
+        UPDATE Hotels
+        SET rating = (
+            SELECT AVG(rating)
+            FROM Reviews
+            WHERE entity_id = NEW.entity_id
+            AND entity_type = 'hotel'
+        )
+        WHERE hotel_id = NEW.entity_id;
+    END IF;
+END; //
+
+DELIMITER ;

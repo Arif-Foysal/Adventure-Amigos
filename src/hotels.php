@@ -7,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="../images/fav.png">
     <link rel="stylesheet" href="output.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script> -->
 </head>
 <body>
 
@@ -62,6 +63,14 @@ include_once "partials/__nav.php";
 
                     // const val = formatDateRange(hotel);
                     console.log(formatDateRange(hotel));
+                    function getHotelRating(rating) {
+    if (rating < 1) {
+        return 'N/A';
+    } else {
+        return rating;
+    }
+}
+
                     
                     const hotelCard = `
                         <a href="view-hotel.php?id=${hotel.hotel_id}" class="flex flex-col p-2 hover:bg-neutral-100 rounded-lg">
@@ -75,7 +84,7 @@ include_once "partials/__nav.php";
                                         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                                     </svg>
                                     &nbsp;
-                                    <p class="text-md font-medium">${hotel.rating}</p>
+                                    <p class="text-md font-medium">${getHotelRating(hotel.rating)}</p>
                                 </div>
                             </div>
                             <div class="flex items-center">
@@ -142,6 +151,7 @@ include_once "partials/__nav.php";
     // Initial fetch
     fetchHotels(currentPage);
 </script>
+
 
 </body>
 </html>
