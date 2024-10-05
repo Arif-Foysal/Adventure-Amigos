@@ -528,10 +528,19 @@ $currentPage = basename($_SERVER['PHP_SELF']);
       <div class="content-panel bg-stone-100 shadow-xl border rounded-xl p-3 mb-2" id="panel0" style="display: none;">
         <div class="flex justify-between">
           <p class="text-3xl font-light">Select destinations</p>
-          <button type="button" onclick="closePanel(0)"
+          <button type="button" onclick="closePanel(0)">
+        <svg class="rounded-sm text-red-600 hover:text-red-700 hover:bg-gray-100" xmlns="http://www.w3.org/2000/svg" width="30"
+          height="30" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+          <path
+            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+          <path
+            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+        </svg>
+      </button>
+          <!-- <button type="button" onclick="closePanel(0)"
             class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-red-600 text-red-600 hover:bg-gray-200 focus:outline-none focus:border-gray-500 focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none">
             Close
-          </button>
+          </button> -->
         </div>
         <br>
         <div class="">
@@ -549,10 +558,19 @@ $currentPage = basename($_SERVER['PHP_SELF']);
       <div class="content-panel bg-neutral-50 border-2 rounded-xl p-3 mb-2" id="panel1" style="display: none;">
         <div class="flex justify-between">
           <p class="text-3xl font-light">Select date</p>
-          <button type="button" onclick="closePanel(1)"
+          <button type="button" onclick="closePanel(1)">
+        <svg class="rounded-sm text-red-600 hover:text-red-700 hover:bg-gray-100" xmlns="http://www.w3.org/2000/svg" width="30"
+          height="30" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+          <path
+            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+          <path
+            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+        </svg>
+      </button>
+          <!-- <button type="button" onclick="closePanel(1)"
             class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-red-600 text-red-600 hover:bg-gray-200 focus:outline-none focus:border-gray-500 focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none">
             Close
-          </button>
+          </button> -->
         </div>
         <br>
 
@@ -576,10 +594,19 @@ $currentPage = basename($_SERVER['PHP_SELF']);
       <div class="content-panel bg-neutral-50 border rounded-xl p-3 mb-2" id="panel2" style="display: none;">
         <div class="flex justify-between">
           <p class="text-3xl font-light">Select price</p>
-          <button type="button" onclick="closePanel(2)"
+          <button type="button" onclick="closePanel(2)">
+        <svg class="rounded-sm text-red-600 hover:text-red-700 hover:bg-gray-100" xmlns="http://www.w3.org/2000/svg" width="30"
+          height="30" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+          <path
+            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+          <path
+            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+        </svg>
+      </button>
+          <!-- <button type="button" onclick="closePanel(2)"
             class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-red-600 text-red-600 hover:bg-gray-200 focus:outline-none focus:border-gray-500 focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none">
             Close
-          </button>
+          </button> -->
         </div>
         <br>
         <section class="flex justify-between">
@@ -791,7 +818,7 @@ queryData.maxPrice = getQueryParam('max_price');
       <!-- Header -->
       <h1 class="pb-4 text-xl font-semibold">Choose language and currency</h1>
       <button id="closeModalBtn">
-        <svg class="rounded-sm hover:text-red-600 hover:bg-gray-50" xmlns="http://www.w3.org/2000/svg" width="30"
+        <svg class="rounded-sm text-red-600 hover:text-red-700 hover:bg-gray-100" xmlns="http://www.w3.org/2000/svg" width="30"
           height="30" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
           <path
             d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />

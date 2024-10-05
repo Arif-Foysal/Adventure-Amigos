@@ -388,6 +388,9 @@ function daysBetweenDates(date1, date2) {
 
 
  <script>
+let startDate;
+let endDate;
+let amount;
     document.addEventListener('DOMContentLoaded', function() {
         let fromDate = null;
         let toDate = null;
@@ -501,6 +504,7 @@ document.getElementById('bed').innerHTML =roomDetails['beds'];
 console.log(daysBetweenDates(fromDate, toDate)); // Outputs: 7
 document.getElementById('multiplier').innerHTML = daysBetweenDates(fromDate, toDate);
 document.getElementById('total').innerHTML = price * daysBetweenDates(fromDate, toDate);
+amount =   price * daysBetweenDates(fromDate, toDate);
 document.getElementById('total-final').innerHTML = price * daysBetweenDates(fromDate, toDate);
 
    //guest handling
@@ -534,24 +538,10 @@ decrementGuestsButton.addEventListener('click', () => {
 
                 // Prepare data for the API
                 const data = { from: fromDate, to: toDate };
+                startDate =fromDate;
+                endDate =toDate;
 
-                // Send selected dates to API
-                fetch(`set-bookingdates.php?id=${hotelId}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        console.log('Success:', data.message);
-                    } else {
-                        console.log('Error:', data.message);
-                    }
-                })
-                .catch(error => console.error('Error:', error));
+                
             } 
             // If "To" date is before "From" date, reset selection
             else if (info.startStr <= fromDate) {
@@ -572,6 +562,105 @@ decrementGuestsButton.addEventListener('click', () => {
         }
     });
     </script>
+
+<!-- 
+<script>
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+     document.getElementById('book-now').addEventListener('click', async function(event) {
+            event.preventDefault();
+
+            // const user_id = document.getElementById('user_id').value;
+            const entity_type = 'hotel';
+
+            const entity_id = getQueryParam('hotel_id');
+            const start_date = startDate;
+            const end_date = endDate;
+            const paid_amount = amount;
+            const phone = "01707820797";
+            const month = "October";
+            const username = "Arif";
+
+            // Sending a POST request to the server using Fetch API
+            const response = await fetch('payment-success.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    entity_type: entity_type,
+                    entity_id: entity_id,
+                    start_date: start_date,
+                    end_date: end_date,
+                    paid_amount: paid_amount,
+                    phone: phone,
+                    month: month,
+                    username: username
+                })
+            });
+
+            const result = await response.json(); // Parse the JSON response
+
+            if (result.status === 'success') {
+                // Redirect to success page
+                window.location.href = result.redirectUrl;
+            } else {
+                // Redirect to failed page
+                window.location.href = result.redirectUrl;
+            }
+        });
+</script> -->
+
+<script>
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+document.getElementById('book-now').addEventListener('click', async function(event) {
+    event.preventDefault();
+
+    const entity_type = 'hotel';
+    const entity_id = getQueryParam('hotel_id');
+    const start_date = startDate;  // Ensure these variables (startDate, endDate, etc.) are properly defined
+    const end_date = endDate;
+    const paid_amount = amount;
+    const phone = "01707820797";
+    const month = "October";
+    const username = "Arif";
+
+    // Sending a POST request to the server using Fetch API
+    const response = await fetch('process_payment.php', {  // Update the PHP filename if needed
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            entity_type: entity_type,
+            entity_id: entity_id,
+            start_date: start_date,
+            end_date: end_date,
+            paid_amount: paid_amount,
+            phone: phone,
+            month: month,
+            username: username
+        })
+    });
+
+    const result = await response.json();  // Parse the JSON response
+
+    if (result.status === 'redirect') {
+        // Redirect the user to the payment gateway URL
+        window.location.href = result.paymentUrl;
+    } else if (result.status === 'error') {
+        // Handle error or failed scenario
+        window.location.href = result.redirectUrl;
+    }
+});
+</script>
 
 </body>
 </html>

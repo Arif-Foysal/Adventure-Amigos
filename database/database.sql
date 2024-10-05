@@ -83,6 +83,9 @@ CREATE TABLE IF NOT EXISTS `Bookings` (
     `booking_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `start_date` DATE,
     `end_date` DATE,
+    `paid_amount` DECIMAL(10, 2) DEFAULT 0.00,
+    `payment_status` ENUM('pending', 'completed', 'failed') DEFAULT 'pending',
+    `transaction_id` VARCHAR(255) NULL,
     FOREIGN KEY (`user_id`) REFERENCES `Users`(`user_id`)
 );
 

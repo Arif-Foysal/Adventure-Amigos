@@ -10,18 +10,19 @@ error_reporting(0);
 require "src/PHPMailer.php";
 require "src/SMTP.php";
 require "src/Exception.php";
+require "../partials/__session.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 
 // Email From Form Input
-$send_to_email = $_POST["email"];
+$send_to_email = $_GET["email"];
 
 // Generate Random 6-Digit OTP
 $verification_otp = random_int(100000, 999999);
 
 // Full Name of User
-$send_to_name = $_POST["username"];
+$send_to_name = $_GET["username"];
 
 function sendMail($send_to, $otp, $name) {
     $mail = new PHPMailer(true);
@@ -42,7 +43,7 @@ function sendMail($send_to, $otp, $name) {
     $mail->addAddress($send_to);
 
     // You can change the subject according to your requirement!
-    $mail->Subject = "Reset Password";
+    $mail->Subject = "Verify account";
 
     // You can change the Body Message according to your requirement!
     $mail->isHTML(true);  // Set email format to HTML
@@ -107,10 +108,12 @@ function sendMail($send_to, $otp, $name) {
     //Your verification code is: {{OTP}}
 
 }
-
+$_SESSION['otp'] = $verification_otp;
 sendMail($send_to_email, $verification_otp, $send_to_name);
 
 // Message to print email success!
-echo "Email Sent Successfully!";
+// echo "Email Sent Successfully!";
+$query_url = "http://localhost/Adventure-Amigos/src/verify_account.php";
+header("Location: " . $query_url);
 
 ?>

@@ -1,5 +1,7 @@
 <?php
 // To-Do
+require '../vendor/autoload.php';
+use GuzzleHttp\Client;
 // - [ ] auto redirection to welcome.php if register
 require_once "partials/__dbconnect.php"; //db connect
 
@@ -50,13 +52,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               if (mysqli_stmt_fetch($stmt)) {
                 if (password_verify($password, $hashed_password)) {
                   // this means the password is corrct. Allow Users to login
-                  session_start();
+                  // session_start();
                   $_SESSION["email"] = $email;
                   $_SESSION["id"] = $id;
-                  $_SESSION["loggedin"] = true;
+                  $_SESSION["username"] = $fname;
+                  // $_SESSION["loggedin"] = true;
 
-                  //Redirect Users to welcome page
-                  header("location: welcome.php");
+                  // //Redirect Users to welcome page
+                  // header("location: welcome.php");
+
+
+
+                  //generate otp and save it on db(will do on next version of app)
+
+                  //generate otp and save on session
+                  //send email with otp.
+                  //redirect to verify page.
+//                   $client = new Client();
+
+                  // $response = $client->post('http://localhost/Adventure-Amigos/src/otp/send_email.php', [
+//     'form_params' => [
+//         'email' => 'wayne11nayem@gmali.com',
+//         'username' => 'arif',
+//     ],
+// ]);
+
+                  // echo $response->getBody();
+
+                  $query_url = "http://localhost/Adventure-Amigos/src/otp/send_email.php?email=".$_SESSION["email"]."&username=".$fname;
+                  header("Location: " . $query_url);
+
+
+
+
 
                 } else {
                   # code...
@@ -184,7 +212,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             First Name
           </label>
           <input type="text" id="first_name" name="first_name"
-            class="mt-1 w-full rounded-lg border-gray-400 bg-gray-50 text-sm text-gray-700 shadow-sm focus:border-transparent" value="" />
+            class="mt-1 w-full rounded-lg border-gray-400 bg-gray-50 text-sm text-gray-700 shadow-sm focus:border-transparent"
+            value="" />
         </div>
 
         <div class="col-span-6 sm:col-span-3">
@@ -198,14 +227,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="col-span-6">
           <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
           <input type="email" id="email" name="email"
-            class="mt-1 w-full rounded-lg border-gray-400 bg-gray-50 text-sm text-gray-700 shadow-sm focus:border-transparent" value="" />
+            class="mt-1 w-full rounded-lg border-gray-400 bg-gray-50 text-sm text-gray-700 shadow-sm focus:border-transparent"
+            value="" />
           <span id="email_err" class="text-red-500 text-sm"></span>
         </div>
 
         <div class="col-span-6 sm:col-span-3">
           <label for="password" class="block text-sm font-medium text-gray-700"> Password </label>
           <input type="password" id="password" name="password"
-            class="mt-1 w-full rounded-lg border-gray-400 bg-gray-50 text-sm text-gray-700 shadow-sm focus:border-transparent" value="" />
+            class="mt-1 w-full rounded-lg border-gray-400 bg-gray-50 text-sm text-gray-700 shadow-sm focus:border-transparent"
+            value="" />
           <span id="password_err" class="text-red-500 text-sm"></span>
 
         </div>
@@ -215,7 +246,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             Password Confirmation
           </label>
           <input type="password" id="confirm_password" name="confirm_password"
-            class="mt-1 w-full rounded-lg border-gray-400 bg-gray-50 text-sm text-gray-700 shadow-sm focus:border-transparent" value="" />
+            class="mt-1 w-full rounded-lg border-gray-400 bg-gray-50 text-sm text-gray-700 shadow-sm focus:border-transparent"
+            value="" />
           <span id="confirm_password_err" class="text-red-500 text-sm"></span>
         </div>
 
