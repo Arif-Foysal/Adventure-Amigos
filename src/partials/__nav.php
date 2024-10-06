@@ -635,8 +635,18 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     checkin: null,
     checkout: null,
     minPrice: null,
-    maxPrice: null
+    maxPrice: null,
+    currency:null
   };
+  function getQueryParam(param) {
+
+const urlParams = new URLSearchParams(window.location.search);
+return urlParams.get(param);
+
+}
+// console.log(getQueryParam('currency'));
+queryData.currency =getQueryParam('currency');
+
 
   // Function to fetch city suggestions
   function fetchCitySuggestions() {
@@ -778,6 +788,9 @@ queryData.maxPrice = getQueryParam('max_price');
     if (queryData.maxPrice !== null) {
       query_url += `max_price=${encodeURIComponent(queryData.maxPrice)}&`;
     }
+    if (queryData.currency != null) {
+      query_url += `currency=${encodeURIComponent(queryData.currency)}&`;
+    }
 
     // Remove the trailing '&' if it exists
     query_url = query_url.endsWith('&') ? query_url.slice(0, -1) : query_url;
@@ -889,7 +902,7 @@ queryData.maxPrice = getQueryParam('max_price');
       <br>
       <p>Choose another language:</p>
       <br>
-      <form id="lang-form" action="" class="">
+      <form id="lang-form" class="">
         <div class="flex justify-start justify-items-start gap-2 flex-wrap pr-2">
 
           <section class="w-36 grow">
@@ -998,9 +1011,9 @@ queryData.maxPrice = getQueryParam('max_price');
       <br>
       <div class="w-52">
         <section>
-          <div class="text-white bg-gray-800 rounded-md p-4 w-full h-full ">
-            <p class="text-xl font-semibold">USD</p>
-            <p>US Dollar</p>
+          <div class="text-white bg-gray-800 rounded-md p-8 w-full h-full ">
+            <p id="selected_currency_tile" class="text-xl font-semibold">BDT</p>
+            <!-- <p>US Dollar</p> -->
 
           </div>
         </section>
@@ -1145,7 +1158,7 @@ queryData.maxPrice = getQueryParam('max_price');
       </form>
     </div>
     <div class="mt-4 flex justify-end">
-      <button type="submit" id="lang-curr-submit"
+      <button id="lang-curr-submit"
         class="px-4 py-2 border-2 border-gray-800 hover:bg-gray-700 hover:text-white rounded font-semibold ">Save and
         Continue</button>
       <!-- 

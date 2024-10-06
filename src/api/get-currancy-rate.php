@@ -30,7 +30,7 @@ if (file_exists($jsonFilePath)) {
 
 // If the file does not exist, is empty, or invalid, or time has passed, fetch new data from the API
 $client = new Client();
-$res = $client->request('GET', 'https://v6.exchangerate-api.com/v6/04267df24bea3204808b8ae8/latest/USD');
+$res = $client->request('GET', 'https://v6.exchangerate-api.com/v6/04267df24bea3204808b8ae8/latest/BDT');
 
 // Check if the request was successful
 if ($res->getStatusCode() === 200) {

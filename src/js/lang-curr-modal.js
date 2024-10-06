@@ -39,8 +39,3 @@
   });
 
   //submitting the form with click of the btn-->
-  document.getElementById('lang-curr-submit').addEventListener('click', function () {
-    // document.getElementById('lang-form').submit();
-    document.getElementById('currency-form').submit();
-    // modal.classList.add('hidden');    //no need for production, as post request will reload the page, and initially the modal is hidden
-  });

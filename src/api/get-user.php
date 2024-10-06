@@ -13,7 +13,7 @@ $user_id = $_SESSION["id"];
 if (isset($user_id)) {
 
     // SQL query to fetch user details
-    $sql = "SELECT user_id, user_type, fname, lname, email, phone, rcvEmails, CreatedAt, profile_photo_url 
+    $sql = "SELECT user_id, user_type, currency, fname, lname, email, phone, rcvEmails, CreatedAt, profile_photo_url 
             FROM Users WHERE user_id = ?";
 
     // Prepare statement

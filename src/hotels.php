@@ -30,6 +30,51 @@ include_once "partials/__nav.php";
 ?>
 
 <script>
+    let rate_multiplier;
+            function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+    // Define the API URL
+const apiUrl = 'http://localhost/Adventure-Amigos/src/api/get-currancy-rate.php';
+
+// Function to fetch currency rates
+function fetchCurrencyRates() {
+    fetch(apiUrl)
+        .then(response => {
+            // Check if the response is OK (status code 200)
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json(); // Parse the response as JSON
+        })
+        .then(data => {
+            // Handle the data (currency rates)
+            // console.log('Currency Rates:', data); // Output the data to the console
+            // You can update the DOM or use the data as needed
+            if (getQueryParam('currency')!=null) {
+                // console.log('not null');
+                let selectedCurrency = getQueryParam('currency').toUpperCase();
+                console.log(selectedCurrency);
+                
+                // Accessing the conversion rate dynamically using bracket notation
+                rate_multiplier = data.conversion_rates[selectedCurrency];
+                
+            }
+            
+        })
+        .catch(error => {
+            // Handle any errors
+            console.error('Error fetching the currency rates:', error);
+        });
+}
+
+// Call the function to fetch the currency rates
+fetchCurrencyRates();
+
+</script>
+
+<script>
     let currentPage = 1;
     function formatDateRange(hotel) {
     const optionsSameMonth = { month: 'short', day: 'numeric' };
@@ -53,11 +98,8 @@ include_once "partials/__nav.php";
     return formattedDateRange;
 }
 
-        // Function to get the 'id' parameter from the URL
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
+        // The getQueryParam function was defined here earlier
+
 
           // Get the 'id' from the current URL
         let query = "";
@@ -109,7 +151,21 @@ include_once "partials/__nav.php";
     }
 }
 
-                    
+function rateConverter(rate, multiplier) {
+    if (multiplier!=null) {
+        return rate *multiplier;
+    }
+    return rate;
+}
+function currencySelector() {
+    if (getQueryParam('currency')!=null) {
+        document.getElementById('selected_currency_tile').innerHTML=getQueryParam('currency').toUpperCase();   
+        return getQueryParam('currency').toUpperCase();   
+
+    }
+    return "BDT";
+}
+               
                     const hotelCard = `
                         <a href="view-hotel.php?id=${hotel.hotel_id}" class="flex flex-col p-2 hover:bg-neutral-100 rounded-lg">
                             <div class="square">
@@ -141,7 +197,7 @@ include_once "partials/__nav.php";
                     <p class="text-md text-gray-500">${formatDateRange(hotel)}</p>
                 </div>
                             <div class="flex mt-1">
-                                <p class="text-md font-medium">$${hotel.price}</p>
+                                <p class="text-md font-medium">${currencySelector()} ${rateConverter(hotel.price,rate_multiplier)}</p>
                                 &nbsp;
                                 <p class="text-md"> night</p>
                             </div>

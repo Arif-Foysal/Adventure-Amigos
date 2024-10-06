@@ -143,6 +143,30 @@ CREATE TABLE IF NOT EXISTS `User_OTPs` (
   FOREIGN KEY (`user_id`) REFERENCES `Users`(`user_id`) ON DELETE CASCADE
 );
 
+--forums
+
+CREATE TABLE IF NOT EXISTS `Posts` (
+    `post_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `city_id` INT,  -- Reference to the city where the post is made
+    `user_id` INT,  -- Reference to the user who created the post
+    `title` VARCHAR(255),
+    `content` TEXT,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (`city_id`) REFERENCES `Cities`(`city_id`) ON DELETE CASCADE,
+    FOREIGN KEY (`user_id`) REFERENCES `Users`(`user_id`) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS `Comments` (
+    `comment_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `post_id` INT,  -- Reference to the post being commented on
+    `user_id` INT,  -- Reference to the user who created the comment
+    `comment_text` TEXT,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (`post_id`) REFERENCES `Posts`(`post_id`) ON DELETE CASCADE,
+    FOREIGN KEY (`user_id`) REFERENCES `Users`(`user_id`) ON DELETE CASCADE
+);
+
+
 
 CREATE OR REPLACE VIEW HotelDetails AS
 SELECT 
@@ -181,6 +205,26 @@ JOIN
 GROUP BY 
     H.hotel_id;
 
+CREATE OR REPLACE VIEW ForumView AS
+SELECT 
+    P.post_id,
+    P.title AS post_title,
+    P.content AS post_content,
+    P.created_at AS post_created_at,
+    U.fname AS post_creator_fname,
+    U.lname AS post_creator_lname,
+    U.email AS post_creator_email,
+    C.city_id AS city_id,
+    C.name AS city_name,
+    C.country AS country_name
+FROM 
+    Posts P
+JOIN 
+    Users U ON P.user_id = U.user_id
+JOIN 
+    Cities C ON P.city_id = C.city_id
+ORDER BY 
+    P.created_at DESC;
 
 
 DELIMITER //
