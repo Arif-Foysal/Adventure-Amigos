@@ -56,10 +56,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   $_SESSION["email"] = $email;
                   $_SESSION["id"] = $id;
                   $_SESSION["username"] = $fname;
-                  // $_SESSION["loggedin"] = true;
+                  $_SESSION["loggedin"] = true;
 
-                  // //Redirect Users to welcome page
-                  // header("location: welcome.php");
+                  //Redirect Users to welcome page
+                  header("location: welcome.php");
 
 
 
@@ -79,10 +79,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                   // echo $response->getBody();
 
-                  $query_url = "http://localhost/Adventure-Amigos/src/otp/send_email.php?email=".$_SESSION["email"]."&username=".$fname;
-                  header("Location: " . $query_url);
+
+                  // below lines were commented
+                  // $query_url = "otp/send_email.php?email=".$_SESSION["email"]."&username=".$fname;
+                  // header("Location: " . $query_url);
 
 
+//echo hello world
 
 
 

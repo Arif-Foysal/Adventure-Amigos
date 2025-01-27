@@ -39,3 +39,6 @@
   });
 
   //submitting the form with click of the btn-->
+  document.getElementById('lang-curr-submit').addEventListener('click', function() {
+    document.getElementById('currency-form').submit();
+});

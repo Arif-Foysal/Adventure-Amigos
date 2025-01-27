@@ -176,9 +176,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     ';
               }
 
-              if ($currentPage == 'home.php') {
+              if ($currentPage == 'forum.php') {
                 echo '
-             <a href="home.php" class="flex items-center border-b-2 border-black">
+             <a href="forum.php" class="flex items-center border-b-2 border-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
   <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
 </svg>
@@ -190,7 +190,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     ';
               } else {
                 echo '
-             <a href="home.php" class="flex items-center border-b-2 border-transparent hover:border-gray-600 hover:border-b-2">
+             <a href="forum.php" class="flex items-center border-b-2 border-transparent hover:border-gray-600 hover:border-b-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
   <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
 </svg>
@@ -275,8 +275,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
               <a href="chat.php" class="flex items-center px-3 py-2 text-lg font-medium text-gray-950 hover:bg-green-600 hover:text-white focus:bg-green-500
               focus:text-white"
                 role="menuitem" tabindex="-1" id="user-menu-item-0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chat-left" viewBox="0 0 16 16">
-  <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
 </svg>
                 &nbsp;&nbsp;
                 <p>Messages</p>
@@ -296,8 +296,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
               focus:text-white"
                 role="menuitem" tabindex="-1" id="user-menu-item-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
-                </svg>
+  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+</svg>
                 &nbsp;&nbsp;
                 <p>Profile</p>
                 </a>
@@ -423,7 +423,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     </div>
   </section>
 
-  <section class="flex justify-center items-center gap-3 p-3">
+  <section class=" flex justify-center items-center gap-3 p-3">
 
     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-sliders"
       viewBox="0 0 16 16">
@@ -1014,14 +1014,13 @@ queryData.maxPrice = getQueryParam('max_price');
           <div class="text-white bg-gray-800 rounded-md p-8 w-full h-full ">
             <p id="selected_currency_tile" class="text-xl font-semibold">BDT</p>
             <!-- <p>US Dollar</p> -->
-
           </div>
         </section>
       </div>
       <br>
       <p>Choose a diffrent currency:</p>
       <br>
-      <form id="currency-form" action="" class="">
+      <form id="currency-form" method="GET" action="#" class="">
         <div class="flex justify-start justify-items-start gap-2 flex-wrap pr-2">
           <section class="w-36 grow">
             <input type="radio" name="currency" value="usd" id="option-usd" class="hidden peer">

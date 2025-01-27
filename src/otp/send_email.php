@@ -113,7 +113,7 @@ sendMail($send_to_email, $verification_otp, $send_to_name);
 
 // Message to print email success!
 // echo "Email Sent Successfully!";
-$query_url = "http://localhost/Adventure-Amigos/src/verify_account.php";
+$query_url = "../../verify_account.php";
 header("Location: " . $query_url);
 
 ?>

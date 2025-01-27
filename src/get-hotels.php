@@ -74,7 +74,7 @@ if ($hotel_id) {
 }
 
 // Set the number of hotels per page for general listing
-$hotels_per_page = 4;
+$hotels_per_page = 8;
 $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $start_index = ($current_page - 1) * $hotels_per_page;
 

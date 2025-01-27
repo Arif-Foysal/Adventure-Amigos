@@ -197,7 +197,7 @@ require_once "partials/__nav.php";
 
         <div class="col-span-6 justify-center sm:flex sm:items-center sm:gap-4">
             <div class="flex flex-col w-full max-w-xs gap-y-5">
-                <button type="submit"
+                <button id="login_submit" type="submit"
                   class="inline-block shrink-0 rounded-md border border-green-600 bg-green-600 px-12 py-3 text-lg font-semibold text-white transition hover:bg-transparent hover:text-green-600 focus:outline-none focus:ring active:text-green-600"
                 >
                   Log In
