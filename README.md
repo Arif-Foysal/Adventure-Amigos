@@ -51,14 +51,14 @@ composer install
      mysql -u your_username -p your_database_name < database.sql
      ```
 
-3. Update the database credentials in the project's configuration file (`/src/config.php` or similar):
+3. Update the database credentials in the project's configuration file (`/src/dbconnect.php` or similar):
 
 ```php
 // Example
-define('DB_HOST', 'localhost');
-define('DB_USER', 'your_username');
-define('DB_PASSWORD', 'your_password');
-define('DB_NAME', 'your_database_name');
+    $servername = "localhost";
+    $username = "root";
+    $password = "asdf1234";
+    $dbname = "tourism";
 ```
 
 ### 4. Start the Web Server
